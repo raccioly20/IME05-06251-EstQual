@@ -1,0 +1,17 @@
+{
+  "hash": "1eec8a3c67a5b1d671bcd6bf31855af9",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Untitled\"\nformat: html\neditor: visual\n---\n\n\n\n\n## Comparação Histograma, Box-Plot e Violino\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nset.seed(2024)\ndados <- data.frame(x=rnorm(10000, 10, 1), y= rep(\"A\",10000))\n\nlibrary(ggplot2)\nlibrary(patchwork)\ng1 <- ggplot(dados, aes(x=x)) + geom_histogram()\ng2 <- ggplot(dados, aes(x=x)) + geom_boxplot()\ng3 <- ggplot(dados, aes(x=x, y=y)) + geom_violin(draw_quantiles = c(0.25, 0.5, 0.75))\ng1 / g2 / g3\n```\n\n::: {.cell-output .cell-output-stderr}\n\n```\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.\n```\n\n\n:::\n\n::: {.cell-output-display}\n![](violino_files/figure-html/unnamed-chunk-1-1.png){width=672}\n:::\n:::\n",
+    "supporting": [
+      "violino_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

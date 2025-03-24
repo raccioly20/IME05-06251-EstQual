@@ -1,0 +1,17 @@
+{
+  "hash": "0db65c530151ab78ca41cda48d7a57e9",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Gerando dados, Manipulando e Visualizando\"\nauthor: \"Ricardo Accioly\"\ndate: ' 2025-03-19 '\nformat:\n html:\n    code-link: true\n    fig-width: 9\n    fig-height: 7\n    fig-dpi: 300\nknitr:\n  opts_chunk: \n    out.width: 90%\n    comment: \"#>\"\nexecute:\n  freeze: auto\n---\n\n\n\n\n## Gerando dados no R\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidyverse)\nset.seed(2020) # para garantir a reprodutibilidade\ny <- rnorm(30, 10, 1)\nx <- seq(1, 30, 1)\ndados <- data.frame(y, x)\n```\n:::\n\n\n\n\n## Visualizando com um gráfico de corrida (Run Chart)\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nggplot(data = dados) +\n  geom_point(aes(x = x, y = y), size = 3) +\n  geom_abline(aes(slope = 0, intercept = 10))\n```\n\n::: {.cell-output-display}\n![](Aula01_files/figure-html/unnamed-chunk-1-1.png){width=90%}\n:::\n:::\n\n\n\n\n## Histograma\n\nÉ preciso muito cuidado com a definição dos intervalos de classe.\n\n## Padrão do GGplot\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nggplot(dados, aes(x = y)) +\n  geom_histogram()\n```\n\n::: {.cell-output .cell-output-stderr}\n\n```\n#> `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.\n```\n\n\n:::\n\n::: {.cell-output-display}\n![](Aula01_files/figure-html/unnamed-chunk-2-1.png){width=90%}\n:::\n:::\n\n\n\n\n## Regra de Sturges\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nhist(dados$y, breaks = \"Sturges\", main = \"Sturges\")\n```\n\n::: {.cell-output-display}\n![](Aula01_files/figure-html/unnamed-chunk-3-1.png){width=90%}\n:::\n:::\n\n\n\n\n## Regra de Freedman e Diaconis\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nhist(dados$y, breaks = \"FD\", main = \"Freedman e Diaconis\")\n```\n\n::: {.cell-output-display}\n![](Aula01_files/figure-html/unnamed-chunk-4-1.png){width=90%}\n:::\n:::\n\n\n\n\n## Regra de Scott\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nhist(dados$y, breaks = \"Scott\", main = \"Scott\")\n```\n\n::: {.cell-output-display}\n![](Aula01_files/figure-html/unnamed-chunk-5-1.png){width=90%}\n:::\n:::\n\n\n\n\n## Simulando e visualizando a saída de 3 máquinas diferentes\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nset.seed(2020)\ny1 <- rnorm(30, 10, 1)\nx1 <- rep(\"maq1\", 30)\ny2 <- rnorm(30, 9, 2)\nx2 <- rep(\"maq2\", 30) \ny3 <- rnorm(30, 11, 1.5)\nx3 <- rep(\"maq3\", 30)\ny <- c(y1, y2, y3)\nx <- c(x1, x2, x3)\n\ndados <- data.frame(y , x)\n\nboxplot(dados$y ~ dados$x)\n```\n\n::: {.cell-output-display}\n![](Aula01_files/figure-html/unnamed-chunk-6-1.png){width=90%}\n:::\n\n```{.r .cell-code}\nggplot(dados, aes(x , y)) + geom_boxplot()\n```\n\n::: {.cell-output-display}\n![](Aula01_files/figure-html/unnamed-chunk-6-2.png){width=90%}\n:::\n:::\n",
+    "supporting": [
+      "Aula01_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

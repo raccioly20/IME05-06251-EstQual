@@ -1,0 +1,87 @@
+---
+title: "Gerando dados, Manipulando e Visualizando"
+author: "Ricardo Accioly"
+date: ' `r Sys.Date()` '
+format:
+ html:
+    code-link: true
+    fig-width: 9
+    fig-height: 7
+    fig-dpi: 300
+knitr:
+  opts_chunk: 
+    out.width: 90%
+    comment: "#>"
+execute:
+  freeze: auto
+---
+
+## Gerando dados no R
+
+```{r qcc}
+#| message: false
+library(tidyverse)
+set.seed(2020) # para garantir a reprodutibilidade
+y <- rnorm(30, 10, 1)
+x <- seq(1, 30, 1)
+dados <- data.frame(y, x)
+```
+
+## Visualizando com um gráfico de corrida (Run Chart)
+
+```{r}
+ggplot(data = dados) +
+  geom_point(aes(x = x, y = y), size = 3) +
+  geom_abline(aes(slope = 0, intercept = 10))
+```
+
+## Histograma
+
+É preciso muito cuidado com a definição dos intervalos de classe.
+
+## Padrão do GGplot
+
+```{r}
+ggplot(dados, aes(x = y)) +
+  geom_histogram()
+```
+
+## Regra de Sturges
+
+```{r}
+hist(dados$y, breaks = "Sturges", main = "Sturges")
+
+```
+
+## Regra de Freedman e Diaconis
+
+```{r}
+hist(dados$y, breaks = "FD", main = "Freedman e Diaconis")
+```
+
+## Regra de Scott
+
+```{r}
+hist(dados$y, breaks = "Scott", main = "Scott")
+```
+
+## Simulando e visualizando a saída de 3 máquinas diferentes
+
+```{r}
+set.seed(2020)
+y1 <- rnorm(30, 10, 1)
+x1 <- rep("maq1", 30)
+y2 <- rnorm(30, 9, 2)
+x2 <- rep("maq2", 30) 
+y3 <- rnorm(30, 11, 1.5)
+x3 <- rep("maq3", 30)
+y <- c(y1, y2, y3)
+x <- c(x1, x2, x3)
+
+dados <- data.frame(y , x)
+
+boxplot(dados$y ~ dados$x)
+
+ggplot(dados, aes(x , y)) + geom_boxplot()
+
+```

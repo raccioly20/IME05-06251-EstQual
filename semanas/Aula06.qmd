@@ -1,0 +1,50 @@
+---
+title: "GC Fração Não Conforme"
+author: "Ricardo Accioly"
+date: ' `r Sys.Date()` '
+format:
+ html:
+    code-link: true
+    fig-width: 9
+    fig-height: 7
+    fig-dpi: 300
+knitr:
+  opts_chunk: 
+    out.width: 90%
+    comment: "#>"
+execute:
+  freeze: auto
+---
+
+## Simulando Valores de uma binomial
+
+```{r}
+set.seed(4321)
+n <- 100
+p <- 0.1
+m <- 25
+amostras <- rbinom(m,n,p)
+```
+
+```{r}
+pchapeu <- mean(amostras/100)
+```
+
+```{r}
+lsc <- pchapeu + 3*sqrt(pchapeu*(1-pchapeu)/100)
+lic <- pchapeu - 3*sqrt(pchapeu*(1-pchapeu)/100)
+```
+
+```{r}
+dados <- data.frame(amostras=amostras/n, x=seq(1:25))
+```
+
+```{r}
+library(ggplot2)
+ggplot(dados,aes(x=x, y=amostras)) +
+    geom_hline(yintercept=lsc, linetype="dashed", color = "red") +
+  geom_hline(yintercept=lic, linetype="dashed", color = "red") +
+  geom_hline(yintercept=pchapeu, linetype="dashed", color = "black")  + geom_point()
+  
+  
+```

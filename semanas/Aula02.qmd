@@ -1,0 +1,117 @@
+---
+title: "Avaliando a Convergência das Distribuições"
+author: "Ricardo Accioly"
+date: ' `r Sys.Date()` '
+format:
+ html:
+    code-link: true
+    fig-width: 9
+    fig-height: 7
+    fig-dpi: 300
+knitr:
+  opts_chunk: 
+    out.width: 90%
+    comment: "#>"
+execute:
+  freeze: auto
+---
+
+```{r, include=FALSE}
+def.par <- par(no.readonly = TRUE) # save default, for resetting...
+# include this code chunk as-is to set options
+knitr::opts_chunk$set(comment=NA, prompt=TRUE, fig.height=7, fig.width=10) 
+#    use fig.height=6.5, fig.width=6.5 for word output
+```
+
+## Definindo Amostras e Simulando Dados
+
+```{r}
+# Definindo os tamanhos de amostras para cada distribuicao
+n=cbind(c(3, 10,30), 
+        c(3, 10,30), 
+        c(3, 10,30), 
+        c(3,10,30)) 
+
+X<-list(
+  x1=matrix(NA,nrow=200,ncol=3), 
+  x2=matrix(NA,nrow=200,ncol=3), 
+  x3=matrix(NA,nrow=200,ncol=3), 
+  x4=matrix(NA,nrow=200,ncol=3)) 
+
+set.seed(1909)
+for ( i in 1:3){  # iterando ao longo do número de amostras de cada linha
+  for ( j in 1: 200){  # Construindo 200 observacoes para cada gráfico  
+    X$x1[j,i] =  mean( runif( n=n[i,1])) 
+    # Calculando a média pra cada uma das 200 simulacoes de uma distribuicao uniforme
+    X$x2[j,i] =  mean(  rexp( n=n[i,2], rate=2)) 
+    # Calculando a média pra cada uma das 200 simulacoes de uma distribuicao exponencial
+    X$x3[j,i] =  mean(rchisq( n=n[i,3], df=1)) 
+    # Calculando a média pra cada uma das 200 simulacoes de uma distribuicao qui-quadrado
+    X$x4[j,i] =  mean( rbeta( n=n[i,4], shape1 = .2, shape2 = .2)) 
+    # Calculando a média pra cada uma das 200 simulacoes de uma distribuicao beta
+  }
+}
+```
+
+## Visualizando as amostras
+
+Apresentação das 200 simulações das distribuições uniforme, exponencial, Chiquadrado e beta para os tamanhos de amostras n= 3, 10 e 30
+
+## Distribuição Uniforme
+
+```{r}
+layout(rbind(c(1,2,3,4)))
+plot(dunif(x = seq(0,1,0.05)),type="l", ylab="f(x)", main="fdp-Uniforme(0,1)", xlab="X")
+hist(X$x1[,1], col = "lightblue3", border = "dark gray", 
+     main = paste("n = ", n[1,1]), freq = FALSE, xlab="X_bar")
+hist(X$x1[,2], col = "lightblue3", border = "dark gray", 
+     main = paste("n = ", n[2,1]), freq = FALSE, xlab="X_bar")
+hist(X$x1[,3], col = "lightblue3", border = "dark gray", 
+     main = paste("n = ", n[3,1]), freq = FALSE, xlab="X_bar")
+
+```
+
+## Distribuição exponencial
+
+```{r}
+layout(rbind(c(1,2,3,4)))
+plot(dexp(x = seq(0,1,0.05),rate=2),type="l", ylab="f(x)", main="fdp-Exponencial(1/2)", xlab="X")
+hist(X$x2[,1], col = "lightblue3", border = "dark gray", 
+     main = paste("n = ", n[1,2]), freq = FALSE, xlab="X_bar")
+hist(X$x2[,2], col = "lightblue3", border = "dark gray", 
+     main = paste("n = ", n[2,2]), freq = FALSE, xlab="X_bar")
+hist(X$x2[,3], col = "lightblue3", border = "dark gray", 
+     main = paste("n = ", n[3,2]), freq = FALSE, xlab="X_bar")
+
+```
+
+## Distribuição Chi-Quadrado
+
+```{r}
+layout(rbind(c(1,2,3,4)))
+plot(dchisq(x = seq(0,1,0.05),df=1),type="l", ylab="f(x)", main="fdp-QuiQuad(1)", xlab="X")
+hist(X$x3[,1], col = "lightblue3", border = "dark gray", 
+     main = paste("n = ", n[1,3]), freq = FALSE, xlab="X_bar")
+hist(X$x3[,2], col = "lightblue3", border = "dark gray",
+     main = paste("n = ", n[2,3]), freq = FALSE, xlab="X_bar")
+hist(X$x3[,3], col = "lightblue3", border = "dark gray", 
+     main = paste("n = ", n[3,3]), freq = FALSE, xlab="X_bar")
+
+```
+
+## Distribuição Beta
+
+```{r}
+layout(rbind(c(1,2,3,4)))
+plot(dbeta(x = seq(0,1,0.05), shape1 = .2, shape2 = .2),type="l", ylab="f(x)", main="fdp-Beta(0.2, 0.2)", xlab="X")
+hist(X$x4[,1], col = "lightblue3", border = "dark gray", 
+     main = paste("n = ", n[1,4]), freq = FALSE, xlab="X_bar")
+hist(X$x4[,2], col = "lightblue3", border = "dark gray", 
+     main = paste("n = ", n[2,4]), freq = FALSE, xlab="X_bar")
+hist(X$x4[,3], col = "lightblue3", border = "dark gray",
+     main = paste("n = ", n[3,4]), freq = FALSE, xlab="X_bar")
+```
+
+```{r, include=FALSE}
+par(def.par)  #- reset to default
+```

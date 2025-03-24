@@ -1,0 +1,19 @@
+---
+title: "Estatística da  Qualidade"
+---
+
+- Origem e objetivos da Estatística da Qualidade
+
+- Modelando a qualidade de processos
+
+- Inferência da qualidade de processos
+
+- Métodos e Filosofia do Controle Estatístico de Processo
+
+- Gráficos de Controle por Variáveis
+
+- Gráficos de Controle por Atributos
+
+- Gráficos CUSUM e EWMA
+
+- Planos de Auditoria por Amostragem

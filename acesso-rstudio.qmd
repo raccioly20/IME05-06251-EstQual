@@ -1,0 +1,9 @@
+---
+title: "Posit Cloud"
+---
+
+Para testar os exemplos no R use o ambiente nas nuvens do Posit Cloud.
+
+Abra uma conta gratuita no mesmo e use o ambinte para testar os exemplos.
+
+Outra opção é usar o RStudio Desktop para testar os exemplos.

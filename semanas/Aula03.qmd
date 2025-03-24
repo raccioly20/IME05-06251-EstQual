@@ -1,0 +1,49 @@
+---
+title: "QCC"
+author: "Ricardo Accioly"
+date: ' `r Sys.Date()` '
+format:
+ html:
+    code-link: true
+    fig-width: 9
+    fig-height: 7
+    fig-dpi: 300
+knitr:
+  opts_chunk: 
+    out.width: 90%
+    comment: "#>"
+execute:
+  freeze: auto
+---
+
+## Gráfico de Pareto
+
+```{r}
+library(qcc)
+#Gráfico de Pareto
+defeitos <- c(91, 27, 66, 14, 33)
+names(defeitos) <- c("pintura sem brilho", "pintura arranhada", "cor errada", "sem tinta", "bolhas")
+pareto.chart(defeitos, ylab = "Frequencias dos defeitos")
+```
+
+## Diagrama de Causa e Efeito
+
+```{r}
+#Diagrama de Causa e efeito
+cause.and.effect(cause = list(Materiais = c("Ligas",
+                                              "Lubrificantes",
+                                              "Fornecedores"),
+                                Mao_de_Obra = c("Turnos",
+                                              "Supervisores",
+                                              "Treinamento",
+                                              "Operadores"),
+                                Meio_Ambiente = c("Condensacao",
+                                                "Calor"),
+                                Metodo = c("Angulo",
+                                            "Freio"),
+                                Maquina = c("Velocidade",
+                                             "Soquetes",
+                                             "Brocas",
+                                             "vibracao")),
+                   effect = "Falhas na Superficie")
+```

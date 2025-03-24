@@ -1,0 +1,401 @@
+[
+  {
+    "objectID": "visao-do-curso.html",
+    "href": "visao-do-curso.html",
+    "title": "Estatística da Qualidade",
+    "section": "",
+    "text": "Origem e objetivos da Estatística da Qualidade\nModelando a qualidade de processos\nInferência da qualidade de processos\nMétodos e Filosofia do Controle Estatístico de Processo\nGráficos de Controle por Variáveis\nGráficos de Controle por Atributos\nGráficos CUSUM e EWMA\nPlanos de Auditoria por Amostragem",
+    "crumbs": [
+      "Informação da disciplina",
+      "Visão Geral"
+    ]
+  },
+  {
+    "objectID": "semanas/Aula04.html#carregando-dados",
+    "href": "semanas/Aula04.html#carregando-dados",
+    "title": "GC da Média e Amplitude",
+    "section": "Carregando dados",
+    "text": "Carregando dados\n\nlibrary(qcc)\nlibrary(tidyverse)\ndata(pistonrings)",
+    "crumbs": [
+      "Conteúdo Semanal",
+      "GC da Média e Amplitude"
+    ]
+  },
+  {
+    "objectID": "semanas/Aula04.html#explorando-os-dados",
+    "href": "semanas/Aula04.html#explorando-os-dados",
+    "title": "GC da Média e Amplitude",
+    "section": "Explorando os dados",
+    "text": "Explorando os dados\n\nhead(pistonrings)\n\n#&gt;   diameter sample trial\n#&gt; 1   74.030      1  TRUE\n#&gt; 2   74.002      1  TRUE\n#&gt; 3   74.019      1  TRUE\n#&gt; 4   73.992      1  TRUE\n#&gt; 5   74.008      1  TRUE\n#&gt; 6   73.995      2  TRUE\n\nsummary(pistonrings)\n\n#&gt;     diameter         sample        trial        \n#&gt;  Min.   :73.97   Min.   : 1.00   Mode :logical  \n#&gt;  1st Qu.:74.00   1st Qu.:10.75   FALSE:75       \n#&gt;  Median :74.00   Median :20.50   TRUE :125      \n#&gt;  Mean   :74.00   Mean   :20.50                  \n#&gt;  3rd Qu.:74.01   3rd Qu.:30.25                  \n#&gt;  Max.   :74.04   Max.   :40.00",
+    "crumbs": [
+      "Conteúdo Semanal",
+      "GC da Média e Amplitude"
+    ]
+  },
+  {
+    "objectID": "semanas/Aula04.html#manipulando-os-dados",
+    "href": "semanas/Aula04.html#manipulando-os-dados",
+    "title": "GC da Média e Amplitude",
+    "section": "Manipulando os dados",
+    "text": "Manipulando os dados\n\naneisdepistao &lt;- pistonrings %&gt;% \n  rename(diametro = diameter, amostra = sample, fase1 = trial)\naneisdepistao &lt;- as_tibble(aneisdepistao)",
+    "crumbs": [
+      "Conteúdo Semanal",
+      "GC da Média e Amplitude"
+    ]
+  },
+  {
+    "objectID": "semanas/Aula04.html#gráfico-de-contre-da-média-e-amplitude",
+    "href": "semanas/Aula04.html#gráfico-de-contre-da-média-e-amplitude",
+    "title": "GC da Média e Amplitude",
+    "section": "Gráfico de Contre da Média e Amplitude",
+    "text": "Gráfico de Contre da Média e Amplitude\n\ndiametro &lt;- qccGroups(data = aneisdepistao, diametro, amostra)\n\n(graf1 &lt;- qcc(diametro[1:25,], type=\"xbar\"))\n\n#&gt; ── Quality Control Chart ───────────────────────── \n#&gt; \n#&gt; Chart type                 = xbar \n#&gt; Data (phase I)             = diametro[1:25, ] \n#&gt; Number of groups           = 25 \n#&gt; Group sample size          = 5 \n#&gt; Center of group statistics = 74.00118 \n#&gt; Standard deviation         = 0.009785039 \n#&gt; \n#&gt; Control limits at nsigmas  = 3 \n#&gt;       LCL     UCL\n#&gt;  73.98805 74.0143\n\nplot(graf1)\n\n\n\n\n\n\n(graf2 &lt;- qcc(diametro[1:25,], type=\"R\"))\n\n#&gt; ── Quality Control Chart ───────────────────────── \n#&gt; \n#&gt; Chart type                 = R \n#&gt; Data (phase I)             = diametro[1:25, ] \n#&gt; Number of groups           = 25 \n#&gt; Group sample size          = 5 \n#&gt; Center of group statistics = 0.02276 \n#&gt; Standard deviation         = 0.009785039 \n#&gt; \n#&gt; Control limits at nsigmas  = 3 \n#&gt;  LCL        UCL\n#&gt;    0 0.04812533\n\nplot(graf2)",
+    "crumbs": [
+      "Conteúdo Semanal",
+      "GC da Média e Amplitude"
+    ]
+  },
+  {
+    "objectID": "semanas/Aula02.html",
+    "href": "semanas/Aula02.html",
+    "title": "Avaliando a Convergência das Distribuições",
+    "section": "",
+    "text": "&gt; # Definindo os tamanhos de amostras para cada distribuicao\n&gt; n=cbind(c(3, 10,30), \n+         c(3, 10,30), \n+         c(3, 10,30), \n+         c(3,10,30)) \n&gt; \n&gt; X&lt;-list(\n+   x1=matrix(NA,nrow=200,ncol=3), \n+   x2=matrix(NA,nrow=200,ncol=3), \n+   x3=matrix(NA,nrow=200,ncol=3), \n+   x4=matrix(NA,nrow=200,ncol=3)) \n&gt; \n&gt; set.seed(1909)\n&gt; for ( i in 1:3){  # iterando ao longo do número de amostras de cada linha\n+   for ( j in 1: 200){  # Construindo 200 observacoes para cada gráfico  \n+     X$x1[j,i] =  mean( runif( n=n[i,1])) \n+     # Calculando a média pra cada uma das 200 simulacoes de uma distribuicao uniforme\n+     X$x2[j,i] =  mean(  rexp( n=n[i,2], rate=2)) \n+     # Calculando a média pra cada uma das 200 simulacoes de uma distribuicao exponencial\n+     X$x3[j,i] =  mean(rchisq( n=n[i,3], df=1)) \n+     # Calculando a média pra cada uma das 200 simulacoes de uma distribuicao qui-quadrado\n+     X$x4[j,i] =  mean( rbeta( n=n[i,4], shape1 = .2, shape2 = .2)) \n+     # Calculando a média pra cada uma das 200 simulacoes de uma distribuicao beta\n+   }\n+ }",
+    "crumbs": [
+      "Conteúdo Semanal",
+      "Explorando 03"
+    ]
+  },
+  {
+    "objectID": "semanas/Aula02.html#definindo-amostras-e-simulando-dados",
+    "href": "semanas/Aula02.html#definindo-amostras-e-simulando-dados",
+    "title": "Avaliando a Convergência das Distribuições",
+    "section": "",
+    "text": "&gt; # Definindo os tamanhos de amostras para cada distribuicao\n&gt; n=cbind(c(3, 10,30), \n+         c(3, 10,30), \n+         c(3, 10,30), \n+         c(3,10,30)) \n&gt; \n&gt; X&lt;-list(\n+   x1=matrix(NA,nrow=200,ncol=3), \n+   x2=matrix(NA,nrow=200,ncol=3), \n+   x3=matrix(NA,nrow=200,ncol=3), \n+   x4=matrix(NA,nrow=200,ncol=3)) \n&gt; \n&gt; set.seed(1909)\n&gt; for ( i in 1:3){  # iterando ao longo do número de amostras de cada linha\n+   for ( j in 1: 200){  # Construindo 200 observacoes para cada gráfico  \n+     X$x1[j,i] =  mean( runif( n=n[i,1])) \n+     # Calculando a média pra cada uma das 200 simulacoes de uma distribuicao uniforme\n+     X$x2[j,i] =  mean(  rexp( n=n[i,2], rate=2)) \n+     # Calculando a média pra cada uma das 200 simulacoes de uma distribuicao exponencial\n+     X$x3[j,i] =  mean(rchisq( n=n[i,3], df=1)) \n+     # Calculando a média pra cada uma das 200 simulacoes de uma distribuicao qui-quadrado\n+     X$x4[j,i] =  mean( rbeta( n=n[i,4], shape1 = .2, shape2 = .2)) \n+     # Calculando a média pra cada uma das 200 simulacoes de uma distribuicao beta\n+   }\n+ }",
+    "crumbs": [
+      "Conteúdo Semanal",
+      "Explorando 03"
+    ]
+  },
+  {
+    "objectID": "semanas/Aula02.html#visualizando-as-amostras",
+    "href": "semanas/Aula02.html#visualizando-as-amostras",
+    "title": "Avaliando a Convergência das Distribuições",
+    "section": "Visualizando as amostras",
+    "text": "Visualizando as amostras\nApresentação das 200 simulações das distribuições uniforme, exponencial, Chiquadrado e beta para os tamanhos de amostras n= 3, 10 e 30",
+    "crumbs": [
+      "Conteúdo Semanal",
+      "Explorando 03"
+    ]
+  },
+  {
+    "objectID": "semanas/Aula02.html#distribuição-uniforme",
+    "href": "semanas/Aula02.html#distribuição-uniforme",
+    "title": "Avaliando a Convergência das Distribuições",
+    "section": "Distribuição Uniforme",
+    "text": "Distribuição Uniforme\n\n&gt; layout(rbind(c(1,2,3,4)))\n&gt; plot(dunif(x = seq(0,1,0.05)),type=\"l\", ylab=\"f(x)\", main=\"fdp-Uniforme(0,1)\", xlab=\"X\")\n&gt; hist(X$x1[,1], col = \"lightblue3\", border = \"dark gray\", \n+      main = paste(\"n = \", n[1,1]), freq = FALSE, xlab=\"X_bar\")\n&gt; hist(X$x1[,2], col = \"lightblue3\", border = \"dark gray\", \n+      main = paste(\"n = \", n[2,1]), freq = FALSE, xlab=\"X_bar\")\n&gt; hist(X$x1[,3], col = \"lightblue3\", border = \"dark gray\", \n+      main = paste(\"n = \", n[3,1]), freq = FALSE, xlab=\"X_bar\")",
+    "crumbs": [
+      "Conteúdo Semanal",
+      "Explorando 03"
+    ]
+  },
+  {
+    "objectID": "semanas/Aula02.html#distribuição-exponencial",
+    "href": "semanas/Aula02.html#distribuição-exponencial",
+    "title": "Avaliando a Convergência das Distribuições",
+    "section": "Distribuição exponencial",
+    "text": "Distribuição exponencial\n\n&gt; layout(rbind(c(1,2,3,4)))\n&gt; plot(dexp(x = seq(0,1,0.05),rate=2),type=\"l\", ylab=\"f(x)\", main=\"fdp-Exponencial(1/2)\", xlab=\"X\")\n&gt; hist(X$x2[,1], col = \"lightblue3\", border = \"dark gray\", \n+      main = paste(\"n = \", n[1,2]), freq = FALSE, xlab=\"X_bar\")\n&gt; hist(X$x2[,2], col = \"lightblue3\", border = \"dark gray\", \n+      main = paste(\"n = \", n[2,2]), freq = FALSE, xlab=\"X_bar\")\n&gt; hist(X$x2[,3], col = \"lightblue3\", border = \"dark gray\", \n+      main = paste(\"n = \", n[3,2]), freq = FALSE, xlab=\"X_bar\")",
+    "crumbs": [
+      "Conteúdo Semanal",
+      "Explorando 03"
+    ]
+  },
+  {
+    "objectID": "semanas/Aula02.html#distribuição-chi-quadrado",
+    "href": "semanas/Aula02.html#distribuição-chi-quadrado",
+    "title": "Avaliando a Convergência das Distribuições",
+    "section": "Distribuição Chi-Quadrado",
+    "text": "Distribuição Chi-Quadrado\n\n&gt; layout(rbind(c(1,2,3,4)))\n&gt; plot(dchisq(x = seq(0,1,0.05),df=1),type=\"l\", ylab=\"f(x)\", main=\"fdp-QuiQuad(1)\", xlab=\"X\")\n&gt; hist(X$x3[,1], col = \"lightblue3\", border = \"dark gray\", \n+      main = paste(\"n = \", n[1,3]), freq = FALSE, xlab=\"X_bar\")\n&gt; hist(X$x3[,2], col = \"lightblue3\", border = \"dark gray\",\n+      main = paste(\"n = \", n[2,3]), freq = FALSE, xlab=\"X_bar\")\n&gt; hist(X$x3[,3], col = \"lightblue3\", border = \"dark gray\", \n+      main = paste(\"n = \", n[3,3]), freq = FALSE, xlab=\"X_bar\")",
+    "crumbs": [
+      "Conteúdo Semanal",
+      "Explorando 03"
+    ]
+  },
+  {
+    "objectID": "semanas/Aula02.html#distribuição-beta",
+    "href": "semanas/Aula02.html#distribuição-beta",
+    "title": "Avaliando a Convergência das Distribuições",
+    "section": "Distribuição Beta",
+    "text": "Distribuição Beta\n\n&gt; layout(rbind(c(1,2,3,4)))\n&gt; plot(dbeta(x = seq(0,1,0.05), shape1 = .2, shape2 = .2),type=\"l\", ylab=\"f(x)\", main=\"fdp-Beta(0.2, 0.2)\", xlab=\"X\")\n&gt; hist(X$x4[,1], col = \"lightblue3\", border = \"dark gray\", \n+      main = paste(\"n = \", n[1,4]), freq = FALSE, xlab=\"X_bar\")\n&gt; hist(X$x4[,2], col = \"lightblue3\", border = \"dark gray\", \n+      main = paste(\"n = \", n[2,4]), freq = FALSE, xlab=\"X_bar\")\n&gt; hist(X$x4[,3], col = \"lightblue3\", border = \"dark gray\",\n+      main = paste(\"n = \", n[3,4]), freq = FALSE, xlab=\"X_bar\")",
+    "crumbs": [
+      "Conteúdo Semanal",
+      "Explorando 03"
+    ]
+  },
+  {
+    "objectID": "semanas/Aula01.html",
+    "href": "semanas/Aula01.html",
+    "title": "Gerando dados, Manipulando e Visualizando",
+    "section": "",
+    "text": "library(tidyverse)\nset.seed(2020) # para garantir a reprodutibilidade\ny &lt;- rnorm(30, 10, 1)\nx &lt;- seq(1, 30, 1)\ndados &lt;- data.frame(y, x)",
+    "crumbs": [
+      "Conteúdo Semanal",
+      "Explorando 01"
+    ]
+  },
+  {
+    "objectID": "semanas/Aula01.html#gerando-dados-no-r",
+    "href": "semanas/Aula01.html#gerando-dados-no-r",
+    "title": "Gerando dados, Manipulando e Visualizando",
+    "section": "",
+    "text": "library(tidyverse)\nset.seed(2020) # para garantir a reprodutibilidade\ny &lt;- rnorm(30, 10, 1)\nx &lt;- seq(1, 30, 1)\ndados &lt;- data.frame(y, x)",
+    "crumbs": [
+      "Conteúdo Semanal",
+      "Explorando 01"
+    ]
+  },
+  {
+    "objectID": "semanas/Aula01.html#visualizando-com-um-gráfico-de-corrida-run-chart",
+    "href": "semanas/Aula01.html#visualizando-com-um-gráfico-de-corrida-run-chart",
+    "title": "Gerando dados, Manipulando e Visualizando",
+    "section": "Visualizando com um gráfico de corrida (Run Chart)",
+    "text": "Visualizando com um gráfico de corrida (Run Chart)\n\nggplot(data = dados) +\n  geom_point(aes(x = x, y = y), size = 3) +\n  geom_abline(aes(slope = 0, intercept = 10))",
+    "crumbs": [
+      "Conteúdo Semanal",
+      "Explorando 01"
+    ]
+  },
+  {
+    "objectID": "semanas/Aula01.html#histograma",
+    "href": "semanas/Aula01.html#histograma",
+    "title": "Gerando dados, Manipulando e Visualizando",
+    "section": "Histograma",
+    "text": "Histograma\nÉ preciso muito cuidado com a definição dos intervalos de classe.",
+    "crumbs": [
+      "Conteúdo Semanal",
+      "Explorando 01"
+    ]
+  },
+  {
+    "objectID": "semanas/Aula01.html#padrão-do-ggplot",
+    "href": "semanas/Aula01.html#padrão-do-ggplot",
+    "title": "Gerando dados, Manipulando e Visualizando",
+    "section": "Padrão do GGplot",
+    "text": "Padrão do GGplot\n\nggplot(dados, aes(x = y)) +\n  geom_histogram()\n\n#&gt; `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.",
+    "crumbs": [
+      "Conteúdo Semanal",
+      "Explorando 01"
+    ]
+  },
+  {
+    "objectID": "semanas/Aula01.html#regra-de-sturges",
+    "href": "semanas/Aula01.html#regra-de-sturges",
+    "title": "Gerando dados, Manipulando e Visualizando",
+    "section": "Regra de Sturges",
+    "text": "Regra de Sturges\n\nhist(dados$y, breaks = \"Sturges\", main = \"Sturges\")",
+    "crumbs": [
+      "Conteúdo Semanal",
+      "Explorando 01"
+    ]
+  },
+  {
+    "objectID": "semanas/Aula01.html#regra-de-freedman-e-diaconis",
+    "href": "semanas/Aula01.html#regra-de-freedman-e-diaconis",
+    "title": "Gerando dados, Manipulando e Visualizando",
+    "section": "Regra de Freedman e Diaconis",
+    "text": "Regra de Freedman e Diaconis\n\nhist(dados$y, breaks = \"FD\", main = \"Freedman e Diaconis\")",
+    "crumbs": [
+      "Conteúdo Semanal",
+      "Explorando 01"
+    ]
+  },
+  {
+    "objectID": "semanas/Aula01.html#regra-de-scott",
+    "href": "semanas/Aula01.html#regra-de-scott",
+    "title": "Gerando dados, Manipulando e Visualizando",
+    "section": "Regra de Scott",
+    "text": "Regra de Scott\n\nhist(dados$y, breaks = \"Scott\", main = \"Scott\")",
+    "crumbs": [
+      "Conteúdo Semanal",
+      "Explorando 01"
+    ]
+  },
+  {
+    "objectID": "semanas/Aula01.html#simulando-e-visualizando-a-saída-de-3-máquinas-diferentes",
+    "href": "semanas/Aula01.html#simulando-e-visualizando-a-saída-de-3-máquinas-diferentes",
+    "title": "Gerando dados, Manipulando e Visualizando",
+    "section": "Simulando e visualizando a saída de 3 máquinas diferentes",
+    "text": "Simulando e visualizando a saída de 3 máquinas diferentes\n\nset.seed(2020)\ny1 &lt;- rnorm(30, 10, 1)\nx1 &lt;- rep(\"maq1\", 30)\ny2 &lt;- rnorm(30, 9, 2)\nx2 &lt;- rep(\"maq2\", 30) \ny3 &lt;- rnorm(30, 11, 1.5)\nx3 &lt;- rep(\"maq3\", 30)\ny &lt;- c(y1, y2, y3)\nx &lt;- c(x1, x2, x3)\n\ndados &lt;- data.frame(y , x)\n\nboxplot(dados$y ~ dados$x)\n\n\n\n\n\n\nggplot(dados, aes(x , y)) + geom_boxplot()",
+    "crumbs": [
+      "Conteúdo Semanal",
+      "Explorando 01"
+    ]
+  },
+  {
+    "objectID": "acesso-rstudio.html",
+    "href": "acesso-rstudio.html",
+    "title": "Posit Cloud",
+    "section": "",
+    "text": "Para testar os exemplos no R use o ambiente nas nuvens do Posit Cloud.\nAbra uma conta gratuita no mesmo e use o ambinte para testar os exemplos.\nOutra opção é usar o RStudio Desktop para testar os exemplos.",
+    "crumbs": [
+      "RStudio Cloud",
+      "Acesso"
+    ]
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "Sobre",
+    "section": "",
+    "text": "Bom dia / Boa tarde / Boa Noite,\nSou o Professor Ricardo Accioly e esta é a página principal do site da disciplina Estatística da Qualidade IME05-06251 do Departamento de Estatística da UERJ.\nEste site foi construído usando Quarto e foi baseado em diversas fontes de informação obtidas na internet.\nSeguem algumas referências úteis para o Quarto:\nQuarto\nCurso da Duke University\nComo criar um blog com o Quarto\nWebnar do Quarto",
+    "crumbs": [
+      "Sobre",
+      "Sobre"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "IME05-06251-EQ",
+    "section": "",
+    "text": "Bom dia / Boa tarde / Boa Noite,\nAqui vocês vão encontrar alguns dos exemplos apresentados em aula, com uso do R. O objetivo é mostrar as possibilidades de aplicação do R nesta disciplina.\nOs códigos apresentados em aula serão colocado por aqui também.\n[📖] Explorando 01\n[📖] Explorando 02\n[📖] Explorando 03\n[📖] Ferramentas de Análise\n[📖] GC da Média e Amplitude",
+    "crumbs": [
+      "Informação da disciplina",
+      "Cronograma"
+    ]
+  },
+  {
+    "objectID": "semanas/Aula01A.html#carregando-dados",
+    "href": "semanas/Aula01A.html#carregando-dados",
+    "title": "Carregando dados, Manipulando e Visualizando",
+    "section": "Carregando dados",
+    "text": "Carregando dados\n\nlibrary(qcc)\nlibrary(tidyverse)\ndata(pistonrings)",
+    "crumbs": [
+      "Conteúdo Semanal",
+      "Explorando 02"
+    ]
+  },
+  {
+    "objectID": "semanas/Aula01A.html#explorando-os-dados",
+    "href": "semanas/Aula01A.html#explorando-os-dados",
+    "title": "Carregando dados, Manipulando e Visualizando",
+    "section": "Explorando os dados",
+    "text": "Explorando os dados\n\nhead(pistonrings)\n\n#&gt;   diameter sample trial\n#&gt; 1   74.030      1  TRUE\n#&gt; 2   74.002      1  TRUE\n#&gt; 3   74.019      1  TRUE\n#&gt; 4   73.992      1  TRUE\n#&gt; 5   74.008      1  TRUE\n#&gt; 6   73.995      2  TRUE\n\nsummary(pistonrings)\n\n#&gt;     diameter         sample        trial        \n#&gt;  Min.   :73.97   Min.   : 1.00   Mode :logical  \n#&gt;  1st Qu.:74.00   1st Qu.:10.75   FALSE:75       \n#&gt;  Median :74.00   Median :20.50   TRUE :125      \n#&gt;  Mean   :74.00   Mean   :20.50                  \n#&gt;  3rd Qu.:74.01   3rd Qu.:30.25                  \n#&gt;  Max.   :74.04   Max.   :40.00",
+    "crumbs": [
+      "Conteúdo Semanal",
+      "Explorando 02"
+    ]
+  },
+  {
+    "objectID": "semanas/Aula01A.html#manipulando-os-dados",
+    "href": "semanas/Aula01A.html#manipulando-os-dados",
+    "title": "Carregando dados, Manipulando e Visualizando",
+    "section": "Manipulando os dados",
+    "text": "Manipulando os dados\n\naneisdepistao &lt;- pistonrings %&gt;% \n  rename(diametro = diameter, amostra = sample, fase1 = trial)",
+    "crumbs": [
+      "Conteúdo Semanal",
+      "Explorando 02"
+    ]
+  },
+  {
+    "objectID": "semanas/Aula01A.html#visualizando---histograma",
+    "href": "semanas/Aula01A.html#visualizando---histograma",
+    "title": "Carregando dados, Manipulando e Visualizando",
+    "section": "Visualizando - Histograma",
+    "text": "Visualizando - Histograma\n\nggplot(aneisdepistao, aes(x = diametro)) +\n  geom_histogram(bins = round(1+3.322*log10(nrow(aneisdepistao)),0), fill = \"blue\", color = \"black\") +\n  labs(title = \"Histograma dos diâmetros dos anéis de pistão\",\n       x = \"Diâmetro\",\n       y = \"Frequência\")",
+    "crumbs": [
+      "Conteúdo Semanal",
+      "Explorando 02"
+    ]
+  },
+  {
+    "objectID": "semanas/Aula01A.html#visualizando---box-plot",
+    "href": "semanas/Aula01A.html#visualizando---box-plot",
+    "title": "Carregando dados, Manipulando e Visualizando",
+    "section": "Visualizando - Box-Plot",
+    "text": "Visualizando - Box-Plot\n\nggplot(aneisdepistao, aes(x = diametro)) +\n  geom_boxplot() +\n  labs(title = \"Box-Plot dos diâmetros dos anéis de pistão\")",
+    "crumbs": [
+      "Conteúdo Semanal",
+      "Explorando 02"
+    ]
+  },
+  {
+    "objectID": "semanas/Aula01A.html#visualizando---gráfico-de-corrida",
+    "href": "semanas/Aula01A.html#visualizando---gráfico-de-corrida",
+    "title": "Carregando dados, Manipulando e Visualizando",
+    "section": "Visualizando - Gráfico de corrida",
+    "text": "Visualizando - Gráfico de corrida\n\nmedia &lt;- aneisdepistao %&gt;% filter(fase1==T) %&gt;% group_by(amostra) %&gt;% summarise(media = mean(diametro))\n\nggplot(media, aes(x = amostra, y = media)) +\n  geom_point() +\n  geom_line() +\n  labs(title = \"Diâmetro médio dos anéis de pistão\",\n       x = \"Amostra\",\n       y = \"Diâmetro\")\n\n\n\n\n\n\n\n\naneisdepistao %&gt;% filter(fase1==T) %&gt;% ggplot(aes(x = as.factor(amostra), y = diametro)) +\n  geom_boxplot() +\n  labs(title = \"Box-Plots dos diametros dos anéis de pistão por amostra\",\n       x = \"Amostra\",\n       y = \"Diâmetro\")",
+    "crumbs": [
+      "Conteúdo Semanal",
+      "Explorando 02"
+    ]
+  },
+  {
+    "objectID": "semanas/Aula01A.html#resumo-dos-dados",
+    "href": "semanas/Aula01A.html#resumo-dos-dados",
+    "title": "Carregando dados, Manipulando e Visualizando",
+    "section": "Resumo dos dados",
+    "text": "Resumo dos dados\n\nlibrary(datawizard)\ndescribe_distribution(aneisdepistao)\n\n#&gt; Warning: Can't describe variables of class `logical`.\n\n\n#&gt; Variable |  Mean |    SD |   IQR |          Range | Skewness | Kurtosis |   n | n_Missing\n#&gt; -----------------------------------------------------------------------------------------\n#&gt; diametro | 74.00 |  0.01 |  0.02 | [73.97, 74.04] |     0.25 |     0.21 | 200 |         0\n#&gt; amostra  | 20.50 | 11.57 | 20.50 |  [1.00, 40.00] |     0.00 |    -1.20 | 200 |         0",
+    "crumbs": [
+      "Conteúdo Semanal",
+      "Explorando 02"
+    ]
+  },
+  {
+    "objectID": "semanas/Aula01A.html#comparando-histograma-box-plot-e-violino",
+    "href": "semanas/Aula01A.html#comparando-histograma-box-plot-e-violino",
+    "title": "Carregando dados, Manipulando e Visualizando",
+    "section": "Comparando Histograma, Box-Plot e Violino",
+    "text": "Comparando Histograma, Box-Plot e Violino\n\nset.seed(2024)\ndados &lt;- data.frame(x=rnorm(10000, 10, 1), y= rep(\"A\",10000))\n\nlibrary(ggplot2)\nlibrary(patchwork)\ng1 &lt;- ggplot(dados, aes(x=x)) + geom_histogram()\ng2 &lt;- ggplot(dados, aes(x=x)) + geom_boxplot()\ng3 &lt;- ggplot(dados, aes(x=x, y=y)) + geom_violin(draw_quantiles = c(0.25, 0.5, 0.75))\ng1 / g2 / g3\n\n#&gt; `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.",
+    "crumbs": [
+      "Conteúdo Semanal",
+      "Explorando 02"
+    ]
+  },
+  {
+    "objectID": "semanas/Aula03.html",
+    "href": "semanas/Aula03.html",
+    "title": "QCC",
+    "section": "",
+    "text": "library(qcc)\n\n#&gt; Package 'qcc' version 2.7\n\n\n#&gt; Type 'citation(\"qcc\")' for citing this R package in publications.\n\n#Gráfico de Pareto\ndefeitos &lt;- c(91, 27, 66, 14, 33)\nnames(defeitos) &lt;- c(\"pintura sem brilho\", \"pintura arranhada\", \"cor errada\", \"sem tinta\", \"bolhas\")\npareto.chart(defeitos, ylab = \"Frequencias dos defeitos\")\n\n\n\n\n\n\n\n#&gt;                     \n#&gt; Pareto chart analysis for defeitos\n#&gt;                       Frequency  Cum.Freq. Percentage Cum.Percent.\n#&gt;   pintura sem brilho  91.000000  91.000000  39.393939    39.393939\n#&gt;   cor errada          66.000000 157.000000  28.571429    67.965368\n#&gt;   bolhas              33.000000 190.000000  14.285714    82.251082\n#&gt;   pintura arranhada   27.000000 217.000000  11.688312    93.939394\n#&gt;   sem tinta           14.000000 231.000000   6.060606   100.000000",
+    "crumbs": [
+      "Conteúdo Semanal",
+      "Ferramentas de Análise"
+    ]
+  },
+  {
+    "objectID": "semanas/Aula03.html#gráfico-de-pareto",
+    "href": "semanas/Aula03.html#gráfico-de-pareto",
+    "title": "QCC",
+    "section": "",
+    "text": "library(qcc)\n\n#&gt; Package 'qcc' version 2.7\n\n\n#&gt; Type 'citation(\"qcc\")' for citing this R package in publications.\n\n#Gráfico de Pareto\ndefeitos &lt;- c(91, 27, 66, 14, 33)\nnames(defeitos) &lt;- c(\"pintura sem brilho\", \"pintura arranhada\", \"cor errada\", \"sem tinta\", \"bolhas\")\npareto.chart(defeitos, ylab = \"Frequencias dos defeitos\")\n\n\n\n\n\n\n\n#&gt;                     \n#&gt; Pareto chart analysis for defeitos\n#&gt;                       Frequency  Cum.Freq. Percentage Cum.Percent.\n#&gt;   pintura sem brilho  91.000000  91.000000  39.393939    39.393939\n#&gt;   cor errada          66.000000 157.000000  28.571429    67.965368\n#&gt;   bolhas              33.000000 190.000000  14.285714    82.251082\n#&gt;   pintura arranhada   27.000000 217.000000  11.688312    93.939394\n#&gt;   sem tinta           14.000000 231.000000   6.060606   100.000000",
+    "crumbs": [
+      "Conteúdo Semanal",
+      "Ferramentas de Análise"
+    ]
+  },
+  {
+    "objectID": "semanas/Aula03.html#diagrama-de-causa-e-efeito",
+    "href": "semanas/Aula03.html#diagrama-de-causa-e-efeito",
+    "title": "QCC",
+    "section": "Diagrama de Causa e Efeito",
+    "text": "Diagrama de Causa e Efeito\n\n#Diagrama de Causa e efeito\ncause.and.effect(cause = list(Materiais = c(\"Ligas\",\n                                              \"Lubrificantes\",\n                                              \"Fornecedores\"),\n                                Mao_de_Obra = c(\"Turnos\",\n                                              \"Supervisores\",\n                                              \"Treinamento\",\n                                              \"Operadores\"),\n                                Meio_Ambiente = c(\"Condensacao\",\n                                                \"Calor\"),\n                                Metodo = c(\"Angulo\",\n                                            \"Freio\"),\n                                Maquina = c(\"Velocidade\",\n                                             \"Soquetes\",\n                                             \"Brocas\",\n                                             \"vibracao\")),\n                   effect = \"Falhas na Superficie\")",
+    "crumbs": [
+      "Conteúdo Semanal",
+      "Ferramentas de Análise"
+    ]
+  },
+  {
+    "objectID": "semanas/Aula06.html",
+    "href": "semanas/Aula06.html",
+    "title": "GC Fração Não Conforme",
+    "section": "",
+    "text": "set.seed(4321)\nn &lt;- 100\np &lt;- 0.1\nm &lt;- 25\namostras &lt;- rbinom(m,n,p)\n\n\npchapeu &lt;- mean(amostras/100)\n\n\nlsc &lt;- pchapeu + 3*sqrt(pchapeu*(1-pchapeu)/100)\nlic &lt;- pchapeu - 3*sqrt(pchapeu*(1-pchapeu)/100)\n\n\ndados &lt;- data.frame(amostras=amostras/n, x=seq(1:25))\n\n\nlibrary(ggplot2)\nggplot(dados,aes(x=x, y=amostras)) +\n    geom_hline(yintercept=lsc, linetype=\"dashed\", color = \"red\") +\n  geom_hline(yintercept=lic, linetype=\"dashed\", color = \"red\") +\n  geom_hline(yintercept=pchapeu, linetype=\"dashed\", color = \"black\")  + geom_point()"
+  },
+  {
+    "objectID": "semanas/Aula06.html#simulando-valores-de-uma-binomial",
+    "href": "semanas/Aula06.html#simulando-valores-de-uma-binomial",
+    "title": "GC Fração Não Conforme",
+    "section": "",
+    "text": "set.seed(4321)\nn &lt;- 100\np &lt;- 0.1\nm &lt;- 25\namostras &lt;- rbinom(m,n,p)\n\n\npchapeu &lt;- mean(amostras/100)\n\n\nlsc &lt;- pchapeu + 3*sqrt(pchapeu*(1-pchapeu)/100)\nlic &lt;- pchapeu - 3*sqrt(pchapeu*(1-pchapeu)/100)\n\n\ndados &lt;- data.frame(amostras=amostras/n, x=seq(1:25))\n\n\nlibrary(ggplot2)\nggplot(dados,aes(x=x, y=amostras)) +\n    geom_hline(yintercept=lsc, linetype=\"dashed\", color = \"red\") +\n  geom_hline(yintercept=lic, linetype=\"dashed\", color = \"red\") +\n  geom_hline(yintercept=pchapeu, linetype=\"dashed\", color = \"black\")  + geom_point()"
+  }
+]

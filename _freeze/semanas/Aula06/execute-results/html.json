@@ -1,0 +1,17 @@
+{
+  "hash": "bf57b0a60230fb53bad7667b9aa5efb2",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"GC Fração Não Conforme\"\nauthor: \"Ricardo Accioly\"\ndate: ' 2025-03-24 '\nformat:\n html:\n    code-link: true\n    fig-width: 9\n    fig-height: 7\n    fig-dpi: 300\nknitr:\n  opts_chunk: \n    out.width: 90%\n    comment: \"#>\"\nexecute:\n  freeze: auto\n---\n\n\n\n\n\n## Simulando Valores de uma binomial\n\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nset.seed(4321)\nn <- 100\np <- 0.1\nm <- 25\namostras <- rbinom(m,n,p)\n```\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\npchapeu <- mean(amostras/100)\n```\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\nlsc <- pchapeu + 3*sqrt(pchapeu*(1-pchapeu)/100)\nlic <- pchapeu - 3*sqrt(pchapeu*(1-pchapeu)/100)\n```\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\ndados <- data.frame(amostras=amostras/n, x=seq(1:25))\n```\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(ggplot2)\nggplot(dados,aes(x=x, y=amostras)) +\n    geom_hline(yintercept=lsc, linetype=\"dashed\", color = \"red\") +\n  geom_hline(yintercept=lic, linetype=\"dashed\", color = \"red\") +\n  geom_hline(yintercept=pchapeu, linetype=\"dashed\", color = \"black\")  + geom_point()\n```\n\n::: {.cell-output-display}\n![](Aula06_files/figure-html/unnamed-chunk-5-1.png){width=90%}\n:::\n:::\n",
+    "supporting": [
+      "Aula06_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
