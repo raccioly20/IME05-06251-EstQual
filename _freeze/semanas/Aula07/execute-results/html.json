@@ -1,0 +1,17 @@
+{
+  "hash": "949ba2ab060361f622991717ab2435c2",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"GC Número de Defeitos\"\nauthor: \"Ricardo Accioly\"\ndate: ' 2025-05-28 '\nformat:\n html:\n    code-link: true\n    fig-width: 9\n    fig-height: 7\n    fig-dpi: 300\nknitr:\n  opts_chunk: \n    out.width: 90%\n    comment: \"#>\"\nexecute:\n  freeze: auto\n---\n\n## Entrada de dados no R\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(qcc)\n```\n\n::: {.cell-output .cell-output-stderr}\n\n```\n#> Carregando pacotes exigidos: ggplot2\n```\n\n\n:::\n\n::: {.cell-output .cell-output-stderr}\n\n```\n#> Carregando pacotes exigidos: patchwork\n```\n\n\n:::\n\n::: {.cell-output .cell-output-stderr}\n\n```\n#> Package 'qcc' version 3.0\n#> Type 'citation(\"qcc\")' for citing this R package in publications.\n```\n\n\n:::\n\n```{.r .cell-code}\ndata(circuit)\n```\n:::\n\n\n## Gráfico de Número de Defeitos\n\n\n::: {.cell}\n\n```{.r .cell-code}\n(q = with(circuit, qcc(x[trial], sizes = size[trial], type = \"c\")))\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n#> ── Quality Control Chart ───────────────────────── \n#> \n#> Chart type                 = c \n#> Data (phase I)             = x[trial] \n#> Number of groups           = 26 \n#> Group sample size          = 100 \n#> Center of group statistics = 19.84615 \n#> Standard deviation         = 4.454902 \n#> \n#> Control limits at nsigmas  = 3 \n#>       LCL      UCL\n#>  6.481447 33.21086\n```\n\n\n:::\n\n```{.r .cell-code}\nplot(q)\n```\n\n::: {.cell-output-display}\n![](Aula07_files/figure-html/unnamed-chunk-2-1.png){width=90%}\n:::\n:::\n\n\n## Gráfico de Número de Médio de Defeitos\n\n\n::: {.cell}\n\n```{.r .cell-code}\ndata(pcmanufact)\n(q = with(pcmanufact, qcc(x, sizes = size, type = \"u\")))\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n#> ── Quality Control Chart ───────────────────────── \n#> \n#> Chart type                 = u \n#> Data (phase I)             = x \n#> Number of groups           = 20 \n#> Group sample size          = 5 \n#> Center of group statistics = 1.93 \n#> Standard deviation         = 1.389244 \n#> \n#> Control limits at nsigmas  = 3 \n#>         LCL      UCL\n#>  0.06613305 3.793867\n```\n\n\n:::\n\n```{.r .cell-code}\nplot(q)\n```\n\n::: {.cell-output-display}\n![](Aula07_files/figure-html/unnamed-chunk-3-1.png){width=90%}\n:::\n:::\n\n",
+    "supporting": [
+      "Aula07_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

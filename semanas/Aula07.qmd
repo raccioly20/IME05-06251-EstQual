@@ -1,0 +1,40 @@
+---
+title: "GC Número de Defeitos"
+author: "Ricardo Accioly"
+date: ' `r Sys.Date()` '
+format:
+ html:
+    code-link: true
+    fig-width: 9
+    fig-height: 7
+    fig-dpi: 300
+knitr:
+  opts_chunk: 
+    out.width: 90%
+    comment: "#>"
+execute:
+  freeze: auto
+---
+
+## Entrada de dados no R
+
+```{r}
+library(qcc)
+data(circuit)
+```
+
+## Gráfico de Número de Defeitos
+
+```{r}
+(q = with(circuit, qcc(x[trial], sizes = size[trial], type = "c")))
+plot(q)
+
+```
+
+## Gráfico de Número de Médio de Defeitos
+
+```{r}
+data(pcmanufact)
+(q = with(pcmanufact, qcc(x, sizes = size, type = "u")))
+plot(q)
+```

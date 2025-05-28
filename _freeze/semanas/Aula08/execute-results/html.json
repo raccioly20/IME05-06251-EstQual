@@ -1,0 +1,17 @@
+{
+  "hash": "4bfd310181a009ddee50b4441dae475a",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"PAAS\"\nauthor: \"Ricardo Accioly\"\ndate: ' 2025-05-28 '\nformat:\n html:\n    code-link: true\n    fig-width: 9\n    fig-height: 7\n    fig-dpi: 300\nknitr:\n  opts_chunk: \n    out.width: 90%\n    comment: \"#>\"\nexecute:\n  freeze: auto\n---\n\n## Biblioteca\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(AcceptanceSampling)\n```\n:::\n\n\n## Esquema de Auditoria - Hipergeométrica\n\n\n::: {.cell}\n\n```{.r .cell-code}\nfind.plan(PRP=c(0.02,0.95),CRP=c(0.06,0.10),type=\"hypergeom\",N=5000)\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n#> $n\n#> [1] 193\n#> \n#> $c\n#> [1] 7\n#> \n#> $r\n#> [1] 8\n```\n\n\n:::\n:::\n\n\n## CCO - Hipergeométrica\n\n\n::: {.cell}\n\n```{.r .cell-code}\nplano <- OC2c(193,7,type=\"hypergeom\", N=5000, pd=seq(0,.15,.01))\nplot(plano, type='l')\ngrid()\n```\n\n::: {.cell-output-display}\n![](Aula08_files/figure-html/unnamed-chunk-3-1.png){width=90%}\n:::\n:::\n\n\n## Esquema de Auditoria - Binomial\n\n\n::: {.cell}\n\n```{.r .cell-code}\nfind.plan(PRP=c(0.02,0.95),CRP=c(0.06,0.10),type=\"binomial\")\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n#> $n\n#> [1] 194\n#> \n#> $c\n#> [1] 7\n#> \n#> $r\n#> [1] 8\n```\n\n\n:::\n:::\n\n\n## CCO - Binomial\n\n\n::: {.cell}\n\n```{.r .cell-code}\nplano <- OC2c(193,7,type=\"binomial\", pd=seq(0,.15,.01))\nplot(plano, type='l')\ngrid()\n```\n\n::: {.cell-output-display}\n![](Aula08_files/figure-html/unnamed-chunk-5-1.png){width=90%}\n:::\n:::\n\n\n## Esquema de Auditoria - Poisson\n\n\n::: {.cell}\n\n```{.r .cell-code}\nfind.plan(PRP=c(0.02,0.95),CRP=c(0.06,0.10),type=\"poisson\")\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n#> $n\n#> [1] 197\n#> \n#> $c\n#> [1] 7\n#> \n#> $r\n#> [1] 8\n```\n\n\n:::\n:::\n\n\n## CCO - Poisson\n\n\n::: {.cell}\n\n```{.r .cell-code}\nplano <- OC2c(193,7,type=\"poisson\", pd=seq(0,.15,.01))\nplot(plano, type='l')\ngrid()\n```\n\n::: {.cell-output-display}\n![](Aula08_files/figure-html/unnamed-chunk-7-1.png){width=90%}\n:::\n:::\n\n\n## CCO - GGplot2\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(ggplot2)\npaas <- data.frame(pd = plano@pd, Pa= plano@paccept)\nggplot(paas, aes(x=pd, y=Pa)) +\n  geom_line() +\n  labs(title=\"Curva de Operação do Plano de Auditoria\",\n       x=\"Proporção de Não Conformes (pd)\",\n       y=\"Probabilidade de Aceitação (OC)\") +\n  theme_minimal() +\n  theme(plot.title = element_text(hjust = 0.5))\n```\n\n::: {.cell-output-display}\n![](Aula08_files/figure-html/unnamed-chunk-8-1.png){width=90%}\n:::\n:::\n\n\n",
+    "supporting": [
+      "Aula08_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

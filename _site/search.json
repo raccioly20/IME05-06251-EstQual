@@ -11,6 +11,226 @@
     ]
   },
   {
+    "objectID": "semanas/Aula10.html",
+    "href": "semanas/Aula10.html",
+    "title": "PAAS vs PAAD",
+    "section": "",
+    "text": "library(AcceptanceSampling)",
+    "crumbs": [
+      "Conteúdo Semanal",
+      "Comparação PAAS e PAAD"
+    ]
+  },
+  {
+    "objectID": "semanas/Aula10.html#biblioteca",
+    "href": "semanas/Aula10.html#biblioteca",
+    "title": "PAAS vs PAAD",
+    "section": "",
+    "text": "library(AcceptanceSampling)",
+    "crumbs": [
+      "Conteúdo Semanal",
+      "Comparação PAAS e PAAD"
+    ]
+  },
+  {
+    "objectID": "semanas/Aula10.html#paas---poisson",
+    "href": "semanas/Aula10.html#paas---poisson",
+    "title": "PAAS vs PAAD",
+    "section": "PAAS - Poisson",
+    "text": "PAAS - Poisson\n\n# p1=0,01\n# p2 = 0,05\n# alfa = 0.05\n# beta = 0.10\n# p2/p1 = 5\nfind.plan(PRP=c(0.01,0.95),CRP=c(0.05,0.10),type=\"poisson\")\n\n#&gt; $n\n#&gt; [1] 134\n#&gt; \n#&gt; $c\n#&gt; [1] 3\n#&gt; \n#&gt; $r\n#&gt; [1] 4\n\npaas &lt;- find.plan(PRP=c(0.01,0.95),CRP=c(0.05,0.10),type=\"poisson\")\ncco_paas &lt;- OC2c(n=paas$n,c=paas$c,r=paas$r,type=\"poisson\",pd=seq(0,.15,.01))",
+    "crumbs": [
+      "Conteúdo Semanal",
+      "Comparação PAAS e PAAD"
+    ]
+  },
+  {
+    "objectID": "semanas/Aula10.html#paad---poisson",
+    "href": "semanas/Aula10.html#paad---poisson",
+    "title": "PAAS vs PAAD",
+    "section": "PAAD - Poisson",
+    "text": "PAAD - Poisson\nNeste caso não podemos mais usar a função find.plan, pois ela só serve para os PAAS.\nAqui vamos precisar de usar a tabela de Schilling e Johnson para definir o plano de auditoria.\n\n# p1=0,01\n# p2 = 0,05\n# alfa = 0.05\n# beta = 0.10\n# p2/p1 = 5\n# Plano 3D a1=1 a2=4 r1=4 e r2=5 n1=n2=88\npaad &lt;- OC2c(n=c(88,88),c=c(1,4),r=c(4,5),type=\"poisson\",pd=seq(0,.15,.01))\nassess(paad,PRP=c(.01,.95),CRP=c(.05,.10))\n\n#&gt; Acceptance Sampling Plan (poisson)\n#&gt; \n#&gt;                Sample 1 Sample 2\n#&gt; Sample size(s)       88       88\n#&gt; Acc. Number(s)        1        4\n#&gt; Rej. Number(s)        4        5\n#&gt; \n#&gt; Plan CAN meet desired risk point(s):\n#&gt; \n#&gt;            Quality   RP P(accept) Plan P(accept)\n#&gt; PRP           0.01           0.95     0.96755953\n#&gt; CRP           0.05           0.10     0.09985685",
+    "crumbs": [
+      "Conteúdo Semanal",
+      "Comparação PAAS e PAAD"
+    ]
+  },
+  {
+    "objectID": "semanas/Aula10.html#tma",
+    "href": "semanas/Aula10.html#tma",
+    "title": "PAAS vs PAAD",
+    "section": "TMA",
+    "text": "TMA\n\npd&lt;- seq(0,.20,.01) #Proporção de não conformes\nlambda&lt;- 88*pd # número esperado de não conforme numa amostra de 88\n\n# Probabilidade de aceitar na 1a amostra\nOC1&lt;-ppois(1, lambda, lower.tail=TRUE) \n\n# Probabilidade de rejeitar após a 1a amostra\nR1&lt;-ppois(3, lambda, lower.tail=FALSE)\n# lower.tail    logical; se TRUE (default), as probabilidades são\n# P[X≤x], caso contrário, P[X&gt;x].\n\n# Probabilidade de tomar uma decisão na 1a amostra\nP&lt;-OC1+R1\n\n# Tamanho médio de amostra\nTMA=88+88*(1-P)\n\n# Gráfico do TMA\nplot(pd,TMA,type='l',ylim=c(5,150),xlab=\"Proporção de não conformes\")\nabline(134,0,lty=2)\ntext(.10,142,'PAAS n=134')\ntext(.10,70,'PAAD n=(88,88)')\ngrid()",
+    "crumbs": [
+      "Conteúdo Semanal",
+      "Comparação PAAS e PAAD"
+    ]
+  },
+  {
+    "objectID": "semanas/Aula10.html#valores-de-tma",
+    "href": "semanas/Aula10.html#valores-de-tma",
+    "title": "PAAS vs PAAD",
+    "section": "Valores de TMA",
+    "text": "Valores de TMA\n\ngt::gt(data.frame(\n  Proporção = pd,\n  TMA = TMA\n)) |&gt;\n  gt::tab_header(\n    title = \"Tamanho Médio de Amostra - PAAD\"\n  ) |&gt;\n  gt::fmt_number(\n    columns = c(Proporção, TMA),\n    decimals = 2\n  ) |&gt;\n  gt::cols_label(\n    Proporção = \"Proporção de Não Conformes\",\n    TMA = \"Tamanho Médio de Amostra\"\n  )\n\n\n\n\n\n\nTamanho Médio de Amostra - PAAD\n\n\nProporção de Não Conformes\nTamanho Médio de Amostra\n\n\n\n\n0.00\n88.00\n\n\n0.01\n106.28\n\n\n0.02\n125.21\n\n\n0.03\n129.14\n\n\n0.04\n123.07\n\n\n0.05\n113.80\n\n\n0.06\n105.24\n\n\n0.07\n98.77\n\n\n0.08\n94.39\n\n\n0.09\n91.65\n\n\n0.10\n90.02\n\n\n0.11\n89.09\n\n\n0.12\n88.58\n\n\n0.13\n88.30\n\n\n0.14\n88.15\n\n\n0.15\n88.08\n\n\n0.16\n88.04\n\n\n0.17\n88.02\n\n\n0.18\n88.01\n\n\n0.19\n88.00\n\n\n0.20\n88.00",
+    "crumbs": [
+      "Conteúdo Semanal",
+      "Comparação PAAS e PAAD"
+    ]
+  },
+  {
+    "objectID": "semanas/Aula10.html#comparando-as-ccos",
+    "href": "semanas/Aula10.html#comparando-as-ccos",
+    "title": "PAAS vs PAAD",
+    "section": "Comparando as CCOs",
+    "text": "Comparando as CCOs\n\npass_paad &lt;- data.frame(\n  Proporção = cco_paas@pd,\n  PAAS = cco_paas@paccept,\n  PAAD = paad@paccept\n) \n\n# Grafico Comparativo do PAAS e PAAD\nlibrary(ggplot2)\nggplot(pass_paad, aes(x = Proporção)) +\n  geom_line(aes(y = PAAS, color = \"PAAS\")) +\n  geom_line(aes(y = PAAD, color = \"PAAD\")) +\n  labs(title = \"Comparação das CCOs - PAAS vs PAAD\",\n       x = \"Proporção de Não Conformes\",\n       y = \"Probabilidade de Aceitar\") +\n  scale_color_manual(values = c(\"PAAS\" = \"blue\", \"PAAD\" = \"red\")) +\n  theme_minimal() +\n  theme(legend.title = element_blank())",
+    "crumbs": [
+      "Conteúdo Semanal",
+      "Comparação PAAS e PAAD"
+    ]
+  },
+  {
+    "objectID": "semanas/Aula08.html",
+    "href": "semanas/Aula08.html",
+    "title": "PAAS",
+    "section": "",
+    "text": "library(AcceptanceSampling)",
+    "crumbs": [
+      "Conteúdo Semanal",
+      "Plano de Auditoria por Amostragem Simples"
+    ]
+  },
+  {
+    "objectID": "semanas/Aula08.html#biblioteca",
+    "href": "semanas/Aula08.html#biblioteca",
+    "title": "PAAS",
+    "section": "",
+    "text": "library(AcceptanceSampling)",
+    "crumbs": [
+      "Conteúdo Semanal",
+      "Plano de Auditoria por Amostragem Simples"
+    ]
+  },
+  {
+    "objectID": "semanas/Aula08.html#esquema-de-auditoria---hipergeométrica",
+    "href": "semanas/Aula08.html#esquema-de-auditoria---hipergeométrica",
+    "title": "PAAS",
+    "section": "Esquema de Auditoria - Hipergeométrica",
+    "text": "Esquema de Auditoria - Hipergeométrica\n\nfind.plan(PRP=c(0.02,0.95),CRP=c(0.06,0.10),type=\"hypergeom\",N=5000)\n\n#&gt; $n\n#&gt; [1] 193\n#&gt; \n#&gt; $c\n#&gt; [1] 7\n#&gt; \n#&gt; $r\n#&gt; [1] 8",
+    "crumbs": [
+      "Conteúdo Semanal",
+      "Plano de Auditoria por Amostragem Simples"
+    ]
+  },
+  {
+    "objectID": "semanas/Aula08.html#cco---hipergeométrica",
+    "href": "semanas/Aula08.html#cco---hipergeométrica",
+    "title": "PAAS",
+    "section": "CCO - Hipergeométrica",
+    "text": "CCO - Hipergeométrica\n\nplano &lt;- OC2c(193,7,type=\"hypergeom\", N=5000, pd=seq(0,.15,.01))\nplot(plano, type='l')\ngrid()",
+    "crumbs": [
+      "Conteúdo Semanal",
+      "Plano de Auditoria por Amostragem Simples"
+    ]
+  },
+  {
+    "objectID": "semanas/Aula08.html#esquema-de-auditoria---binomial",
+    "href": "semanas/Aula08.html#esquema-de-auditoria---binomial",
+    "title": "PAAS",
+    "section": "Esquema de Auditoria - Binomial",
+    "text": "Esquema de Auditoria - Binomial\n\nfind.plan(PRP=c(0.02,0.95),CRP=c(0.06,0.10),type=\"binomial\")\n\n#&gt; $n\n#&gt; [1] 194\n#&gt; \n#&gt; $c\n#&gt; [1] 7\n#&gt; \n#&gt; $r\n#&gt; [1] 8",
+    "crumbs": [
+      "Conteúdo Semanal",
+      "Plano de Auditoria por Amostragem Simples"
+    ]
+  },
+  {
+    "objectID": "semanas/Aula08.html#cco---binomial",
+    "href": "semanas/Aula08.html#cco---binomial",
+    "title": "PAAS",
+    "section": "CCO - Binomial",
+    "text": "CCO - Binomial\n\nplano &lt;- OC2c(193,7,type=\"binomial\", pd=seq(0,.15,.01))\nplot(plano, type='l')\ngrid()",
+    "crumbs": [
+      "Conteúdo Semanal",
+      "Plano de Auditoria por Amostragem Simples"
+    ]
+  },
+  {
+    "objectID": "semanas/Aula08.html#esquema-de-auditoria---poisson",
+    "href": "semanas/Aula08.html#esquema-de-auditoria---poisson",
+    "title": "PAAS",
+    "section": "Esquema de Auditoria - Poisson",
+    "text": "Esquema de Auditoria - Poisson\n\nfind.plan(PRP=c(0.02,0.95),CRP=c(0.06,0.10),type=\"poisson\")\n\n#&gt; $n\n#&gt; [1] 197\n#&gt; \n#&gt; $c\n#&gt; [1] 7\n#&gt; \n#&gt; $r\n#&gt; [1] 8",
+    "crumbs": [
+      "Conteúdo Semanal",
+      "Plano de Auditoria por Amostragem Simples"
+    ]
+  },
+  {
+    "objectID": "semanas/Aula08.html#cco---poisson",
+    "href": "semanas/Aula08.html#cco---poisson",
+    "title": "PAAS",
+    "section": "CCO - Poisson",
+    "text": "CCO - Poisson\n\nplano &lt;- OC2c(193,7,type=\"poisson\", pd=seq(0,.15,.01))\nplot(plano, type='l')\ngrid()",
+    "crumbs": [
+      "Conteúdo Semanal",
+      "Plano de Auditoria por Amostragem Simples"
+    ]
+  },
+  {
+    "objectID": "semanas/Aula08.html#cco---ggplot2",
+    "href": "semanas/Aula08.html#cco---ggplot2",
+    "title": "PAAS",
+    "section": "CCO - GGplot2",
+    "text": "CCO - GGplot2\n\nlibrary(ggplot2)\npaas &lt;- data.frame(pd = plano@pd, Pa= plano@paccept)\nggplot(paas, aes(x=pd, y=Pa)) +\n  geom_line() +\n  labs(title=\"Curva de Operação do Plano de Auditoria\",\n       x=\"Proporção de Não Conformes (pd)\",\n       y=\"Probabilidade de Aceitação (OC)\") +\n  theme_minimal() +\n  theme(plot.title = element_text(hjust = 0.5))",
+    "crumbs": [
+      "Conteúdo Semanal",
+      "Plano de Auditoria por Amostragem Simples"
+    ]
+  },
+  {
+    "objectID": "semanas/Aula06.html",
+    "href": "semanas/Aula06.html",
+    "title": "GC Fração Não Conforme",
+    "section": "",
+    "text": "library(qcc)\n\n#&gt; Carregando pacotes exigidos: ggplot2\n\n\n#&gt; Carregando pacotes exigidos: patchwork\n\n\n#&gt; Package 'qcc' version 3.0\n#&gt; Type 'citation(\"qcc\")' for citing this R package in publications.\n\ndata(orangejuice)",
+    "crumbs": [
+      "Conteúdo Semanal",
+      "GC da Fração Não Conforme"
+    ]
+  },
+  {
+    "objectID": "semanas/Aula06.html#entrada-de-dados-no-r",
+    "href": "semanas/Aula06.html#entrada-de-dados-no-r",
+    "title": "GC Fração Não Conforme",
+    "section": "",
+    "text": "library(qcc)\n\n#&gt; Carregando pacotes exigidos: ggplot2\n\n\n#&gt; Carregando pacotes exigidos: patchwork\n\n\n#&gt; Package 'qcc' version 3.0\n#&gt; Type 'citation(\"qcc\")' for citing this R package in publications.\n\ndata(orangejuice)",
+    "crumbs": [
+      "Conteúdo Semanal",
+      "GC da Fração Não Conforme"
+    ]
+  },
+  {
+    "objectID": "semanas/Aula06.html#gráfcio-de-fração-não-conforme",
+    "href": "semanas/Aula06.html#gráfcio-de-fração-não-conforme",
+    "title": "GC Fração Não Conforme",
+    "section": "Gráfcio de Fração Não Conforme",
+    "text": "Gráfcio de Fração Não Conforme\n\n(q = with(orangejuice, qcc(D[trial], sizes = size[trial], type = \"p\")))\n\n#&gt; ── Quality Control Chart ───────────────────────── \n#&gt; \n#&gt; Chart type                 = p \n#&gt; Data (phase I)             = D[trial] \n#&gt; Number of groups           = 30 \n#&gt; Group sample size          = 50 \n#&gt; Center of group statistics = 0.2313333 \n#&gt; Standard deviation         = 0.05963526 \n#&gt; \n#&gt; Control limits at nsigmas  = 3 \n#&gt;          LCL       UCL\n#&gt;   0.05242755 0.4102391\n#&gt;   0.05242755 0.4102391\n#&gt; :                     \n#&gt;   0.05242755 0.4102391\n\nplot(q)",
+    "crumbs": [
+      "Conteúdo Semanal",
+      "GC da Fração Não Conforme"
+    ]
+  },
+  {
+    "objectID": "semanas/Aula06.html#gráfico-de-número-de-não-conformes",
+    "href": "semanas/Aula06.html#gráfico-de-número-de-não-conformes",
+    "title": "GC Fração Não Conforme",
+    "section": "Gráfico de Número de Não Conformes",
+    "text": "Gráfico de Número de Não Conformes\n\n(q = with(orangejuice, qcc(D[trial], sizes = size[trial], type = \"np\")))\n\n#&gt; ── Quality Control Chart ───────────────────────── \n#&gt; \n#&gt; Chart type                 = np \n#&gt; Data (phase I)             = D[trial] \n#&gt; Number of groups           = 30 \n#&gt; Group sample size          = 50 \n#&gt; Center of group statistics = 11.56667 \n#&gt; Standard deviation         = 2.981763 \n#&gt; \n#&gt; Control limits at nsigmas  = 3 \n#&gt;       LCL      UCL\n#&gt;  2.621377 20.51196\n\nplot(q)",
+    "crumbs": [
+      "Conteúdo Semanal",
+      "GC da Fração Não Conforme"
+    ]
+  },
+  {
     "objectID": "semanas/Aula04.html#carregando-dados",
     "href": "semanas/Aula04.html#carregando-dados",
     "title": "GC da Média e Amplitude",
@@ -48,7 +268,18 @@
     "href": "semanas/Aula04.html#gráfico-de-contre-da-média-e-amplitude",
     "title": "GC da Média e Amplitude",
     "section": "Gráfico de Contre da Média e Amplitude",
-    "text": "Gráfico de Contre da Média e Amplitude\n\ndiametro &lt;- qccGroups(data = aneisdepistao, diametro, amostra)\n\n(graf1 &lt;- qcc(diametro[1:25,], type=\"xbar\"))\n\n#&gt; ── Quality Control Chart ───────────────────────── \n#&gt; \n#&gt; Chart type                 = xbar \n#&gt; Data (phase I)             = diametro[1:25, ] \n#&gt; Number of groups           = 25 \n#&gt; Group sample size          = 5 \n#&gt; Center of group statistics = 74.00118 \n#&gt; Standard deviation         = 0.009785039 \n#&gt; \n#&gt; Control limits at nsigmas  = 3 \n#&gt;       LCL     UCL\n#&gt;  73.98805 74.0143\n\nplot(graf1)\n\n\n\n\n\n\n(graf2 &lt;- qcc(diametro[1:25,], type=\"R\"))\n\n#&gt; ── Quality Control Chart ───────────────────────── \n#&gt; \n#&gt; Chart type                 = R \n#&gt; Data (phase I)             = diametro[1:25, ] \n#&gt; Number of groups           = 25 \n#&gt; Group sample size          = 5 \n#&gt; Center of group statistics = 0.02276 \n#&gt; Standard deviation         = 0.009785039 \n#&gt; \n#&gt; Control limits at nsigmas  = 3 \n#&gt;  LCL        UCL\n#&gt;    0 0.04812533\n\nplot(graf2)",
+    "text": "Gráfico de Contre da Média e Amplitude",
+    "crumbs": [
+      "Conteúdo Semanal",
+      "GC da Média e Amplitude"
+    ]
+  },
+  {
+    "objectID": "semanas/Aula04.html#regras",
+    "href": "semanas/Aula04.html#regras",
+    "title": "GC da Média e Amplitude",
+    "section": "Regras",
+    "text": "Regras\nUm vetor de valores que especifica as regras usadas para declarar um processo fora de controle. Os valores possíveis são:\n\nGráficos de um ponto fora dos limites de controle 3-sigma.\nDois dos três pontos consecutivos são plotados além de um limite de 2 sigma.\nQuatro dos cinco pontos consecutivos vão além do limite de 1 sigma.\nOito pontos consecutivos plotados em um lado da linha central.\n\nEstas são frequentemente conhecidas como regras da Western Electric.\n\ndiametro &lt;- qccGroups(data = aneisdepistao, diametro, amostra)\n\n(graf1 &lt;- qcc(diametro[1:25,], type=\"xbar\", rules = 1:4))\n\n#&gt; ── Quality Control Chart ───────────────────────── \n#&gt; \n#&gt; Chart type                 = xbar \n#&gt; Data (phase I)             = diametro[1:25, ] \n#&gt; Number of groups           = 25 \n#&gt; Group sample size          = 5 \n#&gt; Center of group statistics = 74.00118 \n#&gt; Standard deviation         = 0.009785039 \n#&gt; \n#&gt; Control limits at nsigmas  = 3 \n#&gt;       LCL     UCL\n#&gt;  73.98805 74.0143\n\nplot(graf1)\n\n\n\n\n\n\n(graf2 &lt;- qcc(diametro[1:25,], type=\"R\", rules = 1:4))\n\n#&gt; ── Quality Control Chart ───────────────────────── \n#&gt; \n#&gt; Chart type                 = R \n#&gt; Data (phase I)             = diametro[1:25, ] \n#&gt; Number of groups           = 25 \n#&gt; Group sample size          = 5 \n#&gt; Center of group statistics = 0.02276 \n#&gt; Standard deviation         = 0.009785039 \n#&gt; \n#&gt; Control limits at nsigmas  = 3 \n#&gt;  LCL        UCL\n#&gt;    0 0.04812533\n\nplot(graf2)",
     "crumbs": [
       "Conteúdo Semanal",
       "GC da Média e Amplitude"
@@ -257,7 +488,7 @@
     "href": "index.html",
     "title": "IME05-06251-EQ",
     "section": "",
-    "text": "Bom dia / Boa tarde / Boa Noite,\nAqui vocês vão encontrar alguns dos exemplos apresentados em aula, com uso do R. O objetivo é mostrar as possibilidades de aplicação do R nesta disciplina.\nOs códigos apresentados em aula serão colocado por aqui também.\n[📖] Explorando 01\n[📖] Explorando 02\n[📖] Explorando 03\n[📖] Ferramentas de Análise\n[📖] GC da Média e Amplitude",
+    "text": "Bom dia / Boa tarde / Boa Noite,\nAqui vocês vão encontrar alguns dos exemplos apresentados em aula, com uso do R. O objetivo é mostrar as possibilidades de aplicação do R nesta disciplina.\nOs códigos apresentados em aula serão colocado por aqui também.\n[📖] Explorando 01\n[📖] Explorando 02\n[📖] Explorando 03\n[📖] Ferramentas de Análise\n[📖] GC da Média e Amplitude\n[📖] GC da Média e Desvio\n[📖] GC da Fração Não Conforme \n[📖] GC do Número de Defeitos\n[📖] PAAS\n[📖] PAAD\n[📖] Comparação PAAS e PAAD",
     "crumbs": [
       "Informação da disciplina",
       "Cronograma"
@@ -385,17 +616,154 @@
     ]
   },
   {
-    "objectID": "semanas/Aula06.html",
-    "href": "semanas/Aula06.html",
-    "title": "GC Fração Não Conforme",
-    "section": "",
-    "text": "set.seed(4321)\nn &lt;- 100\np &lt;- 0.1\nm &lt;- 25\namostras &lt;- rbinom(m,n,p)\n\n\npchapeu &lt;- mean(amostras/100)\n\n\nlsc &lt;- pchapeu + 3*sqrt(pchapeu*(1-pchapeu)/100)\nlic &lt;- pchapeu - 3*sqrt(pchapeu*(1-pchapeu)/100)\n\n\ndados &lt;- data.frame(amostras=amostras/n, x=seq(1:25))\n\n\nlibrary(ggplot2)\nggplot(dados,aes(x=x, y=amostras)) +\n    geom_hline(yintercept=lsc, linetype=\"dashed\", color = \"red\") +\n  geom_hline(yintercept=lic, linetype=\"dashed\", color = \"red\") +\n  geom_hline(yintercept=pchapeu, linetype=\"dashed\", color = \"black\")  + geom_point()"
+    "objectID": "semanas/Aula05.html#carregando-dados",
+    "href": "semanas/Aula05.html#carregando-dados",
+    "title": "GC da Média e Desvio",
+    "section": "Carregando dados",
+    "text": "Carregando dados\n\nlibrary(qcc)\nlibrary(tidyverse)\ndata(pistonrings)"
   },
   {
-    "objectID": "semanas/Aula06.html#simulando-valores-de-uma-binomial",
-    "href": "semanas/Aula06.html#simulando-valores-de-uma-binomial",
-    "title": "GC Fração Não Conforme",
+    "objectID": "semanas/Aula05.html#explorando-os-dados",
+    "href": "semanas/Aula05.html#explorando-os-dados",
+    "title": "GC da Média e Desvio",
+    "section": "Explorando os dados",
+    "text": "Explorando os dados\n\nhead(pistonrings)\n\n#&gt;   diameter sample trial\n#&gt; 1   74.030      1  TRUE\n#&gt; 2   74.002      1  TRUE\n#&gt; 3   74.019      1  TRUE\n#&gt; 4   73.992      1  TRUE\n#&gt; 5   74.008      1  TRUE\n#&gt; 6   73.995      2  TRUE\n\nsummary(pistonrings)\n\n#&gt;     diameter         sample        trial        \n#&gt;  Min.   :73.97   Min.   : 1.00   Mode :logical  \n#&gt;  1st Qu.:74.00   1st Qu.:10.75   FALSE:75       \n#&gt;  Median :74.00   Median :20.50   TRUE :125      \n#&gt;  Mean   :74.00   Mean   :20.50                  \n#&gt;  3rd Qu.:74.01   3rd Qu.:30.25                  \n#&gt;  Max.   :74.04   Max.   :40.00"
+  },
+  {
+    "objectID": "semanas/Aula05.html#manipulando-os-dados",
+    "href": "semanas/Aula05.html#manipulando-os-dados",
+    "title": "GC da Média e Desvio",
+    "section": "Manipulando os dados",
+    "text": "Manipulando os dados\n\naneisdepistao &lt;- pistonrings %&gt;% \n  rename(diametro = diameter, amostra = sample, fase1 = trial)\naneisdepistao &lt;- as_tibble(aneisdepistao)"
+  },
+  {
+    "objectID": "semanas/Aula05.html#gráfico-de-contre-da-média-e-desvio",
+    "href": "semanas/Aula05.html#gráfico-de-contre-da-média-e-desvio",
+    "title": "GC da Média e Desvio",
+    "section": "Gráfico de Contre da Média e Desvio",
+    "text": "Gráfico de Contre da Média e Desvio"
+  },
+  {
+    "objectID": "semanas/Aula05.html#regras",
+    "href": "semanas/Aula05.html#regras",
+    "title": "GC da Média e Desvio",
+    "section": "Regras",
+    "text": "Regras\nUm vetor de valores que especifica as regras usadas para declarar um processo fora de controle. Os valores possíveis são:\n\nGráficos de um ponto fora dos limites de controle 3-sigma.\nDois dos três pontos consecutivos são plotados além de um limite de 2 sigma.\nQuatro dos cinco pontos consecutivos vão além do limite de 1 sigma.\nOito pontos consecutivos plotados em um lado da linha central.\n\nEstas são frequentemente conhecidas como regras da Western Electric.\n\ndiametro &lt;- qccGroups(data = aneisdepistao, diametro, amostra)\n\n(graf1 &lt;- qcc(diametro[1:25,], type=\"xbar\", rules = 1:4))\n\n#&gt; ── Quality Control Chart ───────────────────────── \n#&gt; \n#&gt; Chart type                 = xbar \n#&gt; Data (phase I)             = diametro[1:25, ] \n#&gt; Number of groups           = 25 \n#&gt; Group sample size          = 5 \n#&gt; Center of group statistics = 74.00118 \n#&gt; Standard deviation         = 0.009785039 \n#&gt; \n#&gt; Control limits at nsigmas  = 3 \n#&gt;       LCL     UCL\n#&gt;  73.98805 74.0143\n\nplot(graf1)\n\n\n\n\n\n\n(graf2 &lt;- qcc(diametro[1:25,], type=\"S\", rules = 1:4))\n\n#&gt; ── Quality Control Chart ───────────────────────── \n#&gt; \n#&gt; Chart type                 = S \n#&gt; Data (phase I)             = diametro[1:25, ] \n#&gt; Number of groups           = 25 \n#&gt; Group sample size          = 5 \n#&gt; Center of group statistics = 0.009240037 \n#&gt; Standard deviation         = 0.009829977 \n#&gt; \n#&gt; Control limits at nsigmas  = 3 \n#&gt;  LCL        UCL\n#&gt;    0 0.01930242\n\nplot(graf2)"
+  },
+  {
+    "objectID": "semanas/Aula07.html",
+    "href": "semanas/Aula07.html",
+    "title": "GC Número de Defeitos",
     "section": "",
-    "text": "set.seed(4321)\nn &lt;- 100\np &lt;- 0.1\nm &lt;- 25\namostras &lt;- rbinom(m,n,p)\n\n\npchapeu &lt;- mean(amostras/100)\n\n\nlsc &lt;- pchapeu + 3*sqrt(pchapeu*(1-pchapeu)/100)\nlic &lt;- pchapeu - 3*sqrt(pchapeu*(1-pchapeu)/100)\n\n\ndados &lt;- data.frame(amostras=amostras/n, x=seq(1:25))\n\n\nlibrary(ggplot2)\nggplot(dados,aes(x=x, y=amostras)) +\n    geom_hline(yintercept=lsc, linetype=\"dashed\", color = \"red\") +\n  geom_hline(yintercept=lic, linetype=\"dashed\", color = \"red\") +\n  geom_hline(yintercept=pchapeu, linetype=\"dashed\", color = \"black\")  + geom_point()"
+    "text": "library(qcc)\n\n#&gt; Carregando pacotes exigidos: ggplot2\n\n\n#&gt; Carregando pacotes exigidos: patchwork\n\n\n#&gt; Package 'qcc' version 3.0\n#&gt; Type 'citation(\"qcc\")' for citing this R package in publications.\n\ndata(circuit)",
+    "crumbs": [
+      "Conteúdo Semanal",
+      "GC da Número de Defeitos"
+    ]
+  },
+  {
+    "objectID": "semanas/Aula07.html#entrada-de-dados-no-r",
+    "href": "semanas/Aula07.html#entrada-de-dados-no-r",
+    "title": "GC Número de Defeitos",
+    "section": "",
+    "text": "library(qcc)\n\n#&gt; Carregando pacotes exigidos: ggplot2\n\n\n#&gt; Carregando pacotes exigidos: patchwork\n\n\n#&gt; Package 'qcc' version 3.0\n#&gt; Type 'citation(\"qcc\")' for citing this R package in publications.\n\ndata(circuit)",
+    "crumbs": [
+      "Conteúdo Semanal",
+      "GC da Número de Defeitos"
+    ]
+  },
+  {
+    "objectID": "semanas/Aula07.html#gráfico-de-número-de-defeitos",
+    "href": "semanas/Aula07.html#gráfico-de-número-de-defeitos",
+    "title": "GC Número de Defeitos",
+    "section": "Gráfico de Número de Defeitos",
+    "text": "Gráfico de Número de Defeitos\n\n(q = with(circuit, qcc(x[trial], sizes = size[trial], type = \"c\")))\n\n#&gt; ── Quality Control Chart ───────────────────────── \n#&gt; \n#&gt; Chart type                 = c \n#&gt; Data (phase I)             = x[trial] \n#&gt; Number of groups           = 26 \n#&gt; Group sample size          = 100 \n#&gt; Center of group statistics = 19.84615 \n#&gt; Standard deviation         = 4.454902 \n#&gt; \n#&gt; Control limits at nsigmas  = 3 \n#&gt;       LCL      UCL\n#&gt;  6.481447 33.21086\n\nplot(q)",
+    "crumbs": [
+      "Conteúdo Semanal",
+      "GC da Número de Defeitos"
+    ]
+  },
+  {
+    "objectID": "semanas/Aula07.html#gráfico-de-número-de-médio-de-defeitos",
+    "href": "semanas/Aula07.html#gráfico-de-número-de-médio-de-defeitos",
+    "title": "GC Número de Defeitos",
+    "section": "Gráfico de Número de Médio de Defeitos",
+    "text": "Gráfico de Número de Médio de Defeitos\n\ndata(pcmanufact)\n(q = with(pcmanufact, qcc(x, sizes = size, type = \"u\")))\n\n#&gt; ── Quality Control Chart ───────────────────────── \n#&gt; \n#&gt; Chart type                 = u \n#&gt; Data (phase I)             = x \n#&gt; Number of groups           = 20 \n#&gt; Group sample size          = 5 \n#&gt; Center of group statistics = 1.93 \n#&gt; Standard deviation         = 1.389244 \n#&gt; \n#&gt; Control limits at nsigmas  = 3 \n#&gt;         LCL      UCL\n#&gt;  0.06613305 3.793867\n\nplot(q)",
+    "crumbs": [
+      "Conteúdo Semanal",
+      "GC da Número de Defeitos"
+    ]
+  },
+  {
+    "objectID": "semanas/Aula09.html",
+    "href": "semanas/Aula09.html",
+    "title": "PAAD",
+    "section": "",
+    "text": "library(AcceptanceSampling)",
+    "crumbs": [
+      "Conteúdo Semanal",
+      "Plano de Auditoria por Amostragem Dupla"
+    ]
+  },
+  {
+    "objectID": "semanas/Aula09.html#biblioteca",
+    "href": "semanas/Aula09.html#biblioteca",
+    "title": "PAAD",
+    "section": "",
+    "text": "library(AcceptanceSampling)",
+    "crumbs": [
+      "Conteúdo Semanal",
+      "Plano de Auditoria por Amostragem Dupla"
+    ]
+  },
+  {
+    "objectID": "semanas/Aula09.html#paad---poisson",
+    "href": "semanas/Aula09.html#paad---poisson",
+    "title": "PAAD",
+    "section": "PAAD - Poisson",
+    "text": "PAAD - Poisson\nNeste caso não podemos mais usar a função find.plan, pois ela só serve para os PAAS.\nAqui vamos precisar de usar a tabela de Schilling e Johnson para definir o plano de auditoria.\n\n# p1=0,01\n# p2 = 0,05\n# alfa = 0.05\n# beta = 0.10\n# p2/p1 = 5\n# Plano 3D a1=1 a2=4 r1=4 e r2=5 n1=n2=88\npaad &lt;- OC2c(n=c(88,88),c=c(1,4),r=c(4,5),type=\"poisson\",pd=seq(0,.15,.01))\nassess(paad,PRP=c(.01,.95),CRP=c(.05,.10))\n\n#&gt; Acceptance Sampling Plan (poisson)\n#&gt; \n#&gt;                Sample 1 Sample 2\n#&gt; Sample size(s)       88       88\n#&gt; Acc. Number(s)        1        4\n#&gt; Rej. Number(s)        4        5\n#&gt; \n#&gt; Plan CAN meet desired risk point(s):\n#&gt; \n#&gt;            Quality   RP P(accept) Plan P(accept)\n#&gt; PRP           0.01           0.95     0.96755953\n#&gt; CRP           0.05           0.10     0.09985685",
+    "crumbs": [
+      "Conteúdo Semanal",
+      "Plano de Auditoria por Amostragem Dupla"
+    ]
+  },
+  {
+    "objectID": "semanas/Aula09.html#cco---paad",
+    "href": "semanas/Aula09.html#cco---paad",
+    "title": "PAAD",
+    "section": "CCO - PAAD",
+    "text": "CCO - PAAD\n\nlibrary(ggplot2)\ncco_paad &lt;- data.frame(pd=paad@pd, Pa=paad@paccept)\n# Grafico de CCO\nggplot(cco_paad, aes(x=pd, y=Pa)) +\n  geom_line() +\n  labs(title=\"Curva de CCO - PAAD\",\n       x=\"Proporção de Não Conformes (pd)\",\n       y=\"Probabilidade de Aceitação (Pa)\") +\n  theme_minimal() +\n  scale_x_continuous(breaks=seq(0, 0.15, by=0.01)) +\n  scale_y_continuous(breaks=seq(0, 1, by=0.1))",
+    "crumbs": [
+      "Conteúdo Semanal",
+      "Plano de Auditoria por Amostragem Dupla"
+    ]
+  },
+  {
+    "objectID": "semanas/Aula11.html",
+    "href": "semanas/Aula11.html",
+    "title": "PAAD",
+    "section": "",
+    "text": "library(AcceptanceSampling)"
+  },
+  {
+    "objectID": "semanas/Aula11.html#biblioteca",
+    "href": "semanas/Aula11.html#biblioteca",
+    "title": "PAAD",
+    "section": "",
+    "text": "library(AcceptanceSampling)"
+  },
+  {
+    "objectID": "semanas/Aula11.html#paad---poisson",
+    "href": "semanas/Aula11.html#paad---poisson",
+    "title": "PAAD",
+    "section": "PAAD - Poisson",
+    "text": "PAAD - Poisson\nNeste caso não podemos mais usar a função find.plan, pois ela só serve para os PAAS.\nAqui vamos precisar de usar a tabela de Schilling e Johnson para definir o plano de auditoria.\n\n# p1=0,01\n# p2 = 0,05\n# alfa = 0.05\n# beta = 0.10\n# p2/p1 = 5\n# Plano 3D a1=1 a2=4 r1=4 e r2=5 n1=n2=88\npaad &lt;- OC2c(n=c(88,88),c=c(1,4),r=c(4,5),type=\"poisson\",pd=seq(0,.15,.01))\nassess(paad,PRP=c(.01,.95),CRP=c(.05,.10))\n\n#&gt; Acceptance Sampling Plan (poisson)\n#&gt; \n#&gt;                Sample 1 Sample 2\n#&gt; Sample size(s)       88       88\n#&gt; Acc. Number(s)        1        4\n#&gt; Rej. Number(s)        4        5\n#&gt; \n#&gt; Plan CAN meet desired risk point(s):\n#&gt; \n#&gt;            Quality   RP P(accept) Plan P(accept)\n#&gt; PRP           0.01           0.95     0.96755953\n#&gt; CRP           0.05           0.10     0.09985685"
+  },
+  {
+    "objectID": "semanas/Aula11.html#cco---paad",
+    "href": "semanas/Aula11.html#cco---paad",
+    "title": "PAAD",
+    "section": "CCO - PAAD",
+    "text": "CCO - PAAD\n\nlibrary(ggplot2)\ncco_paad &lt;- data.frame(pd=paad@pd, Pa=paad@paccept)\n# Grafico de CCO\nggplot(cco_paad, aes(x=pd, y=Pa)) +\n  geom_line() +\n  labs(title=\"Curva de CCO - PAAD\",\n       x=\"Proporção de Não Conformes (pd)\",\n       y=\"Probabilidade de Aceitação (Pa)\") +\n  theme_minimal() +\n  scale_x_continuous(breaks=seq(0, 0.15, by=0.01)) +\n  scale_y_continuous(breaks=seq(0, 1, by=0.1))"
   }
 ]

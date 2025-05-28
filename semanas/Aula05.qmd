@@ -1,0 +1,72 @@
+---
+title: "GC da Média e Desvio"
+author: "Ricardo Accioly"
+date: ' `r Sys.Date()` '
+format:
+ html:
+    code-link: true
+    fig-width: 9
+    fig-height: 7
+    fig-dpi: 300
+knitr:
+  opts_chunk: 
+    out.width: 90%
+    comment: "#>"
+execute:
+  freeze: auto
+---
+
+## Entrada de dados no R
+
+## Carregando dados
+
+```{r}
+#| message: false
+library(qcc)
+library(tidyverse)
+data(pistonrings)
+```
+
+## Explorando os dados
+
+```{r}
+head(pistonrings)
+summary(pistonrings)
+```
+
+## Manipulando os dados
+
+```{r}
+aneisdepistao <- pistonrings %>% 
+  rename(diametro = diameter, amostra = sample, fase1 = trial)
+aneisdepistao <- as_tibble(aneisdepistao)
+```
+
+## Gráfico de Contre da Média e Desvio
+
+## Regras
+
+Um vetor de valores que especifica as regras usadas para declarar um processo fora de controle. Os valores possíveis são:
+
+1.  Gráficos de um ponto fora dos limites de controle 3-sigma.
+
+2.  Dois dos três pontos consecutivos são plotados além de um limite de 2 sigma.
+
+3.  Quatro dos cinco pontos consecutivos vão além do limite de 1 sigma.
+
+4.  Oito pontos consecutivos plotados em um lado da linha central.
+
+Estas são frequentemente conhecidas como regras da Western Electric.
+
+```{r}
+
+diametro <- qccGroups(data = aneisdepistao, diametro, amostra)
+
+(graf1 <- qcc(diametro[1:25,], type="xbar", rules = 1:4))
+plot(graf1)
+
+(graf2 <- qcc(diametro[1:25,], type="S", rules = 1:4))
+plot(graf2)
+
+
+```

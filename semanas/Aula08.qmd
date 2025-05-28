@@ -1,0 +1,80 @@
+---
+title: "PAAS"
+author: "Ricardo Accioly"
+date: ' `r Sys.Date()` '
+format:
+ html:
+    code-link: true
+    fig-width: 9
+    fig-height: 7
+    fig-dpi: 300
+knitr:
+  opts_chunk: 
+    out.width: 90%
+    comment: "#>"
+execute:
+  freeze: auto
+---
+
+## Biblioteca
+
+```{r}
+library(AcceptanceSampling)
+```
+
+## Esquema de Auditoria - Hipergeométrica
+
+```{r}
+find.plan(PRP=c(0.02,0.95),CRP=c(0.06,0.10),type="hypergeom",N=5000)
+```
+
+## CCO - Hipergeométrica
+
+```{r}
+plano <- OC2c(193,7,type="hypergeom", N=5000, pd=seq(0,.15,.01))
+plot(plano, type='l')
+grid()
+```
+
+## Esquema de Auditoria - Binomial
+
+```{r}
+find.plan(PRP=c(0.02,0.95),CRP=c(0.06,0.10),type="binomial")
+```
+
+## CCO - Binomial
+
+```{r}
+plano <- OC2c(193,7,type="binomial", pd=seq(0,.15,.01))
+plot(plano, type='l')
+grid()
+```
+
+## Esquema de Auditoria - Poisson
+
+```{r}
+find.plan(PRP=c(0.02,0.95),CRP=c(0.06,0.10),type="poisson")
+```
+
+## CCO - Poisson
+
+```{r}
+plano <- OC2c(193,7,type="poisson", pd=seq(0,.15,.01))
+plot(plano, type='l')
+grid()
+```
+
+## CCO - GGplot2
+
+```{r}
+library(ggplot2)
+paas <- data.frame(pd = plano@pd, Pa= plano@paccept)
+ggplot(paas, aes(x=pd, y=Pa)) +
+  geom_line() +
+  labs(title="Curva de Operação do Plano de Auditoria",
+       x="Proporção de Não Conformes (pd)",
+       y="Probabilidade de Aceitação (OC)") +
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5))
+```
+

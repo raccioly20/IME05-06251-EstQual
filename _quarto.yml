@@ -50,6 +50,21 @@ website:
             text: "Ferramentas de Análise"
           - href: semanas/Aula04.qmd
             text: "GC da Média e Amplitude"
+          - href: semanas/Aula05qmd
+            text: "GC da Média e Desvio"
+          - href: semanas/Aula06.qmd
+            text: "GC da Fração Não Conforme"
+          - href: semanas/Aula07.qmd
+            text: "GC da Número de Defeitos"
+          - href: semanas/Aula08.qmd
+            text: "Plano de Auditoria por Amostragem Simples"
+          - href: semanas/Aula09.qmd
+            text: "Plano de Auditoria por Amostragem Dupla"
+          - href: semanas/Aula10.qmd
+            text: "Comparação PAAS e PAAD"
+          
+          
+          
 
 format:
   html:

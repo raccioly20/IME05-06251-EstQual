@@ -16,35 +16,25 @@ execute:
   freeze: auto
 ---
 
-## Simulando Valores de uma binomial
-
+## Entrada de dados no R
 ```{r}
-set.seed(4321)
-n <- 100
-p <- 0.1
-m <- 25
-amostras <- rbinom(m,n,p)
+library(qcc)
+data(orangejuice)
 ```
 
-```{r}
-pchapeu <- mean(amostras/100)
-```
+
+## Gráfcio de Fração Não Conforme
 
 ```{r}
-lsc <- pchapeu + 3*sqrt(pchapeu*(1-pchapeu)/100)
-lic <- pchapeu - 3*sqrt(pchapeu*(1-pchapeu)/100)
+(q = with(orangejuice, qcc(D[trial], sizes = size[trial], type = "p")))
+plot(q)
+
 ```
 
-```{r}
-dados <- data.frame(amostras=amostras/n, x=seq(1:25))
-```
+## Gráfico de Número de Não Conformes
 
 ```{r}
-library(ggplot2)
-ggplot(dados,aes(x=x, y=amostras)) +
-    geom_hline(yintercept=lsc, linetype="dashed", color = "red") +
-  geom_hline(yintercept=lic, linetype="dashed", color = "red") +
-  geom_hline(yintercept=pchapeu, linetype="dashed", color = "black")  + geom_point()
-  
-  
+(q = with(orangejuice, qcc(D[trial], sizes = size[trial], type = "np")))
+plot(q)
 ```
+

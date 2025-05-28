@@ -1,0 +1,126 @@
+---
+title: "PAAS vs PAAD"
+author: "Ricardo Accioly"
+date: ' `r Sys.Date()` '
+format:
+ html:
+    code-link: true
+    fig-width: 9
+    fig-height: 7
+    fig-dpi: 300
+knitr:
+  opts_chunk: 
+    out.width: 90%
+    comment: "#>"
+execute:
+  freeze: auto
+---
+
+## Biblioteca
+```{r}
+library(AcceptanceSampling)
+```
+
+## PAAS - Poisson
+
+```{r}
+# p1=0,01
+# p2 = 0,05
+# alfa = 0.05
+# beta = 0.10
+# p2/p1 = 5
+find.plan(PRP=c(0.01,0.95),CRP=c(0.05,0.10),type="poisson")
+paas <- find.plan(PRP=c(0.01,0.95),CRP=c(0.05,0.10),type="poisson")
+cco_paas <- OC2c(n=paas$n,c=paas$c,r=paas$r,type="poisson",pd=seq(0,.15,.01))
+```
+
+
+## PAAD - Poisson
+
+Neste caso não podemos mais usar a função find.plan, pois ela só serve para os PAAS.
+
+Aqui vamos precisar de usar a tabela de Schilling e Johnson para definir o plano de auditoria.
+
+
+```{r}
+# p1=0,01
+# p2 = 0,05
+# alfa = 0.05
+# beta = 0.10
+# p2/p1 = 5
+# Plano 3D a1=1 a2=4 r1=4 e r2=5 n1=n2=88
+paad <- OC2c(n=c(88,88),c=c(1,4),r=c(4,5),type="poisson",pd=seq(0,.15,.01))
+assess(paad,PRP=c(.01,.95),CRP=c(.05,.10))
+
+```
+
+## TMA
+
+```{r}
+pd<- seq(0,.20,.01) #Proporção de não conformes
+lambda<- 88*pd # número esperado de não conforme numa amostra de 88
+
+# Probabilidade de aceitar na 1a amostra
+OC1<-ppois(1, lambda, lower.tail=TRUE) 
+
+# Probabilidade de rejeitar após a 1a amostra
+R1<-ppois(3, lambda, lower.tail=FALSE)
+# lower.tail	logical; se TRUE (default), as probabilidades são
+# P[X≤x], caso contrário, P[X>x].
+
+# Probabilidade de tomar uma decisão na 1a amostra
+P<-OC1+R1
+
+# Tamanho médio de amostra
+TMA=88+88*(1-P)
+
+# Gráfico do TMA
+plot(pd,TMA,type='l',ylim=c(5,150),xlab="Proporção de não conformes")
+abline(134,0,lty=2)
+text(.10,142,'PAAS n=134')
+text(.10,70,'PAAD n=(88,88)')
+grid()
+```
+
+## Valores de TMA
+
+```{r}
+gt::gt(data.frame(
+  Proporção = pd,
+  TMA = TMA
+)) |>
+  gt::tab_header(
+    title = "Tamanho Médio de Amostra - PAAD"
+  ) |>
+  gt::fmt_number(
+    columns = c(Proporção, TMA),
+    decimals = 2
+  ) |>
+  gt::cols_label(
+    Proporção = "Proporção de Não Conformes",
+    TMA = "Tamanho Médio de Amostra"
+  )
+```
+
+## Comparando as CCOs
+
+```{r}
+pass_paad <- data.frame(
+  Proporção = cco_paas@pd,
+  PAAS = cco_paas@paccept,
+  PAAD = paad@paccept
+) 
+
+# Grafico Comparativo do PAAS e PAAD
+library(ggplot2)
+ggplot(pass_paad, aes(x = Proporção)) +
+  geom_line(aes(y = PAAS, color = "PAAS")) +
+  geom_line(aes(y = PAAD, color = "PAAD")) +
+  labs(title = "Comparação das CCOs - PAAS vs PAAD",
+       x = "Proporção de Não Conformes",
+       y = "Probabilidade de Aceitar") +
+  scale_color_manual(values = c("PAAS" = "blue", "PAAD" = "red")) +
+  theme_minimal() +
+  theme(legend.title = element_blank())
+```
+
