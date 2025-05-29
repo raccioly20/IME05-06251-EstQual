@@ -50,7 +50,7 @@ website:
             text: "Ferramentas de Análise"
           - href: semanas/Aula04.qmd
             text: "GC da Média e Amplitude"
-          - href: semanas/Aula05qmd
+          - href: semanas/Aula05.qmd
             text: "GC da Média e Desvio"
           - href: semanas/Aula06.qmd
             text: "GC da Fração Não Conforme"
@@ -79,6 +79,4 @@ format:
 freeze: auto
 
 editor: visual
-
-
 

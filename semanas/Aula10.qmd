@@ -17,6 +17,7 @@ execute:
 ---
 
 ## Biblioteca
+
 ```{r}
 library(AcceptanceSampling)
 ```
@@ -34,13 +35,11 @@ paas <- find.plan(PRP=c(0.01,0.95),CRP=c(0.05,0.10),type="poisson")
 cco_paas <- OC2c(n=paas$n,c=paas$c,r=paas$r,type="poisson",pd=seq(0,.15,.01))
 ```
 
-
 ## PAAD - Poisson
 
 Neste caso não podemos mais usar a função find.plan, pois ela só serve para os PAAS.
 
 Aqui vamos precisar de usar a tabela de Schilling e Johnson para definir o plano de auditoria.
-
 
 ```{r}
 # p1=0,01
@@ -123,4 +122,3 @@ ggplot(pass_paad, aes(x = Proporção)) +
   theme_minimal() +
   theme(legend.title = element_blank())
 ```
-

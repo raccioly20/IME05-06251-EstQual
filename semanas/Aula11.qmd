@@ -1,5 +1,5 @@
 ---
-title: "PAAD"
+title: "Plano Sequencial"
 author: "Ricardo Accioly"
 date: ' `r Sys.Date()` '
 format:
@@ -19,39 +19,154 @@ execute:
 ## Biblioteca
 
 ```{r}
-library(AcceptanceSampling)
+library(tidyverse)
 ```
 
-## PAAD - Poisson
+## Planos Sequenciais
 
-Neste caso não podemos mais usar a função find.plan, pois ela só serve para os PAAS.
+Neste caso não vamos mais usar o pacote AcceptanceSampling.
 
-Aqui vamos precisar de usar a tabela de Schilling e Johnson para definir o plano de auditoria.
+Vamos utilizar as equações derivadas por wald (1947) e pelo Sattostical Research Group (1945) para obter o plano sequencial.
+
+-   p1 é o nível de qualidade do produtor (PQL)
+
+-   p2 é o nível de qualidade do consumidor (CQL)
+
+-   h1 é o coeficiente linear da reta de aceitação
+
+-   h2 é o coeficiente linear da reta de rejeição
+
+-   s é o coeficiente angular
+
+-   n0 é o número de amostras antes da possibilidade de aceitação
+
+-   n1 é o número de amostras antes da possibilidade de rejeição
+
+-   np1 é o TMA em p1
+
+-   ns é o TMA na proporção defeituosa igual a s
+
+-   np2 é o TMA em p2
+
+
+## Definições
 
 ```{r}
-# p1=0,01
-# p2 = 0,05
-# alfa = 0.05
-# beta = 0.10
-# p2/p1 = 5
-# Plano 3D a1=1 a2=4 r1=4 e r2=5 n1=n2=88
-paad <- OC2c(n=c(88,88),c=c(1,4),r=c(4,5),type="poisson",pd=seq(0,.15,.01))
-assess(paad,PRP=c(.01,.95),CRP=c(.05,.10))
-
+p1 <- 0.01
+p2 <- 0.05
+alfa <- 0.05
+beta <- 0.10
 ```
 
-## CCO - PAAD
+## Plano Sequencial
 
 ```{r}
-library(ggplot2)
-cco_paad <- data.frame(pd=paad@pd, Pa=paad@paccept)
-# Grafico de CCO
-ggplot(cco_paad, aes(x=pd, y=Pa)) +
-  geom_line() +
-  labs(title="Curva de CCO - PAAD",
-       x="Proporção de Não Conformes (pd)",
-       y="Probabilidade de Aceitação (Pa)") +
+# Coeficientes da reta de aceitação
+h1 <- log((1-alfa)/beta) / (log(p2/p1)+ log((1-p1)/(1-p2)))
+h2 <- log((1-beta)/alfa) / (log(p2/p1)+ log((1-p1)/(1-p2)))
+s <- log((1-p1)/(1-p2))/ (log(p2/p1)+ log((1-p1)/(1-p2)))
+```
+
+## Grafico do Plano Sequencial
+
+```{r}
+k <- seq(1, 100, by = 1) # amostras de tamnaho 1 n=1 sequenciais
+# Y1 = sk - h1 e Y2 = sk + h2
+Y1 <- s * k - h1
+Y2 <- s * k + h2
+# Plotando o gráfico
+ggplot(data = data.frame(k, Y1, Y2), aes(x = k)) +
+  geom_line(aes(y = Y1), color = "blue", size = 1) +
+  geom_line(aes(y = Y2), color = "red", size = 1) +
+  geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
+  labs(title = "Plano Sequencial",
+       x = "Amostras (k)",
+       y = "Número de Não Conformes)") +
   theme_minimal() +
-  scale_x_continuous(breaks=seq(0, 0.15, by=0.01)) +
-  scale_y_continuous(breaks=seq(0, 1, by=0.1))
+  scale_x_continuous(breaks=seq(0, 100, by=5))
+  
 ```
+
+## Tabela de Resultados
+
+```{r}
+library(gt)
+results <- data.frame(
+  Amostras = k,
+  Y1 = Y1,
+  Y2 = Y2
+)
+gt::gt(results) |>
+  gt::tab_header(
+    title = "Resultados do Plano Sequencial"
+  ) |>
+  gt::fmt_number(
+    columns = c(Amostras, Y1, Y2),
+    decimals = 2
+  ) |>
+  gt::cols_label(
+    Amostras = "Amostras (k)",
+    Y1 = "Y1 (Aceitação)",
+    Y2 = "Y2 (Rejeição)"
+  )
+```
+
+
+## Equações para o Tamanho Médio de Amostra
+
+```{r}
+# Tamanho médio de amostra
+valor_p <- function(x) {
+  (1 - ((1 - p2) / (1 - p1))^x) / ((p2 / p1)^x - ((1 - p2) / (1 - p1))^x)
+}
+Pa <- function(x) {
+  (((1-beta)/alfa)^x - 1)/(((1-beta)/alfa)^x - (beta/(1-alfa))^x)
+}
+tma <- function(pa) {
+  ((pa*log(beta/(1-alfa))) + (1-pa)*log((1-beta)/alfa)) / (p*log(p2/p1) + (1-p)*log((1-p2)/(1-p1)))
+}
+Pa_diff <- function(x) {
+  Pa(x) - Pa_alvo
+}
+```
+
+
+## Tamanho Médio de Amostra para o Plano Sequencial
+
+## Prob. Aceitação 0,95
+
+```{r}
+# Definindo a probabilidade alvo de aceitação
+Pa_alvo <- 0.95  # Defina a probabilidade alvo de aceitação
+# Usando uniroot para encontrar x tal que Pa(x) = Pa_alvo
+resultado <- uniroot(Pa_diff, lower = -5, upper = 20)  # ajuste os limites conforme necessário
+
+cat("Valor de x encontrado:", resultado$root, "\n")
+cat("Verificação: Pa(x) =", Pa(resultado$root), "\n")
+
+# Valor de Fração não conforme
+p <- valor_p(resultado$root)
+
+# Tamanho médio de amostra
+tma(0.95)
+```
+
+## Prob. Aceitação 0,10
+
+```{r}
+# Definindo a probabilidade alvo de aceitação
+Pa_alvo <- 0.10  # Defina a probabilidade alvo de aceitação
+# Usando uniroot para encontrar x tal que Pa(x) = Pa_alvo
+resultado <- uniroot(Pa_diff, lower = -5, upper = 20)  # ajuste os limites conforme necessário
+
+cat("Valor de x encontrado:", resultado$root, "\n")
+cat("Verificação: Pa(x) =", Pa(resultado$root), "\n")
+
+# Valor de Fração não conforme
+p <- valor_p(resultado$root)
+
+# Tamanho médio de amostra
+tma(0.10)
+```
+
+

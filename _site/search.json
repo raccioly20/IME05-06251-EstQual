@@ -620,35 +620,55 @@
     "href": "semanas/Aula05.html#carregando-dados",
     "title": "GC da Média e Desvio",
     "section": "Carregando dados",
-    "text": "Carregando dados\n\nlibrary(qcc)\nlibrary(tidyverse)\ndata(pistonrings)"
+    "text": "Carregando dados\n\nlibrary(qcc)\nlibrary(tidyverse)\ndata(pistonrings)",
+    "crumbs": [
+      "Conteúdo Semanal",
+      "GC da Média e Desvio"
+    ]
   },
   {
     "objectID": "semanas/Aula05.html#explorando-os-dados",
     "href": "semanas/Aula05.html#explorando-os-dados",
     "title": "GC da Média e Desvio",
     "section": "Explorando os dados",
-    "text": "Explorando os dados\n\nhead(pistonrings)\n\n#&gt;   diameter sample trial\n#&gt; 1   74.030      1  TRUE\n#&gt; 2   74.002      1  TRUE\n#&gt; 3   74.019      1  TRUE\n#&gt; 4   73.992      1  TRUE\n#&gt; 5   74.008      1  TRUE\n#&gt; 6   73.995      2  TRUE\n\nsummary(pistonrings)\n\n#&gt;     diameter         sample        trial        \n#&gt;  Min.   :73.97   Min.   : 1.00   Mode :logical  \n#&gt;  1st Qu.:74.00   1st Qu.:10.75   FALSE:75       \n#&gt;  Median :74.00   Median :20.50   TRUE :125      \n#&gt;  Mean   :74.00   Mean   :20.50                  \n#&gt;  3rd Qu.:74.01   3rd Qu.:30.25                  \n#&gt;  Max.   :74.04   Max.   :40.00"
+    "text": "Explorando os dados\n\nhead(pistonrings)\n\n#&gt;   diameter sample trial\n#&gt; 1   74.030      1  TRUE\n#&gt; 2   74.002      1  TRUE\n#&gt; 3   74.019      1  TRUE\n#&gt; 4   73.992      1  TRUE\n#&gt; 5   74.008      1  TRUE\n#&gt; 6   73.995      2  TRUE\n\nsummary(pistonrings)\n\n#&gt;     diameter         sample        trial        \n#&gt;  Min.   :73.97   Min.   : 1.00   Mode :logical  \n#&gt;  1st Qu.:74.00   1st Qu.:10.75   FALSE:75       \n#&gt;  Median :74.00   Median :20.50   TRUE :125      \n#&gt;  Mean   :74.00   Mean   :20.50                  \n#&gt;  3rd Qu.:74.01   3rd Qu.:30.25                  \n#&gt;  Max.   :74.04   Max.   :40.00",
+    "crumbs": [
+      "Conteúdo Semanal",
+      "GC da Média e Desvio"
+    ]
   },
   {
     "objectID": "semanas/Aula05.html#manipulando-os-dados",
     "href": "semanas/Aula05.html#manipulando-os-dados",
     "title": "GC da Média e Desvio",
     "section": "Manipulando os dados",
-    "text": "Manipulando os dados\n\naneisdepistao &lt;- pistonrings %&gt;% \n  rename(diametro = diameter, amostra = sample, fase1 = trial)\naneisdepistao &lt;- as_tibble(aneisdepistao)"
+    "text": "Manipulando os dados\n\naneisdepistao &lt;- pistonrings %&gt;% \n  rename(diametro = diameter, amostra = sample, fase1 = trial)\naneisdepistao &lt;- as_tibble(aneisdepistao)",
+    "crumbs": [
+      "Conteúdo Semanal",
+      "GC da Média e Desvio"
+    ]
   },
   {
     "objectID": "semanas/Aula05.html#gráfico-de-contre-da-média-e-desvio",
     "href": "semanas/Aula05.html#gráfico-de-contre-da-média-e-desvio",
     "title": "GC da Média e Desvio",
     "section": "Gráfico de Contre da Média e Desvio",
-    "text": "Gráfico de Contre da Média e Desvio"
+    "text": "Gráfico de Contre da Média e Desvio",
+    "crumbs": [
+      "Conteúdo Semanal",
+      "GC da Média e Desvio"
+    ]
   },
   {
     "objectID": "semanas/Aula05.html#regras",
     "href": "semanas/Aula05.html#regras",
     "title": "GC da Média e Desvio",
     "section": "Regras",
-    "text": "Regras\nUm vetor de valores que especifica as regras usadas para declarar um processo fora de controle. Os valores possíveis são:\n\nGráficos de um ponto fora dos limites de controle 3-sigma.\nDois dos três pontos consecutivos são plotados além de um limite de 2 sigma.\nQuatro dos cinco pontos consecutivos vão além do limite de 1 sigma.\nOito pontos consecutivos plotados em um lado da linha central.\n\nEstas são frequentemente conhecidas como regras da Western Electric.\n\ndiametro &lt;- qccGroups(data = aneisdepistao, diametro, amostra)\n\n(graf1 &lt;- qcc(diametro[1:25,], type=\"xbar\", rules = 1:4))\n\n#&gt; ── Quality Control Chart ───────────────────────── \n#&gt; \n#&gt; Chart type                 = xbar \n#&gt; Data (phase I)             = diametro[1:25, ] \n#&gt; Number of groups           = 25 \n#&gt; Group sample size          = 5 \n#&gt; Center of group statistics = 74.00118 \n#&gt; Standard deviation         = 0.009785039 \n#&gt; \n#&gt; Control limits at nsigmas  = 3 \n#&gt;       LCL     UCL\n#&gt;  73.98805 74.0143\n\nplot(graf1)\n\n\n\n\n\n\n(graf2 &lt;- qcc(diametro[1:25,], type=\"S\", rules = 1:4))\n\n#&gt; ── Quality Control Chart ───────────────────────── \n#&gt; \n#&gt; Chart type                 = S \n#&gt; Data (phase I)             = diametro[1:25, ] \n#&gt; Number of groups           = 25 \n#&gt; Group sample size          = 5 \n#&gt; Center of group statistics = 0.009240037 \n#&gt; Standard deviation         = 0.009829977 \n#&gt; \n#&gt; Control limits at nsigmas  = 3 \n#&gt;  LCL        UCL\n#&gt;    0 0.01930242\n\nplot(graf2)"
+    "text": "Regras\nUm vetor de valores que especifica as regras usadas para declarar um processo fora de controle. Os valores possíveis são:\n\nGráficos de um ponto fora dos limites de controle 3-sigma.\nDois dos três pontos consecutivos são plotados além de um limite de 2 sigma.\nQuatro dos cinco pontos consecutivos vão além do limite de 1 sigma.\nOito pontos consecutivos plotados em um lado da linha central.\n\nEstas são frequentemente conhecidas como regras da Western Electric.\n\ndiametro &lt;- qccGroups(data = aneisdepistao, diametro, amostra)\n\n(graf1 &lt;- qcc(diametro[1:25,], type=\"xbar\", rules = 1:4))\n\n#&gt; ── Quality Control Chart ───────────────────────── \n#&gt; \n#&gt; Chart type                 = xbar \n#&gt; Data (phase I)             = diametro[1:25, ] \n#&gt; Number of groups           = 25 \n#&gt; Group sample size          = 5 \n#&gt; Center of group statistics = 74.00118 \n#&gt; Standard deviation         = 0.009785039 \n#&gt; \n#&gt; Control limits at nsigmas  = 3 \n#&gt;       LCL     UCL\n#&gt;  73.98805 74.0143\n\nplot(graf1)\n\n\n\n\n\n\n(graf2 &lt;- qcc(diametro[1:25,], type=\"S\", rules = 1:4))\n\n#&gt; ── Quality Control Chart ───────────────────────── \n#&gt; \n#&gt; Chart type                 = S \n#&gt; Data (phase I)             = diametro[1:25, ] \n#&gt; Number of groups           = 25 \n#&gt; Group sample size          = 5 \n#&gt; Center of group statistics = 0.009240037 \n#&gt; Standard deviation         = 0.009829977 \n#&gt; \n#&gt; Control limits at nsigmas  = 3 \n#&gt;  LCL        UCL\n#&gt;    0 0.01930242\n\nplot(graf2)",
+    "crumbs": [
+      "Conteúdo Semanal",
+      "GC da Média e Desvio"
+    ]
   },
   {
     "objectID": "semanas/Aula07.html",
@@ -741,29 +761,78 @@
   {
     "objectID": "semanas/Aula11.html",
     "href": "semanas/Aula11.html",
-    "title": "PAAD",
+    "title": "Plano Sequencial",
     "section": "",
-    "text": "library(AcceptanceSampling)"
+    "text": "library(tidyverse)\n\n#&gt; ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n#&gt; ✔ dplyr     1.1.4     ✔ readr     2.1.5\n#&gt; ✔ forcats   1.0.0     ✔ stringr   1.5.1\n#&gt; ✔ ggplot2   3.5.2     ✔ tibble    3.2.1\n#&gt; ✔ lubridate 1.9.4     ✔ tidyr     1.3.1\n#&gt; ✔ purrr     1.0.4     \n#&gt; ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n#&gt; ✖ dplyr::filter() masks stats::filter()\n#&gt; ✖ dplyr::lag()    masks stats::lag()\n#&gt; ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors"
   },
   {
     "objectID": "semanas/Aula11.html#biblioteca",
     "href": "semanas/Aula11.html#biblioteca",
-    "title": "PAAD",
+    "title": "Plano Sequencial",
     "section": "",
-    "text": "library(AcceptanceSampling)"
+    "text": "library(tidyverse)\n\n#&gt; ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n#&gt; ✔ dplyr     1.1.4     ✔ readr     2.1.5\n#&gt; ✔ forcats   1.0.0     ✔ stringr   1.5.1\n#&gt; ✔ ggplot2   3.5.2     ✔ tibble    3.2.1\n#&gt; ✔ lubridate 1.9.4     ✔ tidyr     1.3.1\n#&gt; ✔ purrr     1.0.4     \n#&gt; ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n#&gt; ✖ dplyr::filter() masks stats::filter()\n#&gt; ✖ dplyr::lag()    masks stats::lag()\n#&gt; ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors"
   },
   {
-    "objectID": "semanas/Aula11.html#paad---poisson",
-    "href": "semanas/Aula11.html#paad---poisson",
-    "title": "PAAD",
-    "section": "PAAD - Poisson",
-    "text": "PAAD - Poisson\nNeste caso não podemos mais usar a função find.plan, pois ela só serve para os PAAS.\nAqui vamos precisar de usar a tabela de Schilling e Johnson para definir o plano de auditoria.\n\n# p1=0,01\n# p2 = 0,05\n# alfa = 0.05\n# beta = 0.10\n# p2/p1 = 5\n# Plano 3D a1=1 a2=4 r1=4 e r2=5 n1=n2=88\npaad &lt;- OC2c(n=c(88,88),c=c(1,4),r=c(4,5),type=\"poisson\",pd=seq(0,.15,.01))\nassess(paad,PRP=c(.01,.95),CRP=c(.05,.10))\n\n#&gt; Acceptance Sampling Plan (poisson)\n#&gt; \n#&gt;                Sample 1 Sample 2\n#&gt; Sample size(s)       88       88\n#&gt; Acc. Number(s)        1        4\n#&gt; Rej. Number(s)        4        5\n#&gt; \n#&gt; Plan CAN meet desired risk point(s):\n#&gt; \n#&gt;            Quality   RP P(accept) Plan P(accept)\n#&gt; PRP           0.01           0.95     0.96755953\n#&gt; CRP           0.05           0.10     0.09985685"
+    "objectID": "semanas/Aula11.html#planos-sequenciais",
+    "href": "semanas/Aula11.html#planos-sequenciais",
+    "title": "Plano Sequencial",
+    "section": "Planos Sequenciais",
+    "text": "Planos Sequenciais\nNeste caso não vamos mais usar o pacote AcceptanceSampling.\nVamos utilizar as equações derivadas por wald (1947) e pelo Sattostical Research Group (1945) para obter o plano sequencial.\n\np1 é o nível de qualidade do produtor (PQL)\np2 é o nível de qualidade do consumidor (CQL)\nh1 é o coeficiente linear da reta de aceitação\nh2 é o coeficiente linear da reta de rejeição\ns é o coeficiente angular\nn0 é o número de amostras antes da possibilidade de aceitação\nn1 é o número de amostras antes da possibilidade de rejeição\nnp1 é o TMA em p1\nns é o TMA na proporção defeituosa igual a s\nnp2 é o TMA em p2"
   },
   {
-    "objectID": "semanas/Aula11.html#cco---paad",
-    "href": "semanas/Aula11.html#cco---paad",
-    "title": "PAAD",
-    "section": "CCO - PAAD",
-    "text": "CCO - PAAD\n\nlibrary(ggplot2)\ncco_paad &lt;- data.frame(pd=paad@pd, Pa=paad@paccept)\n# Grafico de CCO\nggplot(cco_paad, aes(x=pd, y=Pa)) +\n  geom_line() +\n  labs(title=\"Curva de CCO - PAAD\",\n       x=\"Proporção de Não Conformes (pd)\",\n       y=\"Probabilidade de Aceitação (Pa)\") +\n  theme_minimal() +\n  scale_x_continuous(breaks=seq(0, 0.15, by=0.01)) +\n  scale_y_continuous(breaks=seq(0, 1, by=0.1))"
+    "objectID": "semanas/Aula11.html#definições",
+    "href": "semanas/Aula11.html#definições",
+    "title": "Plano Sequencial",
+    "section": "Definições",
+    "text": "Definições\n\np1 &lt;- 0.01\np2 &lt;- 0.05\nalfa &lt;- 0.05\nbeta &lt;- 0.10"
+  },
+  {
+    "objectID": "semanas/Aula11.html#plano-sequencial",
+    "href": "semanas/Aula11.html#plano-sequencial",
+    "title": "Plano Sequencial",
+    "section": "Plano Sequencial",
+    "text": "Plano Sequencial\n\n# Coeficientes da reta de aceitação\nh1 &lt;- log((1-alfa)/beta) / (log(p2/p1)+ log((1-p1)/(1-p2)))\nh2 &lt;- log((1-beta)/alfa) / (log(p2/p1)+ log((1-p1)/(1-p2)))\ns &lt;- log((1-p1)/(1-p2))/ (log(p2/p1)+ log((1-p1)/(1-p2)))"
+  },
+  {
+    "objectID": "semanas/Aula11.html#grafico-do-plano-sequencial",
+    "href": "semanas/Aula11.html#grafico-do-plano-sequencial",
+    "title": "Plano Sequencial",
+    "section": "Grafico do Plano Sequencial",
+    "text": "Grafico do Plano Sequencial\n\nk &lt;- seq(1, 100, by = 1) # amostras de tamnaho 1 n=1 sequenciais\n# Y1 = sk - h1 e Y2 = sk + h2\nY1 &lt;- s * k - h1\nY2 &lt;- s * k + h2\n# Plotando o gráfico\nggplot(data = data.frame(k, Y1, Y2), aes(x = k)) +\n  geom_line(aes(y = Y1), color = \"blue\", size = 1) +\n  geom_line(aes(y = Y2), color = \"red\", size = 1) +\n  geom_hline(yintercept = 0, linetype = \"dashed\", color = \"black\") +\n  labs(title = \"Plano Sequencial\",\n       x = \"Amostras (k)\",\n       y = \"Número de Não Conformes)\") +\n  theme_minimal() +\n  scale_x_continuous(breaks=seq(0, 100, by=5))\n\n#&gt; Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.\n#&gt; ℹ Please use `linewidth` instead."
+  },
+  {
+    "objectID": "semanas/Aula11.html#tabela-de-resultados",
+    "href": "semanas/Aula11.html#tabela-de-resultados",
+    "title": "Plano Sequencial",
+    "section": "Tabela de Resultados",
+    "text": "Tabela de Resultados\n\nlibrary(gt)\nresults &lt;- data.frame(\n  Amostras = k,\n  Y1 = Y1,\n  Y2 = Y2\n)\ngt::gt(results) |&gt;\n  gt::tab_header(\n    title = \"Resultados do Plano Sequencial\"\n  ) |&gt;\n  gt::fmt_number(\n    columns = c(Amostras, Y1, Y2),\n    decimals = 2\n  ) |&gt;\n  gt::cols_label(\n    Amostras = \"Amostras (k)\",\n    Y1 = \"Y1 (Aceitação)\",\n    Y2 = \"Y2 (Rejeição)\"\n  )\n\n\n\n\n\n\nResultados do Plano Sequencial\n\n\nAmostras (k)\nY1 (Aceitação)\nY2 (Rejeição)\n\n\n\n\n1.00\n−1.34\n1.78\n\n\n2.00\n−1.31\n1.80\n\n\n3.00\n−1.29\n1.83\n\n\n4.00\n−1.26\n1.85\n\n\n5.00\n−1.24\n1.88\n\n\n6.00\n−1.21\n1.90\n\n\n7.00\n−1.19\n1.93\n\n\n8.00\n−1.16\n1.95\n\n\n9.00\n−1.14\n1.98\n\n\n10.00\n−1.11\n2.00\n\n\n11.00\n−1.09\n2.03\n\n\n12.00\n−1.06\n2.05\n\n\n13.00\n−1.04\n2.08\n\n\n14.00\n−1.01\n2.10\n\n\n15.00\n−0.99\n2.13\n\n\n16.00\n−0.96\n2.15\n\n\n17.00\n−0.94\n2.18\n\n\n18.00\n−0.91\n2.20\n\n\n19.00\n−0.89\n2.23\n\n\n20.00\n−0.86\n2.25\n\n\n21.00\n−0.84\n2.28\n\n\n22.00\n−0.81\n2.30\n\n\n23.00\n−0.79\n2.33\n\n\n24.00\n−0.76\n2.35\n\n\n25.00\n−0.74\n2.38\n\n\n26.00\n−0.71\n2.40\n\n\n27.00\n−0.69\n2.43\n\n\n28.00\n−0.66\n2.45\n\n\n29.00\n−0.64\n2.48\n\n\n30.00\n−0.61\n2.50\n\n\n31.00\n−0.59\n2.53\n\n\n32.00\n−0.56\n2.55\n\n\n33.00\n−0.54\n2.58\n\n\n34.00\n−0.51\n2.60\n\n\n35.00\n−0.49\n2.63\n\n\n36.00\n−0.46\n2.65\n\n\n37.00\n−0.44\n2.68\n\n\n38.00\n−0.41\n2.70\n\n\n39.00\n−0.39\n2.73\n\n\n40.00\n−0.36\n2.75\n\n\n41.00\n−0.34\n2.78\n\n\n42.00\n−0.31\n2.80\n\n\n43.00\n−0.29\n2.83\n\n\n44.00\n−0.26\n2.85\n\n\n45.00\n−0.24\n2.88\n\n\n46.00\n−0.21\n2.90\n\n\n47.00\n−0.19\n2.93\n\n\n48.00\n−0.16\n2.95\n\n\n49.00\n−0.14\n2.98\n\n\n50.00\n−0.11\n3.00\n\n\n51.00\n−0.09\n3.03\n\n\n52.00\n−0.06\n3.05\n\n\n53.00\n−0.04\n3.08\n\n\n54.00\n−0.01\n3.10\n\n\n55.00\n0.01\n3.13\n\n\n56.00\n0.04\n3.15\n\n\n57.00\n0.06\n3.18\n\n\n58.00\n0.09\n3.20\n\n\n59.00\n0.11\n3.23\n\n\n60.00\n0.14\n3.25\n\n\n61.00\n0.16\n3.28\n\n\n62.00\n0.19\n3.30\n\n\n63.00\n0.21\n3.33\n\n\n64.00\n0.24\n3.35\n\n\n65.00\n0.26\n3.38\n\n\n66.00\n0.29\n3.40\n\n\n67.00\n0.31\n3.43\n\n\n68.00\n0.34\n3.45\n\n\n69.00\n0.36\n3.48\n\n\n70.00\n0.39\n3.50\n\n\n71.00\n0.41\n3.52\n\n\n72.00\n0.44\n3.55\n\n\n73.00\n0.46\n3.57\n\n\n74.00\n0.49\n3.60\n\n\n75.00\n0.51\n3.62\n\n\n76.00\n0.54\n3.65\n\n\n77.00\n0.56\n3.67\n\n\n78.00\n0.59\n3.70\n\n\n79.00\n0.61\n3.72\n\n\n80.00\n0.63\n3.75\n\n\n81.00\n0.66\n3.77\n\n\n82.00\n0.68\n3.80\n\n\n83.00\n0.71\n3.82\n\n\n84.00\n0.73\n3.85\n\n\n85.00\n0.76\n3.87\n\n\n86.00\n0.78\n3.90\n\n\n87.00\n0.81\n3.92\n\n\n88.00\n0.83\n3.95\n\n\n89.00\n0.86\n3.97\n\n\n90.00\n0.88\n4.00\n\n\n91.00\n0.91\n4.02\n\n\n92.00\n0.93\n4.05\n\n\n93.00\n0.96\n4.07\n\n\n94.00\n0.98\n4.10\n\n\n95.00\n1.01\n4.12\n\n\n96.00\n1.03\n4.15\n\n\n97.00\n1.06\n4.17\n\n\n98.00\n1.08\n4.20\n\n\n99.00\n1.11\n4.22\n\n\n100.00\n1.13\n4.25"
+  },
+  {
+    "objectID": "semanas/Aula11.html#equações-para-o-tamanho-médio-de-amostra",
+    "href": "semanas/Aula11.html#equações-para-o-tamanho-médio-de-amostra",
+    "title": "Plano Sequencial",
+    "section": "Equações para o Tamanho Médio de Amostra",
+    "text": "Equações para o Tamanho Médio de Amostra\n\n# Tamanho médio de amostra\nvalor_p &lt;- function(x) {\n  (1 - ((1 - p2) / (1 - p1))^x) / ((p2 / p1)^x - ((1 - p2) / (1 - p1))^x)\n}\nPa &lt;- function(x) {\n  (((1-beta)/alfa)^x - 1)/(((1-beta)/alfa)^x - (beta/(1-alfa))^x)\n}\ntma &lt;- function(pa) {\n  ((pa*log(beta/(1-alfa))) + (1-pa)*log((1-beta)/alfa)) / (p*log(p2/p1) + (1-p)*log((1-p2)/(1-p1)))\n}\nPa_diff &lt;- function(x) {\n  Pa(x) - Pa_alvo\n}"
+  },
+  {
+    "objectID": "semanas/Aula11.html#tamanho-médio-de-amostra-para-o-plano-sequencial",
+    "href": "semanas/Aula11.html#tamanho-médio-de-amostra-para-o-plano-sequencial",
+    "title": "Plano Sequencial",
+    "section": "Tamanho Médio de Amostra para o Plano Sequencial",
+    "text": "Tamanho Médio de Amostra para o Plano Sequencial"
+  },
+  {
+    "objectID": "semanas/Aula11.html#prob.-aceitação-095",
+    "href": "semanas/Aula11.html#prob.-aceitação-095",
+    "title": "Plano Sequencial",
+    "section": "Prob. Aceitação 0,95",
+    "text": "Prob. Aceitação 0,95\n\n# Definindo a probabilidade alvo de aceitação\nPa_alvo &lt;- 0.95  # Defina a probabilidade alvo de aceitação\n# Usando uniroot para encontrar x tal que Pa(x) = Pa_alvo\nresultado &lt;- uniroot(Pa_diff, lower = -5, upper = 20)  # ajuste os limites conforme necessário\n\ncat(\"Valor de x encontrado:\", resultado$root, \"\\n\")\n\n#&gt; Valor de x encontrado: 0.9999996\n\ncat(\"Verificação: Pa(x) =\", Pa(resultado$root), \"\\n\")\n\n#&gt; Verificação: Pa(x) = 0.9499999\n\n# Valor de Fração não conforme\np &lt;- valor_p(resultado$root)\n\n# Tamanho médio de amostra\ntma(0.95)\n\n#&gt; [1] 80.61922"
+  },
+  {
+    "objectID": "semanas/Aula11.html#prob.-aceitação-010",
+    "href": "semanas/Aula11.html#prob.-aceitação-010",
+    "title": "Plano Sequencial",
+    "section": "Prob. Aceitação 0,10",
+    "text": "Prob. Aceitação 0,10\n\n# Definindo a probabilidade alvo de aceitação\nPa_alvo &lt;- 0.10  # Defina a probabilidade alvo de aceitação\n# Usando uniroot para encontrar x tal que Pa(x) = Pa_alvo\nresultado &lt;- uniroot(Pa_diff, lower = -5, upper = 20)  # ajuste os limites conforme necessário\n\ncat(\"Valor de x encontrado:\", resultado$root, \"\\n\")\n\n#&gt; Valor de x encontrado: -0.9999999\n\ncat(\"Verificação: Pa(x) =\", Pa(resultado$root), \"\\n\")\n\n#&gt; Verificação: Pa(x) = 0.1\n\n# Valor de Fração não conforme\np &lt;- valor_p(resultado$root)\n\n# Tamanho médio de amostra\ntma(0.10)\n\n#&gt; [1] 57.54767"
   }
 ]
