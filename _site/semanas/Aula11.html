@@ -62,6 +62,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../semanas/Aula10.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -271,7 +272,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Plano Sequencial</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../semanas/Aula01.html">Conteúdo Semanal</a></li><li class="breadcrumb-item"><a href="../semanas/Aula11.html">Plano Sequencial</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -354,13 +355,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
  <span class="menu-text">Conteúdo Semanal</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../semanas/Aula01.html" class="sidebar-item-text sidebar-link">
@@ -427,6 +428,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Comparação PAAS e PAAD</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../semanas/Aula11.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Plano Sequencial</span></a>
+  </div>
+</li>
       </ul>
 </li>
     </ul>
@@ -443,14 +450,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#plano-sequencial" id="toc-plano-sequencial" class="nav-link" data-scroll-target="#plano-sequencial">Plano Sequencial</a></li>
   <li><a href="#grafico-do-plano-sequencial" id="toc-grafico-do-plano-sequencial" class="nav-link" data-scroll-target="#grafico-do-plano-sequencial">Grafico do Plano Sequencial</a></li>
   <li><a href="#tabela-de-resultados" id="toc-tabela-de-resultados" class="nav-link" data-scroll-target="#tabela-de-resultados">Tabela de Resultados</a></li>
+  <li><a href="#n%C3%BAmero-de-amostras" id="toc-número-de-amostras" class="nav-link" data-scroll-target="#n%C3%BAmero-de-amostras">Número de amostras</a></li>
   <li><a href="#equa%C3%A7%C3%B5es-para-o-tamanho-m%C3%A9dio-de-amostra" id="toc-equações-para-o-tamanho-médio-de-amostra" class="nav-link" data-scroll-target="#equa%C3%A7%C3%B5es-para-o-tamanho-m%C3%A9dio-de-amostra">Equações para o Tamanho Médio de Amostra</a></li>
   <li><a href="#tamanho-m%C3%A9dio-de-amostra-para-o-plano-sequencial" id="toc-tamanho-médio-de-amostra-para-o-plano-sequencial" class="nav-link" data-scroll-target="#tamanho-m%C3%A9dio-de-amostra-para-o-plano-sequencial">Tamanho Médio de Amostra para o Plano Sequencial</a></li>
-  <li><a href="#prob.-aceita%C3%A7%C3%A3o-095" id="toc-prob.-aceitação-095" class="nav-link" data-scroll-target="#prob.-aceita%C3%A7%C3%A3o-095">Prob. Aceitação 0,95</a></li>
-  <li><a href="#prob.-aceita%C3%A7%C3%A3o-010" id="toc-prob.-aceitação-010" class="nav-link" data-scroll-target="#prob.-aceita%C3%A7%C3%A3o-010">Prob. Aceitação 0,10</a></li>
+  <li><a href="#tma-na-probabilidade-de-aceita%C3%A7%C3%A3o-de-095-1-alfa" id="toc-tma-na-probabilidade-de-aceitação-de-095-1-alfa" class="nav-link" data-scroll-target="#tma-na-probabilidade-de-aceita%C3%A7%C3%A3o-de-095-1-alfa">TMA na probabilidade de aceitação de 0,95 (1-alfa)</a></li>
+  <li><a href="#tma-na-probabilidade-de-aceita%C3%A7%C3%A3o-de-010-beta" id="toc-tma-na-probabilidade-de-aceitação-de-010-beta" class="nav-link" data-scroll-target="#tma-na-probabilidade-de-aceita%C3%A7%C3%A3o-de-010-beta">TMA na probabilidade de aceitação de 0,10 (beta)</a></li>
+  <li><a href="#tma-na-fra%C3%A7%C3%A3o-n%C3%A3o-conforme-p0" id="toc-tma-na-fração-não-conforme-p0" class="nav-link" data-scroll-target="#tma-na-fra%C3%A7%C3%A3o-n%C3%A3o-conforme-p0">TMA na fração não conforme p=0</a></li>
+  <li><a href="#tma-na-fra%C3%A7%C3%A3o-n%C3%A3o-conforme-p1" id="toc-tma-na-fração-não-conforme-p1" class="nav-link" data-scroll-target="#tma-na-fra%C3%A7%C3%A3o-n%C3%A3o-conforme-p1">TMA na fração não conforme p=1</a></li>
+  <li><a href="#tma-na-fra%C3%A7%C3%A3o-n%C3%A3o-conforme-s" id="toc-tma-na-fração-não-conforme-s" class="nav-link" data-scroll-target="#tma-na-fra%C3%A7%C3%A3o-n%C3%A3o-conforme-s">TMA na fração não conforme s</a></li>
   </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../semanas/Aula01.html">Conteúdo Semanal</a></li><li class="breadcrumb-item"><a href="../semanas/Aula11.html">Plano Sequencial</a></li></ol></nav><div class="quarto-title">
 <h1 class="title">Plano Sequencial</h1>
 </div>
 
@@ -480,22 +491,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header><section id="biblioteca" class="level2"><h2 class="anchored" data-anchor-id="biblioteca">Biblioteca</h2>
 <div class="cell">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>#&gt; ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-#&gt; ✔ dplyr     1.1.4     ✔ readr     2.1.5
-#&gt; ✔ forcats   1.0.0     ✔ stringr   1.5.1
-#&gt; ✔ ggplot2   3.5.2     ✔ tibble    3.2.1
-#&gt; ✔ lubridate 1.9.4     ✔ tidyr     1.3.1
-#&gt; ✔ purrr     1.0.4     
-#&gt; ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-#&gt; ✖ dplyr::filter() masks stats::filter()
-#&gt; ✖ dplyr::lag()    masks stats::lag()
-#&gt; ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-</div>
 </div>
 </section><section id="planos-sequenciais" class="level2"><h2 class="anchored" data-anchor-id="planos-sequenciais">Planos Sequenciais</h2>
 <p>Neste caso não vamos mais usar o pacote AcceptanceSampling.</p>
-<p>Vamos utilizar as equações derivadas por wald (1947) e pelo Sattostical Research Group (1945) para obter o plano sequencial.</p>
+<p>Vamos utilizar as equações derivadas por Wald (1947) e pelo Statistical Research Group (1945) para obter o plano sequencial. Seja:</p>
 <ul>
 <li><p>p1 é o nível de qualidade do produtor (PQL)</p></li>
 <li><p>p2 é o nível de qualidade do consumidor (CQL)</p></li>
@@ -509,38 +508,48 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>np2 é o TMA em p2</p></li>
 </ul></section><section id="definições" class="level2"><h2 class="anchored" data-anchor-id="definições">Definições</h2>
 <div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">p1</span> <span class="op">&lt;-</span> <span class="fl">0.01</span></span>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">p1</span> <span class="op">&lt;-</span> <span class="fl">0.01</span></span>
 <span><span class="va">p2</span> <span class="op">&lt;-</span> <span class="fl">0.05</span></span>
 <span><span class="va">alfa</span> <span class="op">&lt;-</span> <span class="fl">0.05</span></span>
 <span><span class="va">beta</span> <span class="op">&lt;-</span> <span class="fl">0.10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="plano-sequencial" class="level2"><h2 class="anchored" data-anchor-id="plano-sequencial">Plano Sequencial</h2>
 <div class="cell">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Coeficientes da reta de aceitação</span></span>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Coeficientes da reta de aceitação</span></span>
 <span><span class="va">h1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="op">(</span><span class="fl">1</span><span class="op">-</span><span class="va">alfa</span><span class="op">)</span><span class="op">/</span><span class="va">beta</span><span class="op">)</span> <span class="op">/</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">p2</span><span class="op">/</span><span class="va">p1</span><span class="op">)</span><span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="op">(</span><span class="fl">1</span><span class="op">-</span><span class="va">p1</span><span class="op">)</span><span class="op">/</span><span class="op">(</span><span class="fl">1</span><span class="op">-</span><span class="va">p2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">h2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="op">(</span><span class="fl">1</span><span class="op">-</span><span class="va">beta</span><span class="op">)</span><span class="op">/</span><span class="va">alfa</span><span class="op">)</span> <span class="op">/</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">p2</span><span class="op">/</span><span class="va">p1</span><span class="op">)</span><span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="op">(</span><span class="fl">1</span><span class="op">-</span><span class="va">p1</span><span class="op">)</span><span class="op">/</span><span class="op">(</span><span class="fl">1</span><span class="op">-</span><span class="va">p2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">s</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="op">(</span><span class="fl">1</span><span class="op">-</span><span class="va">p1</span><span class="op">)</span><span class="op">/</span><span class="op">(</span><span class="fl">1</span><span class="op">-</span><span class="va">p2</span><span class="op">)</span><span class="op">)</span><span class="op">/</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">p2</span><span class="op">/</span><span class="va">p1</span><span class="op">)</span><span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="op">(</span><span class="fl">1</span><span class="op">-</span><span class="va">p1</span><span class="op">)</span><span class="op">/</span><span class="op">(</span><span class="fl">1</span><span class="op">-</span><span class="va">p2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="va">s</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="op">(</span><span class="fl">1</span><span class="op">-</span><span class="va">p1</span><span class="op">)</span><span class="op">/</span><span class="op">(</span><span class="fl">1</span><span class="op">-</span><span class="va">p2</span><span class="op">)</span><span class="op">)</span><span class="op">/</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">p2</span><span class="op">/</span><span class="va">p1</span><span class="op">)</span><span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="op">(</span><span class="fl">1</span><span class="op">-</span><span class="va">p1</span><span class="op">)</span><span class="op">/</span><span class="op">(</span><span class="fl">1</span><span class="op">-</span><span class="va">p2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Valor de h1:"</span>, <span class="va">h1</span>, <span class="st">"\n"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; Valor de h1: 1.363856</code></pre>
+</div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Valor de h2:"</span>, <span class="va">h2</span>, <span class="st">"\n"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; Valor de h2: 1.751018</code></pre>
+</div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Valor de s:"</span>, <span class="va">s</span>, <span class="st">"\n"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; Valor de s: 0.02498542</code></pre>
+</div>
 </div>
 </section><section id="grafico-do-plano-sequencial" class="level2"><h2 class="anchored" data-anchor-id="grafico-do-plano-sequencial">Grafico do Plano Sequencial</h2>
 <div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">k</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">100</span>, by <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="co"># amostras de tamnaho 1 n=1 sequenciais</span></span>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">k</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">100</span>, by <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="co"># amostras de tamnaho 1 n=1 sequenciais</span></span>
 <span><span class="co"># Y1 = sk - h1 e Y2 = sk + h2</span></span>
+<span><span class="co"># Reta de Aceitação</span></span>
 <span><span class="va">Y1</span> <span class="op">&lt;-</span> <span class="va">s</span> <span class="op">*</span> <span class="va">k</span> <span class="op">-</span> <span class="va">h1</span></span>
+<span><span class="co"># Reta de Rejeição</span></span>
 <span><span class="va">Y2</span> <span class="op">&lt;-</span> <span class="va">s</span> <span class="op">*</span> <span class="va">k</span> <span class="op">+</span> <span class="va">h2</span></span>
 <span><span class="co"># Plotando o gráfico</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">k</span>, <span class="va">Y1</span>, <span class="va">Y2</span><span class="op">)</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">k</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">Y1</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"blue"</span>, size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">Y2</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"red"</span>, size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">Y1</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"blue"</span>, linewidth <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">Y2</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"red"</span>, linewidth <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_hline</a></span><span class="op">(</span>yintercept <span class="op">=</span> <span class="fl">0</span>, linetype <span class="op">=</span> <span class="st">"dashed"</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Plano Sequencial"</span>,</span>
 <span>       x <span class="op">=</span> <span class="st">"Amostras (k)"</span>,</span>
 <span>       y <span class="op">=</span> <span class="st">"Número de Não Conformes)"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span><span class="op">(</span>breaks<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">100</span>, by<span class="op">=</span><span class="fl">5</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>#&gt; Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
-#&gt; ℹ Please use `linewidth` instead.</code></pre>
-</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="Aula11_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" style="width:90.0%"></p>
@@ -550,7 +559,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section><section id="tabela-de-resultados" class="level2"><h2 class="anchored" data-anchor-id="tabela-de-resultados">Tabela de Resultados</h2>
 <div class="cell">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://gt.rstudio.com">gt</a></span><span class="op">)</span></span>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://gt.rstudio.com">gt</a></span><span class="op">)</span></span>
 <span><span class="va">results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
 <span>  Amostras <span class="op">=</span> <span class="va">k</span>,</span>
 <span>  Y1 <span class="op">=</span> <span class="va">Y1</span>,</span>
@@ -570,23 +579,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>    Y2 <span class="op">=</span> <span class="st">"Y2 (Rejeição)"</span></span>
 <span>  <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="zzsxzkfrcc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#zzsxzkfrcc table {
+<div id="yevqblfdmb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#yevqblfdmb table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#zzsxzkfrcc thead, #zzsxzkfrcc tbody, #zzsxzkfrcc tfoot, #zzsxzkfrcc tr, #zzsxzkfrcc td, #zzsxzkfrcc th {
+#yevqblfdmb thead, #yevqblfdmb tbody, #yevqblfdmb tfoot, #yevqblfdmb tr, #yevqblfdmb td, #yevqblfdmb th {
   border-style: none;
 }
 
-#zzsxzkfrcc p {
+#yevqblfdmb p {
   margin: 0;
   padding: 0;
 }
 
-#zzsxzkfrcc .gt_table {
+#yevqblfdmb .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -612,12 +621,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#zzsxzkfrcc .gt_caption {
+#yevqblfdmb .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#zzsxzkfrcc .gt_title {
+#yevqblfdmb .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -629,7 +638,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#zzsxzkfrcc .gt_subtitle {
+#yevqblfdmb .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -641,7 +650,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#zzsxzkfrcc .gt_heading {
+#yevqblfdmb .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -653,13 +662,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#zzsxzkfrcc .gt_bottom_border {
+#yevqblfdmb .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#zzsxzkfrcc .gt_col_headings {
+#yevqblfdmb .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -674,7 +683,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#zzsxzkfrcc .gt_col_heading {
+#yevqblfdmb .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -694,7 +703,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#zzsxzkfrcc .gt_column_spanner_outer {
+#yevqblfdmb .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -706,15 +715,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#zzsxzkfrcc .gt_column_spanner_outer:first-child {
+#yevqblfdmb .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#zzsxzkfrcc .gt_column_spanner_outer:last-child {
+#yevqblfdmb .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#zzsxzkfrcc .gt_column_spanner {
+#yevqblfdmb .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -726,11 +735,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#zzsxzkfrcc .gt_spanner_row {
+#yevqblfdmb .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#zzsxzkfrcc .gt_group_heading {
+#yevqblfdmb .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -756,7 +765,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#zzsxzkfrcc .gt_empty_group_heading {
+#yevqblfdmb .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -771,15 +780,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#zzsxzkfrcc .gt_from_md > :first-child {
+#yevqblfdmb .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#zzsxzkfrcc .gt_from_md > :last-child {
+#yevqblfdmb .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#zzsxzkfrcc .gt_row {
+#yevqblfdmb .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -798,7 +807,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#zzsxzkfrcc .gt_stub {
+#yevqblfdmb .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -811,7 +820,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#zzsxzkfrcc .gt_stub_row_group {
+#yevqblfdmb .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -825,15 +834,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#zzsxzkfrcc .gt_row_group_first td {
+#yevqblfdmb .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#zzsxzkfrcc .gt_row_group_first th {
+#yevqblfdmb .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#zzsxzkfrcc .gt_summary_row {
+#yevqblfdmb .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -843,16 +852,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#zzsxzkfrcc .gt_first_summary_row {
+#yevqblfdmb .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#zzsxzkfrcc .gt_first_summary_row.thick {
+#yevqblfdmb .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#zzsxzkfrcc .gt_last_summary_row {
+#yevqblfdmb .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -862,7 +871,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#zzsxzkfrcc .gt_grand_summary_row {
+#yevqblfdmb .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -872,7 +881,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#zzsxzkfrcc .gt_first_grand_summary_row {
+#yevqblfdmb .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -882,7 +891,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#zzsxzkfrcc .gt_last_grand_summary_row_top {
+#yevqblfdmb .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -892,11 +901,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#zzsxzkfrcc .gt_striped {
+#yevqblfdmb .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#zzsxzkfrcc .gt_table_body {
+#yevqblfdmb .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -905,7 +914,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#zzsxzkfrcc .gt_footnotes {
+#yevqblfdmb .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -919,7 +928,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#zzsxzkfrcc .gt_footnote {
+#yevqblfdmb .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -928,7 +937,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#zzsxzkfrcc .gt_sourcenotes {
+#yevqblfdmb .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -942,7 +951,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#zzsxzkfrcc .gt_sourcenote {
+#yevqblfdmb .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -950,72 +959,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#zzsxzkfrcc .gt_left {
+#yevqblfdmb .gt_left {
   text-align: left;
 }
 
-#zzsxzkfrcc .gt_center {
+#yevqblfdmb .gt_center {
   text-align: center;
 }
 
-#zzsxzkfrcc .gt_right {
+#yevqblfdmb .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#zzsxzkfrcc .gt_font_normal {
+#yevqblfdmb .gt_font_normal {
   font-weight: normal;
 }
 
-#zzsxzkfrcc .gt_font_bold {
+#yevqblfdmb .gt_font_bold {
   font-weight: bold;
 }
 
-#zzsxzkfrcc .gt_font_italic {
+#yevqblfdmb .gt_font_italic {
   font-style: italic;
 }
 
-#zzsxzkfrcc .gt_super {
+#yevqblfdmb .gt_super {
   font-size: 65%;
 }
 
-#zzsxzkfrcc .gt_footnote_marks {
+#yevqblfdmb .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#zzsxzkfrcc .gt_asterisk {
+#yevqblfdmb .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#zzsxzkfrcc .gt_indent_1 {
+#yevqblfdmb .gt_indent_1 {
   text-indent: 5px;
 }
 
-#zzsxzkfrcc .gt_indent_2 {
+#yevqblfdmb .gt_indent_2 {
   text-indent: 10px;
 }
 
-#zzsxzkfrcc .gt_indent_3 {
+#yevqblfdmb .gt_indent_3 {
   text-indent: 15px;
 }
 
-#zzsxzkfrcc .gt_indent_4 {
+#yevqblfdmb .gt_indent_4 {
   text-indent: 20px;
 }
 
-#zzsxzkfrcc .gt_indent_5 {
+#yevqblfdmb .gt_indent_5 {
   text-indent: 25px;
 }
 
-#zzsxzkfrcc .katex-display {
+#yevqblfdmb .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#zzsxzkfrcc div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#yevqblfdmb div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1536,9 +1545,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+</section><section id="número-de-amostras" class="level2"><h2 class="anchored" data-anchor-id="número-de-amostras">Número de amostras</h2>
+<ul>
+<li><p>antes da possibilidade de aceitação</p></li>
+<li><p>possibilitando a rejeição</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Número de amostras antes da possibilidade de aceitação e rejeição</span></span>
+<span><span class="va">acha_zero</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">s</span> <span class="op">*</span> <span class="va">x</span> <span class="op">-</span> <span class="va">h1</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span><span class="va">resultado</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/uniroot.html">uniroot</a></span><span class="op">(</span><span class="va">acha_zero</span>, lower <span class="op">=</span> <span class="op">-</span><span class="fl">5</span>, upper <span class="op">=</span> <span class="fl">200</span><span class="op">)</span> </span>
+<span><span class="va">n0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">ceiling</a></span><span class="op">(</span><span class="va">resultado</span><span class="op">$</span><span class="va">root</span><span class="op">)</span></span>
+<span><span class="va">n1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">ceiling</a></span><span class="op">(</span><span class="va">Y2</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Valor de n0:"</span>, <span class="va">n0</span>, <span class="st">"\n"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; Valor de n0: 55</code></pre>
+</div>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Valor de n1:"</span>, <span class="va">n1</span>, <span class="st">"\n"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; Valor de n1: 2</code></pre>
+</div>
+</div>
 </section><section id="equações-para-o-tamanho-médio-de-amostra" class="level2"><h2 class="anchored" data-anchor-id="equações-para-o-tamanho-médio-de-amostra">Equações para o Tamanho Médio de Amostra</h2>
 <div class="cell">
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Tamanho médio de amostra</span></span>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Tamanho médio de amostra</span></span>
 <span><span class="va">valor_p</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="op">(</span><span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">p2</span><span class="op">)</span> <span class="op">/</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">p1</span><span class="op">)</span><span class="op">)</span><span class="op">^</span><span class="va">x</span><span class="op">)</span> <span class="op">/</span> <span class="op">(</span><span class="op">(</span><span class="va">p2</span> <span class="op">/</span> <span class="va">p1</span><span class="op">)</span><span class="op">^</span><span class="va">x</span> <span class="op">-</span> <span class="op">(</span><span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">p2</span><span class="op">)</span> <span class="op">/</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">p1</span><span class="op">)</span><span class="op">)</span><span class="op">^</span><span class="va">x</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
@@ -1553,9 +1584,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="tamanho-médio-de-amostra-para-o-plano-sequencial" class="level2"><h2 class="anchored" data-anchor-id="tamanho-médio-de-amostra-para-o-plano-sequencial">Tamanho Médio de Amostra para o Plano Sequencial</h2>
-</section><section id="prob.-aceitação-095" class="level2"><h2 class="anchored" data-anchor-id="prob.-aceitação-095">Prob. Aceitação 0,95</h2>
+</section><section id="tma-na-probabilidade-de-aceitação-de-095-1-alfa" class="level2"><h2 class="anchored" data-anchor-id="tma-na-probabilidade-de-aceitação-de-095-1-alfa">TMA na probabilidade de aceitação de 0,95 (1-alfa)</h2>
 <div class="cell">
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Definindo a probabilidade alvo de aceitação</span></span>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Definindo a probabilidade alvo de aceitação</span></span>
 <span><span class="va">Pa_alvo</span> <span class="op">&lt;-</span> <span class="fl">0.95</span>  <span class="co"># Defina a probabilidade alvo de aceitação</span></span>
 <span><span class="co"># Usando uniroot para encontrar x tal que Pa(x) = Pa_alvo</span></span>
 <span><span class="va">resultado</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/uniroot.html">uniroot</a></span><span class="op">(</span><span class="va">Pa_diff</span>, lower <span class="op">=</span> <span class="op">-</span><span class="fl">5</span>, upper <span class="op">=</span> <span class="fl">20</span><span class="op">)</span>  <span class="co"># ajuste os limites conforme necessário</span></span>
@@ -1564,22 +1595,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; Valor de x encontrado: 0.9999996</code></pre>
 </div>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Verificação: Pa(x) ="</span>, <span class="fu">Pa</span><span class="op">(</span><span class="va">resultado</span><span class="op">$</span><span class="va">root</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Verificação: Pa(x) ="</span>, <span class="fu">Pa</span><span class="op">(</span><span class="va">resultado</span><span class="op">$</span><span class="va">root</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; Verificação: Pa(x) = 0.9499999</code></pre>
 </div>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Valor de Fração não conforme</span></span>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Valor de Fração não conforme</span></span>
 <span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu">valor_p</span><span class="op">(</span><span class="va">resultado</span><span class="op">$</span><span class="va">root</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Tamanho médio de amostra</span></span>
-<span><span class="fu">tma</span><span class="op">(</span><span class="fl">0.95</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fu">tma</span><span class="op">(</span><span class="fl">0.95</span><span class="op">)</span>,digits <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>#&gt; [1] 80.61922</code></pre>
+<pre><code>#&gt; [1] 81</code></pre>
 </div>
 </div>
-</section><section id="prob.-aceitação-010" class="level2"><h2 class="anchored" data-anchor-id="prob.-aceitação-010">Prob. Aceitação 0,10</h2>
+</section><section id="tma-na-probabilidade-de-aceitação-de-010-beta" class="level2"><h2 class="anchored" data-anchor-id="tma-na-probabilidade-de-aceitação-de-010-beta">TMA na probabilidade de aceitação de 0,10 (beta)</h2>
 <div class="cell">
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Definindo a probabilidade alvo de aceitação</span></span>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Definindo a probabilidade alvo de aceitação</span></span>
 <span><span class="va">Pa_alvo</span> <span class="op">&lt;-</span> <span class="fl">0.10</span>  <span class="co"># Defina a probabilidade alvo de aceitação</span></span>
 <span><span class="co"># Usando uniroot para encontrar x tal que Pa(x) = Pa_alvo</span></span>
 <span><span class="va">resultado</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/uniroot.html">uniroot</a></span><span class="op">(</span><span class="va">Pa_diff</span>, lower <span class="op">=</span> <span class="op">-</span><span class="fl">5</span>, upper <span class="op">=</span> <span class="fl">20</span><span class="op">)</span>  <span class="co"># ajuste os limites conforme necessário</span></span>
@@ -1588,17 +1619,52 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; Valor de x encontrado: -0.9999999</code></pre>
 </div>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Verificação: Pa(x) ="</span>, <span class="fu">Pa</span><span class="op">(</span><span class="va">resultado</span><span class="op">$</span><span class="va">root</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Verificação: Pa(x) ="</span>, <span class="fu">Pa</span><span class="op">(</span><span class="va">resultado</span><span class="op">$</span><span class="va">root</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; Verificação: Pa(x) = 0.1</code></pre>
 </div>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Valor de Fração não conforme</span></span>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Valor de Fração não conforme</span></span>
 <span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu">valor_p</span><span class="op">(</span><span class="va">resultado</span><span class="op">$</span><span class="va">root</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Tamanho médio de amostra</span></span>
-<span><span class="fu">tma</span><span class="op">(</span><span class="fl">0.10</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fu">tma</span><span class="op">(</span><span class="fl">0.10</span><span class="op">)</span>,digits <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>#&gt; [1] 57.54767</code></pre>
+<pre><code>#&gt; [1] 58</code></pre>
+</div>
+</div>
+</section><section id="tma-na-fração-não-conforme-p0" class="level2"><h2 class="anchored" data-anchor-id="tma-na-fração-não-conforme-p0">TMA na fração não conforme p=0</h2>
+<div class="cell">
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># TMA quando p=0</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">h1</span><span class="op">/</span><span class="va">s</span>,digits <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1] 55</code></pre>
+</div>
+</div>
+</section><section id="tma-na-fração-não-conforme-p1" class="level2"><h2 class="anchored" data-anchor-id="tma-na-fração-não-conforme-p1">TMA na fração não conforme p=1</h2>
+<div class="cell">
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># TMA quando p=0</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">h2</span><span class="op">/</span><span class="op">(</span><span class="fl">1</span><span class="op">-</span><span class="va">s</span><span class="op">)</span>,digits <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1] 2</code></pre>
+</div>
+</div>
+</section><section id="tma-na-fração-não-conforme-s" class="level2"><h2 class="anchored" data-anchor-id="tma-na-fração-não-conforme-s">TMA na fração não conforme s</h2>
+<div class="cell">
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Valor de s</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Valor de s:"</span>, <span class="va">s</span>, <span class="st">"\n"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; Valor de s: 0.02498542</code></pre>
+</div>
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># prob de Aceitaçaõ</span></span>
+<span><span class="va">p_s</span> <span class="op">&lt;-</span> <span class="va">h2</span><span class="op">/</span><span class="op">(</span><span class="va">h1</span><span class="op">+</span><span class="va">h2</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Prob de aceitação de s:"</span>, <span class="va">p_s</span>, <span class="st">"\n"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; Prob de aceitação de s: 0.5621472</code></pre>
+</div>
+<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># TMA quando p=s</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">h1</span><span class="op">*</span><span class="va">h2</span><span class="op">/</span><span class="op">(</span><span class="va">s</span><span class="op">*</span><span class="op">(</span><span class="fl">1</span><span class="op">-</span><span class="va">s</span><span class="op">)</span><span class="op">)</span>,digits <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1] 98</code></pre>
 </div>
 </div>
 
@@ -2014,7 +2080,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       }
     }
   });
-  </script>
+  </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+      <a href="../semanas/Aula10.html" class="pagination-link" aria-label="Comparação PAAS e PAAD">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Comparação PAAS e PAAD</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">

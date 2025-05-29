@@ -14,6 +14,8 @@ knitr:
     comment: "#>"
 execute:
   freeze: auto
+  warning: false
+  message: false
 ---
 
 ## Biblioteca
@@ -26,7 +28,7 @@ library(tidyverse)
 
 Neste caso não vamos mais usar o pacote AcceptanceSampling.
 
-Vamos utilizar as equações derivadas por wald (1947) e pelo Sattostical Research Group (1945) para obter o plano sequencial.
+Vamos utilizar as equações derivadas por Wald (1947) e pelo Statistical Research Group (1945) para obter o plano sequencial. Seja:
 
 -   p1 é o nível de qualidade do produtor (PQL)
 
@@ -48,7 +50,6 @@ Vamos utilizar as equações derivadas por wald (1947) e pelo Sattostical Resear
 
 -   np2 é o TMA em p2
 
-
 ## Definições
 
 ```{r}
@@ -65,6 +66,9 @@ beta <- 0.10
 h1 <- log((1-alfa)/beta) / (log(p2/p1)+ log((1-p1)/(1-p2)))
 h2 <- log((1-beta)/alfa) / (log(p2/p1)+ log((1-p1)/(1-p2)))
 s <- log((1-p1)/(1-p2))/ (log(p2/p1)+ log((1-p1)/(1-p2)))
+cat("Valor de h1:", h1, "\n")
+cat("Valor de h2:", h2, "\n")
+cat("Valor de s:", s, "\n")
 ```
 
 ## Grafico do Plano Sequencial
@@ -72,12 +76,14 @@ s <- log((1-p1)/(1-p2))/ (log(p2/p1)+ log((1-p1)/(1-p2)))
 ```{r}
 k <- seq(1, 100, by = 1) # amostras de tamnaho 1 n=1 sequenciais
 # Y1 = sk - h1 e Y2 = sk + h2
+# Reta de Aceitação
 Y1 <- s * k - h1
+# Reta de Rejeição
 Y2 <- s * k + h2
 # Plotando o gráfico
 ggplot(data = data.frame(k, Y1, Y2), aes(x = k)) +
-  geom_line(aes(y = Y1), color = "blue", size = 1) +
-  geom_line(aes(y = Y2), color = "red", size = 1) +
+  geom_line(aes(y = Y1), color = "blue", linewidth = 1) +
+  geom_line(aes(y = Y2), color = "red", linewidth = 1) +
   geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
   labs(title = "Plano Sequencial",
        x = "Amostras (k)",
@@ -111,6 +117,24 @@ gt::gt(results) |>
   )
 ```
 
+## Número de amostras
+
+-   antes da possibilidade de aceitação
+
+-   possibilitando a rejeição
+
+```{r}
+# Número de amostras antes da possibilidade de aceitação e rejeição
+acha_zero <- function(x) {
+  return(s * x - h1)
+}
+resultado <- uniroot(acha_zero, lower = -5, upper = 200) 
+n0 <- ceiling(resultado$root)
+n1 <- ceiling(Y2[1])
+cat("Valor de n0:", n0, "\n")
+cat("Valor de n1:", n1, "\n")
+```
+
 
 ## Equações para o Tamanho Médio de Amostra
 
@@ -130,10 +154,9 @@ Pa_diff <- function(x) {
 }
 ```
 
-
 ## Tamanho Médio de Amostra para o Plano Sequencial
 
-## Prob. Aceitação 0,95
+## TMA na probabilidade de aceitação de 0,95 (1-alfa)
 
 ```{r}
 # Definindo a probabilidade alvo de aceitação
@@ -148,10 +171,10 @@ cat("Verificação: Pa(x) =", Pa(resultado$root), "\n")
 p <- valor_p(resultado$root)
 
 # Tamanho médio de amostra
-tma(0.95)
+round(tma(0.95),digits = 0)
 ```
 
-## Prob. Aceitação 0,10
+## TMA na probabilidade de aceitação de 0,10 (beta)
 
 ```{r}
 # Definindo a probabilidade alvo de aceitação
@@ -166,7 +189,31 @@ cat("Verificação: Pa(x) =", Pa(resultado$root), "\n")
 p <- valor_p(resultado$root)
 
 # Tamanho médio de amostra
-tma(0.10)
+round(tma(0.10),digits = 0)
 ```
 
+## TMA na fração não conforme p=0
 
+```{r}
+# TMA quando p=0
+round(h1/s,digits = 0)
+```
+
+## TMA na fração não conforme p=1
+
+```{r}
+# TMA quando p=0
+round(h2/(1-s),digits = 0)
+```
+
+## TMA na fração não conforme s
+
+```{r}
+# Valor de s
+cat("Valor de s:", s, "\n")
+# prob de Aceitaçaõ
+p_s <- h2/(h1+h2)
+cat("Prob de aceitação de s:", p_s, "\n")
+# TMA quando p=s
+round(h1*h2/(s*(1-s)),digits = 0)
+```

@@ -62,6 +62,8 @@ website:
             text: "Plano de Auditoria por Amostragem Dupla"
           - href: semanas/Aula10.qmd
             text: "Comparação PAAS e PAAD"
+          - href: semanas/Aula11.qmd
+            text: "Plano Sequencial"
           
           
           
