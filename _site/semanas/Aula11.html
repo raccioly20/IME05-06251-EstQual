@@ -5,7 +5,7 @@
 <meta name="generator" content="quarto-1.7.29">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Ricardo Accioly">
-<meta name="dcterms.date" content="2025-05-29">
+<meta name="dcterms.date" content="2025-06-02">
 <title>Plano Sequencial – IME05-06251-EQ</title>
 <style>
 code{white-space: pre-wrap;}
@@ -479,7 +479,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 29, 2025</p>
+      <p class="date">June 2, 2025</p>
     </div>
   </div>
   
@@ -508,8 +508,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>np2 é o TMA em p2</p></li>
 </ul></section><section id="definições" class="level2"><h2 class="anchored" data-anchor-id="definições">Definições</h2>
 <div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">p1</span> <span class="op">&lt;-</span> <span class="fl">0.01</span></span>
-<span><span class="va">p2</span> <span class="op">&lt;-</span> <span class="fl">0.05</span></span>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">p1</span> <span class="op">&lt;-</span> <span class="fl">0.02</span></span>
+<span><span class="va">p2</span> <span class="op">&lt;-</span> <span class="fl">0.07</span></span>
 <span><span class="va">alfa</span> <span class="op">&lt;-</span> <span class="fl">0.05</span></span>
 <span><span class="va">beta</span> <span class="op">&lt;-</span> <span class="fl">0.10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -521,15 +521,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="va">s</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="op">(</span><span class="fl">1</span><span class="op">-</span><span class="va">p1</span><span class="op">)</span><span class="op">/</span><span class="op">(</span><span class="fl">1</span><span class="op">-</span><span class="va">p2</span><span class="op">)</span><span class="op">)</span><span class="op">/</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">p2</span><span class="op">/</span><span class="va">p1</span><span class="op">)</span><span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="op">(</span><span class="fl">1</span><span class="op">-</span><span class="va">p1</span><span class="op">)</span><span class="op">/</span><span class="op">(</span><span class="fl">1</span><span class="op">-</span><span class="va">p2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Valor de h1:"</span>, <span class="va">h1</span>, <span class="st">"\n"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>#&gt; Valor de h1: 1.363856</code></pre>
+<pre><code>#&gt; Valor de h1: 1.724955</code></pre>
 </div>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Valor de h2:"</span>, <span class="va">h2</span>, <span class="st">"\n"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>#&gt; Valor de h2: 1.751018</code></pre>
+<pre><code>#&gt; Valor de h2: 2.214622</code></pre>
 </div>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Valor de s:"</span>, <span class="va">s</span>, <span class="st">"\n"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>#&gt; Valor de s: 0.02498542</code></pre>
+<pre><code>#&gt; Valor de s: 0.0401247</code></pre>
 </div>
 </div>
 </section><section id="grafico-do-plano-sequencial" class="level2"><h2 class="anchored" data-anchor-id="grafico-do-plano-sequencial">Grafico do Plano Sequencial</h2>
@@ -579,23 +579,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>    Y2 <span class="op">=</span> <span class="st">"Y2 (Rejeição)"</span></span>
 <span>  <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="yevqblfdmb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#yevqblfdmb table {
+<div id="yanixfgtbo" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#yanixfgtbo table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#yevqblfdmb thead, #yevqblfdmb tbody, #yevqblfdmb tfoot, #yevqblfdmb tr, #yevqblfdmb td, #yevqblfdmb th {
+#yanixfgtbo thead, #yanixfgtbo tbody, #yanixfgtbo tfoot, #yanixfgtbo tr, #yanixfgtbo td, #yanixfgtbo th {
   border-style: none;
 }
 
-#yevqblfdmb p {
+#yanixfgtbo p {
   margin: 0;
   padding: 0;
 }
 
-#yevqblfdmb .gt_table {
+#yanixfgtbo .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -621,12 +621,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#yevqblfdmb .gt_caption {
+#yanixfgtbo .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#yevqblfdmb .gt_title {
+#yanixfgtbo .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -638,7 +638,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#yevqblfdmb .gt_subtitle {
+#yanixfgtbo .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -650,7 +650,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#yevqblfdmb .gt_heading {
+#yanixfgtbo .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -662,13 +662,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#yevqblfdmb .gt_bottom_border {
+#yanixfgtbo .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#yevqblfdmb .gt_col_headings {
+#yanixfgtbo .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -683,7 +683,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#yevqblfdmb .gt_col_heading {
+#yanixfgtbo .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -703,7 +703,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#yevqblfdmb .gt_column_spanner_outer {
+#yanixfgtbo .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -715,15 +715,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#yevqblfdmb .gt_column_spanner_outer:first-child {
+#yanixfgtbo .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#yevqblfdmb .gt_column_spanner_outer:last-child {
+#yanixfgtbo .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#yevqblfdmb .gt_column_spanner {
+#yanixfgtbo .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -735,11 +735,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#yevqblfdmb .gt_spanner_row {
+#yanixfgtbo .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#yevqblfdmb .gt_group_heading {
+#yanixfgtbo .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -765,7 +765,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#yevqblfdmb .gt_empty_group_heading {
+#yanixfgtbo .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -780,15 +780,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#yevqblfdmb .gt_from_md > :first-child {
+#yanixfgtbo .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#yevqblfdmb .gt_from_md > :last-child {
+#yanixfgtbo .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#yevqblfdmb .gt_row {
+#yanixfgtbo .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -807,7 +807,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#yevqblfdmb .gt_stub {
+#yanixfgtbo .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -820,7 +820,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#yevqblfdmb .gt_stub_row_group {
+#yanixfgtbo .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -834,15 +834,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#yevqblfdmb .gt_row_group_first td {
+#yanixfgtbo .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#yevqblfdmb .gt_row_group_first th {
+#yanixfgtbo .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#yevqblfdmb .gt_summary_row {
+#yanixfgtbo .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -852,16 +852,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#yevqblfdmb .gt_first_summary_row {
+#yanixfgtbo .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#yevqblfdmb .gt_first_summary_row.thick {
+#yanixfgtbo .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#yevqblfdmb .gt_last_summary_row {
+#yanixfgtbo .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -871,7 +871,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#yevqblfdmb .gt_grand_summary_row {
+#yanixfgtbo .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -881,7 +881,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#yevqblfdmb .gt_first_grand_summary_row {
+#yanixfgtbo .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -891,7 +891,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#yevqblfdmb .gt_last_grand_summary_row_top {
+#yanixfgtbo .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -901,11 +901,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#yevqblfdmb .gt_striped {
+#yanixfgtbo .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#yevqblfdmb .gt_table_body {
+#yanixfgtbo .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -914,7 +914,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#yevqblfdmb .gt_footnotes {
+#yanixfgtbo .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -928,7 +928,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#yevqblfdmb .gt_footnote {
+#yanixfgtbo .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -937,7 +937,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#yevqblfdmb .gt_sourcenotes {
+#yanixfgtbo .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -951,7 +951,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#yevqblfdmb .gt_sourcenote {
+#yanixfgtbo .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -959,72 +959,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#yevqblfdmb .gt_left {
+#yanixfgtbo .gt_left {
   text-align: left;
 }
 
-#yevqblfdmb .gt_center {
+#yanixfgtbo .gt_center {
   text-align: center;
 }
 
-#yevqblfdmb .gt_right {
+#yanixfgtbo .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#yevqblfdmb .gt_font_normal {
+#yanixfgtbo .gt_font_normal {
   font-weight: normal;
 }
 
-#yevqblfdmb .gt_font_bold {
+#yanixfgtbo .gt_font_bold {
   font-weight: bold;
 }
 
-#yevqblfdmb .gt_font_italic {
+#yanixfgtbo .gt_font_italic {
   font-style: italic;
 }
 
-#yevqblfdmb .gt_super {
+#yanixfgtbo .gt_super {
   font-size: 65%;
 }
 
-#yevqblfdmb .gt_footnote_marks {
+#yanixfgtbo .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#yevqblfdmb .gt_asterisk {
+#yanixfgtbo .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#yevqblfdmb .gt_indent_1 {
+#yanixfgtbo .gt_indent_1 {
   text-indent: 5px;
 }
 
-#yevqblfdmb .gt_indent_2 {
+#yanixfgtbo .gt_indent_2 {
   text-indent: 10px;
 }
 
-#yevqblfdmb .gt_indent_3 {
+#yanixfgtbo .gt_indent_3 {
   text-indent: 15px;
 }
 
-#yevqblfdmb .gt_indent_4 {
+#yanixfgtbo .gt_indent_4 {
   text-indent: 20px;
 }
 
-#yevqblfdmb .gt_indent_5 {
+#yanixfgtbo .gt_indent_5 {
   text-indent: 25px;
 }
 
-#yevqblfdmb .katex-display {
+#yanixfgtbo .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#yevqblfdmb div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#yanixfgtbo div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1042,503 +1042,503 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody class="gt_table_body">
 <tr class="odd">
 <td class="gt_row gt_right" headers="Amostras">1.00</td>
-<td class="gt_row gt_right" headers="Y1">−1.34</td>
-<td class="gt_row gt_right" headers="Y2">1.78</td>
+<td class="gt_row gt_right" headers="Y1">−1.68</td>
+<td class="gt_row gt_right" headers="Y2">2.25</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_right" headers="Amostras">2.00</td>
-<td class="gt_row gt_right" headers="Y1">−1.31</td>
-<td class="gt_row gt_right" headers="Y2">1.80</td>
+<td class="gt_row gt_right" headers="Y1">−1.64</td>
+<td class="gt_row gt_right" headers="Y2">2.29</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_right" headers="Amostras">3.00</td>
-<td class="gt_row gt_right" headers="Y1">−1.29</td>
-<td class="gt_row gt_right" headers="Y2">1.83</td>
+<td class="gt_row gt_right" headers="Y1">−1.60</td>
+<td class="gt_row gt_right" headers="Y2">2.33</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_right" headers="Amostras">4.00</td>
-<td class="gt_row gt_right" headers="Y1">−1.26</td>
-<td class="gt_row gt_right" headers="Y2">1.85</td>
+<td class="gt_row gt_right" headers="Y1">−1.56</td>
+<td class="gt_row gt_right" headers="Y2">2.38</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_right" headers="Amostras">5.00</td>
-<td class="gt_row gt_right" headers="Y1">−1.24</td>
-<td class="gt_row gt_right" headers="Y2">1.88</td>
+<td class="gt_row gt_right" headers="Y1">−1.52</td>
+<td class="gt_row gt_right" headers="Y2">2.42</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_right" headers="Amostras">6.00</td>
-<td class="gt_row gt_right" headers="Y1">−1.21</td>
-<td class="gt_row gt_right" headers="Y2">1.90</td>
+<td class="gt_row gt_right" headers="Y1">−1.48</td>
+<td class="gt_row gt_right" headers="Y2">2.46</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_right" headers="Amostras">7.00</td>
-<td class="gt_row gt_right" headers="Y1">−1.19</td>
-<td class="gt_row gt_right" headers="Y2">1.93</td>
+<td class="gt_row gt_right" headers="Y1">−1.44</td>
+<td class="gt_row gt_right" headers="Y2">2.50</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_right" headers="Amostras">8.00</td>
-<td class="gt_row gt_right" headers="Y1">−1.16</td>
-<td class="gt_row gt_right" headers="Y2">1.95</td>
+<td class="gt_row gt_right" headers="Y1">−1.40</td>
+<td class="gt_row gt_right" headers="Y2">2.54</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_right" headers="Amostras">9.00</td>
-<td class="gt_row gt_right" headers="Y1">−1.14</td>
-<td class="gt_row gt_right" headers="Y2">1.98</td>
+<td class="gt_row gt_right" headers="Y1">−1.36</td>
+<td class="gt_row gt_right" headers="Y2">2.58</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_right" headers="Amostras">10.00</td>
-<td class="gt_row gt_right" headers="Y1">−1.11</td>
-<td class="gt_row gt_right" headers="Y2">2.00</td>
+<td class="gt_row gt_right" headers="Y1">−1.32</td>
+<td class="gt_row gt_right" headers="Y2">2.62</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_right" headers="Amostras">11.00</td>
-<td class="gt_row gt_right" headers="Y1">−1.09</td>
-<td class="gt_row gt_right" headers="Y2">2.03</td>
+<td class="gt_row gt_right" headers="Y1">−1.28</td>
+<td class="gt_row gt_right" headers="Y2">2.66</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_right" headers="Amostras">12.00</td>
-<td class="gt_row gt_right" headers="Y1">−1.06</td>
-<td class="gt_row gt_right" headers="Y2">2.05</td>
+<td class="gt_row gt_right" headers="Y1">−1.24</td>
+<td class="gt_row gt_right" headers="Y2">2.70</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_right" headers="Amostras">13.00</td>
-<td class="gt_row gt_right" headers="Y1">−1.04</td>
-<td class="gt_row gt_right" headers="Y2">2.08</td>
+<td class="gt_row gt_right" headers="Y1">−1.20</td>
+<td class="gt_row gt_right" headers="Y2">2.74</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_right" headers="Amostras">14.00</td>
-<td class="gt_row gt_right" headers="Y1">−1.01</td>
-<td class="gt_row gt_right" headers="Y2">2.10</td>
+<td class="gt_row gt_right" headers="Y1">−1.16</td>
+<td class="gt_row gt_right" headers="Y2">2.78</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_right" headers="Amostras">15.00</td>
-<td class="gt_row gt_right" headers="Y1">−0.99</td>
-<td class="gt_row gt_right" headers="Y2">2.13</td>
+<td class="gt_row gt_right" headers="Y1">−1.12</td>
+<td class="gt_row gt_right" headers="Y2">2.82</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_right" headers="Amostras">16.00</td>
-<td class="gt_row gt_right" headers="Y1">−0.96</td>
-<td class="gt_row gt_right" headers="Y2">2.15</td>
+<td class="gt_row gt_right" headers="Y1">−1.08</td>
+<td class="gt_row gt_right" headers="Y2">2.86</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_right" headers="Amostras">17.00</td>
-<td class="gt_row gt_right" headers="Y1">−0.94</td>
-<td class="gt_row gt_right" headers="Y2">2.18</td>
+<td class="gt_row gt_right" headers="Y1">−1.04</td>
+<td class="gt_row gt_right" headers="Y2">2.90</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_right" headers="Amostras">18.00</td>
-<td class="gt_row gt_right" headers="Y1">−0.91</td>
-<td class="gt_row gt_right" headers="Y2">2.20</td>
+<td class="gt_row gt_right" headers="Y1">−1.00</td>
+<td class="gt_row gt_right" headers="Y2">2.94</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_right" headers="Amostras">19.00</td>
-<td class="gt_row gt_right" headers="Y1">−0.89</td>
-<td class="gt_row gt_right" headers="Y2">2.23</td>
+<td class="gt_row gt_right" headers="Y1">−0.96</td>
+<td class="gt_row gt_right" headers="Y2">2.98</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_right" headers="Amostras">20.00</td>
-<td class="gt_row gt_right" headers="Y1">−0.86</td>
-<td class="gt_row gt_right" headers="Y2">2.25</td>
+<td class="gt_row gt_right" headers="Y1">−0.92</td>
+<td class="gt_row gt_right" headers="Y2">3.02</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_right" headers="Amostras">21.00</td>
-<td class="gt_row gt_right" headers="Y1">−0.84</td>
-<td class="gt_row gt_right" headers="Y2">2.28</td>
+<td class="gt_row gt_right" headers="Y1">−0.88</td>
+<td class="gt_row gt_right" headers="Y2">3.06</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_right" headers="Amostras">22.00</td>
-<td class="gt_row gt_right" headers="Y1">−0.81</td>
-<td class="gt_row gt_right" headers="Y2">2.30</td>
+<td class="gt_row gt_right" headers="Y1">−0.84</td>
+<td class="gt_row gt_right" headers="Y2">3.10</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_right" headers="Amostras">23.00</td>
-<td class="gt_row gt_right" headers="Y1">−0.79</td>
-<td class="gt_row gt_right" headers="Y2">2.33</td>
+<td class="gt_row gt_right" headers="Y1">−0.80</td>
+<td class="gt_row gt_right" headers="Y2">3.14</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_right" headers="Amostras">24.00</td>
 <td class="gt_row gt_right" headers="Y1">−0.76</td>
-<td class="gt_row gt_right" headers="Y2">2.35</td>
+<td class="gt_row gt_right" headers="Y2">3.18</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_right" headers="Amostras">25.00</td>
-<td class="gt_row gt_right" headers="Y1">−0.74</td>
-<td class="gt_row gt_right" headers="Y2">2.38</td>
+<td class="gt_row gt_right" headers="Y1">−0.72</td>
+<td class="gt_row gt_right" headers="Y2">3.22</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_right" headers="Amostras">26.00</td>
-<td class="gt_row gt_right" headers="Y1">−0.71</td>
-<td class="gt_row gt_right" headers="Y2">2.40</td>
+<td class="gt_row gt_right" headers="Y1">−0.68</td>
+<td class="gt_row gt_right" headers="Y2">3.26</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_right" headers="Amostras">27.00</td>
-<td class="gt_row gt_right" headers="Y1">−0.69</td>
-<td class="gt_row gt_right" headers="Y2">2.43</td>
+<td class="gt_row gt_right" headers="Y1">−0.64</td>
+<td class="gt_row gt_right" headers="Y2">3.30</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_right" headers="Amostras">28.00</td>
-<td class="gt_row gt_right" headers="Y1">−0.66</td>
-<td class="gt_row gt_right" headers="Y2">2.45</td>
+<td class="gt_row gt_right" headers="Y1">−0.60</td>
+<td class="gt_row gt_right" headers="Y2">3.34</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_right" headers="Amostras">29.00</td>
-<td class="gt_row gt_right" headers="Y1">−0.64</td>
-<td class="gt_row gt_right" headers="Y2">2.48</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="Amostras">30.00</td>
-<td class="gt_row gt_right" headers="Y1">−0.61</td>
-<td class="gt_row gt_right" headers="Y2">2.50</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="Amostras">31.00</td>
-<td class="gt_row gt_right" headers="Y1">−0.59</td>
-<td class="gt_row gt_right" headers="Y2">2.53</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="Amostras">32.00</td>
 <td class="gt_row gt_right" headers="Y1">−0.56</td>
-<td class="gt_row gt_right" headers="Y2">2.55</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="Amostras">33.00</td>
-<td class="gt_row gt_right" headers="Y1">−0.54</td>
-<td class="gt_row gt_right" headers="Y2">2.58</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="Amostras">34.00</td>
-<td class="gt_row gt_right" headers="Y1">−0.51</td>
-<td class="gt_row gt_right" headers="Y2">2.60</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="Amostras">35.00</td>
-<td class="gt_row gt_right" headers="Y1">−0.49</td>
-<td class="gt_row gt_right" headers="Y2">2.63</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="Amostras">36.00</td>
-<td class="gt_row gt_right" headers="Y1">−0.46</td>
-<td class="gt_row gt_right" headers="Y2">2.65</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="Amostras">37.00</td>
-<td class="gt_row gt_right" headers="Y1">−0.44</td>
-<td class="gt_row gt_right" headers="Y2">2.68</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="Amostras">38.00</td>
-<td class="gt_row gt_right" headers="Y1">−0.41</td>
-<td class="gt_row gt_right" headers="Y2">2.70</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="Amostras">39.00</td>
-<td class="gt_row gt_right" headers="Y1">−0.39</td>
-<td class="gt_row gt_right" headers="Y2">2.73</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="Amostras">40.00</td>
-<td class="gt_row gt_right" headers="Y1">−0.36</td>
-<td class="gt_row gt_right" headers="Y2">2.75</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="Amostras">41.00</td>
-<td class="gt_row gt_right" headers="Y1">−0.34</td>
-<td class="gt_row gt_right" headers="Y2">2.78</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="Amostras">42.00</td>
-<td class="gt_row gt_right" headers="Y1">−0.31</td>
-<td class="gt_row gt_right" headers="Y2">2.80</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="Amostras">43.00</td>
-<td class="gt_row gt_right" headers="Y1">−0.29</td>
-<td class="gt_row gt_right" headers="Y2">2.83</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="Amostras">44.00</td>
-<td class="gt_row gt_right" headers="Y1">−0.26</td>
-<td class="gt_row gt_right" headers="Y2">2.85</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="Amostras">45.00</td>
-<td class="gt_row gt_right" headers="Y1">−0.24</td>
-<td class="gt_row gt_right" headers="Y2">2.88</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="Amostras">46.00</td>
-<td class="gt_row gt_right" headers="Y1">−0.21</td>
-<td class="gt_row gt_right" headers="Y2">2.90</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="Amostras">47.00</td>
-<td class="gt_row gt_right" headers="Y1">−0.19</td>
-<td class="gt_row gt_right" headers="Y2">2.93</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="Amostras">48.00</td>
-<td class="gt_row gt_right" headers="Y1">−0.16</td>
-<td class="gt_row gt_right" headers="Y2">2.95</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="Amostras">49.00</td>
-<td class="gt_row gt_right" headers="Y1">−0.14</td>
-<td class="gt_row gt_right" headers="Y2">2.98</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="Amostras">50.00</td>
-<td class="gt_row gt_right" headers="Y1">−0.11</td>
-<td class="gt_row gt_right" headers="Y2">3.00</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="Amostras">51.00</td>
-<td class="gt_row gt_right" headers="Y1">−0.09</td>
-<td class="gt_row gt_right" headers="Y2">3.03</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="Amostras">52.00</td>
-<td class="gt_row gt_right" headers="Y1">−0.06</td>
-<td class="gt_row gt_right" headers="Y2">3.05</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="Amostras">53.00</td>
-<td class="gt_row gt_right" headers="Y1">−0.04</td>
-<td class="gt_row gt_right" headers="Y2">3.08</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="Amostras">54.00</td>
-<td class="gt_row gt_right" headers="Y1">−0.01</td>
-<td class="gt_row gt_right" headers="Y2">3.10</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="Amostras">55.00</td>
-<td class="gt_row gt_right" headers="Y1">0.01</td>
-<td class="gt_row gt_right" headers="Y2">3.13</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="Amostras">56.00</td>
-<td class="gt_row gt_right" headers="Y1">0.04</td>
-<td class="gt_row gt_right" headers="Y2">3.15</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="Amostras">57.00</td>
-<td class="gt_row gt_right" headers="Y1">0.06</td>
-<td class="gt_row gt_right" headers="Y2">3.18</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="Amostras">58.00</td>
-<td class="gt_row gt_right" headers="Y1">0.09</td>
-<td class="gt_row gt_right" headers="Y2">3.20</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="Amostras">59.00</td>
-<td class="gt_row gt_right" headers="Y1">0.11</td>
-<td class="gt_row gt_right" headers="Y2">3.23</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="Amostras">60.00</td>
-<td class="gt_row gt_right" headers="Y1">0.14</td>
-<td class="gt_row gt_right" headers="Y2">3.25</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="Amostras">61.00</td>
-<td class="gt_row gt_right" headers="Y1">0.16</td>
-<td class="gt_row gt_right" headers="Y2">3.28</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="Amostras">62.00</td>
-<td class="gt_row gt_right" headers="Y1">0.19</td>
-<td class="gt_row gt_right" headers="Y2">3.30</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="Amostras">63.00</td>
-<td class="gt_row gt_right" headers="Y1">0.21</td>
-<td class="gt_row gt_right" headers="Y2">3.33</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="Amostras">64.00</td>
-<td class="gt_row gt_right" headers="Y1">0.24</td>
-<td class="gt_row gt_right" headers="Y2">3.35</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="Amostras">65.00</td>
-<td class="gt_row gt_right" headers="Y1">0.26</td>
 <td class="gt_row gt_right" headers="Y2">3.38</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_right" headers="Amostras">66.00</td>
-<td class="gt_row gt_right" headers="Y1">0.29</td>
-<td class="gt_row gt_right" headers="Y2">3.40</td>
+<td class="gt_row gt_right" headers="Amostras">30.00</td>
+<td class="gt_row gt_right" headers="Y1">−0.52</td>
+<td class="gt_row gt_right" headers="Y2">3.42</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_right" headers="Amostras">67.00</td>
-<td class="gt_row gt_right" headers="Y1">0.31</td>
-<td class="gt_row gt_right" headers="Y2">3.43</td>
+<td class="gt_row gt_right" headers="Amostras">31.00</td>
+<td class="gt_row gt_right" headers="Y1">−0.48</td>
+<td class="gt_row gt_right" headers="Y2">3.46</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_right" headers="Amostras">68.00</td>
-<td class="gt_row gt_right" headers="Y1">0.34</td>
-<td class="gt_row gt_right" headers="Y2">3.45</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="Amostras">69.00</td>
-<td class="gt_row gt_right" headers="Y1">0.36</td>
-<td class="gt_row gt_right" headers="Y2">3.48</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="Amostras">70.00</td>
-<td class="gt_row gt_right" headers="Y1">0.39</td>
+<td class="gt_row gt_right" headers="Amostras">32.00</td>
+<td class="gt_row gt_right" headers="Y1">−0.44</td>
 <td class="gt_row gt_right" headers="Y2">3.50</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_right" headers="Amostras">71.00</td>
-<td class="gt_row gt_right" headers="Y1">0.41</td>
-<td class="gt_row gt_right" headers="Y2">3.52</td>
+<td class="gt_row gt_right" headers="Amostras">33.00</td>
+<td class="gt_row gt_right" headers="Y1">−0.40</td>
+<td class="gt_row gt_right" headers="Y2">3.54</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_right" headers="Amostras">72.00</td>
-<td class="gt_row gt_right" headers="Y1">0.44</td>
-<td class="gt_row gt_right" headers="Y2">3.55</td>
+<td class="gt_row gt_right" headers="Amostras">34.00</td>
+<td class="gt_row gt_right" headers="Y1">−0.36</td>
+<td class="gt_row gt_right" headers="Y2">3.58</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_right" headers="Amostras">73.00</td>
-<td class="gt_row gt_right" headers="Y1">0.46</td>
-<td class="gt_row gt_right" headers="Y2">3.57</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="Amostras">74.00</td>
-<td class="gt_row gt_right" headers="Y1">0.49</td>
-<td class="gt_row gt_right" headers="Y2">3.60</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="Amostras">75.00</td>
-<td class="gt_row gt_right" headers="Y1">0.51</td>
+<td class="gt_row gt_right" headers="Amostras">35.00</td>
+<td class="gt_row gt_right" headers="Y1">−0.32</td>
 <td class="gt_row gt_right" headers="Y2">3.62</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_right" headers="Amostras">76.00</td>
-<td class="gt_row gt_right" headers="Y1">0.54</td>
-<td class="gt_row gt_right" headers="Y2">3.65</td>
+<td class="gt_row gt_right" headers="Amostras">36.00</td>
+<td class="gt_row gt_right" headers="Y1">−0.28</td>
+<td class="gt_row gt_right" headers="Y2">3.66</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_right" headers="Amostras">77.00</td>
-<td class="gt_row gt_right" headers="Y1">0.56</td>
-<td class="gt_row gt_right" headers="Y2">3.67</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="Amostras">78.00</td>
-<td class="gt_row gt_right" headers="Y1">0.59</td>
+<td class="gt_row gt_right" headers="Amostras">37.00</td>
+<td class="gt_row gt_right" headers="Y1">−0.24</td>
 <td class="gt_row gt_right" headers="Y2">3.70</td>
 </tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="Amostras">38.00</td>
+<td class="gt_row gt_right" headers="Y1">−0.20</td>
+<td class="gt_row gt_right" headers="Y2">3.74</td>
+</tr>
 <tr class="odd">
-<td class="gt_row gt_right" headers="Amostras">79.00</td>
-<td class="gt_row gt_right" headers="Y1">0.61</td>
-<td class="gt_row gt_right" headers="Y2">3.72</td>
+<td class="gt_row gt_right" headers="Amostras">39.00</td>
+<td class="gt_row gt_right" headers="Y1">−0.16</td>
+<td class="gt_row gt_right" headers="Y2">3.78</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_right" headers="Amostras">80.00</td>
-<td class="gt_row gt_right" headers="Y1">0.63</td>
-<td class="gt_row gt_right" headers="Y2">3.75</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="Amostras">81.00</td>
-<td class="gt_row gt_right" headers="Y1">0.66</td>
-<td class="gt_row gt_right" headers="Y2">3.77</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="Amostras">82.00</td>
-<td class="gt_row gt_right" headers="Y1">0.68</td>
-<td class="gt_row gt_right" headers="Y2">3.80</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="Amostras">83.00</td>
-<td class="gt_row gt_right" headers="Y1">0.71</td>
+<td class="gt_row gt_right" headers="Amostras">40.00</td>
+<td class="gt_row gt_right" headers="Y1">−0.12</td>
 <td class="gt_row gt_right" headers="Y2">3.82</td>
 </tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="Amostras">84.00</td>
-<td class="gt_row gt_right" headers="Y1">0.73</td>
-<td class="gt_row gt_right" headers="Y2">3.85</td>
-</tr>
 <tr class="odd">
-<td class="gt_row gt_right" headers="Amostras">85.00</td>
-<td class="gt_row gt_right" headers="Y1">0.76</td>
-<td class="gt_row gt_right" headers="Y2">3.87</td>
+<td class="gt_row gt_right" headers="Amostras">41.00</td>
+<td class="gt_row gt_right" headers="Y1">−0.08</td>
+<td class="gt_row gt_right" headers="Y2">3.86</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_right" headers="Amostras">86.00</td>
-<td class="gt_row gt_right" headers="Y1">0.78</td>
+<td class="gt_row gt_right" headers="Amostras">42.00</td>
+<td class="gt_row gt_right" headers="Y1">−0.04</td>
 <td class="gt_row gt_right" headers="Y2">3.90</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_right" headers="Amostras">87.00</td>
-<td class="gt_row gt_right" headers="Y1">0.81</td>
-<td class="gt_row gt_right" headers="Y2">3.92</td>
+<td class="gt_row gt_right" headers="Amostras">43.00</td>
+<td class="gt_row gt_right" headers="Y1">0.00</td>
+<td class="gt_row gt_right" headers="Y2">3.94</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_right" headers="Amostras">88.00</td>
-<td class="gt_row gt_right" headers="Y1">0.83</td>
-<td class="gt_row gt_right" headers="Y2">3.95</td>
+<td class="gt_row gt_right" headers="Amostras">44.00</td>
+<td class="gt_row gt_right" headers="Y1">0.04</td>
+<td class="gt_row gt_right" headers="Y2">3.98</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_right" headers="Amostras">89.00</td>
-<td class="gt_row gt_right" headers="Y1">0.86</td>
-<td class="gt_row gt_right" headers="Y2">3.97</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="Amostras">90.00</td>
-<td class="gt_row gt_right" headers="Y1">0.88</td>
-<td class="gt_row gt_right" headers="Y2">4.00</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="Amostras">91.00</td>
-<td class="gt_row gt_right" headers="Y1">0.91</td>
+<td class="gt_row gt_right" headers="Amostras">45.00</td>
+<td class="gt_row gt_right" headers="Y1">0.08</td>
 <td class="gt_row gt_right" headers="Y2">4.02</td>
 </tr>
 <tr class="even">
+<td class="gt_row gt_right" headers="Amostras">46.00</td>
+<td class="gt_row gt_right" headers="Y1">0.12</td>
+<td class="gt_row gt_right" headers="Y2">4.06</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="Amostras">47.00</td>
+<td class="gt_row gt_right" headers="Y1">0.16</td>
+<td class="gt_row gt_right" headers="Y2">4.10</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="Amostras">48.00</td>
+<td class="gt_row gt_right" headers="Y1">0.20</td>
+<td class="gt_row gt_right" headers="Y2">4.14</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="Amostras">49.00</td>
+<td class="gt_row gt_right" headers="Y1">0.24</td>
+<td class="gt_row gt_right" headers="Y2">4.18</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="Amostras">50.00</td>
+<td class="gt_row gt_right" headers="Y1">0.28</td>
+<td class="gt_row gt_right" headers="Y2">4.22</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="Amostras">51.00</td>
+<td class="gt_row gt_right" headers="Y1">0.32</td>
+<td class="gt_row gt_right" headers="Y2">4.26</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="Amostras">52.00</td>
+<td class="gt_row gt_right" headers="Y1">0.36</td>
+<td class="gt_row gt_right" headers="Y2">4.30</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="Amostras">53.00</td>
+<td class="gt_row gt_right" headers="Y1">0.40</td>
+<td class="gt_row gt_right" headers="Y2">4.34</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="Amostras">54.00</td>
+<td class="gt_row gt_right" headers="Y1">0.44</td>
+<td class="gt_row gt_right" headers="Y2">4.38</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="Amostras">55.00</td>
+<td class="gt_row gt_right" headers="Y1">0.48</td>
+<td class="gt_row gt_right" headers="Y2">4.42</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="Amostras">56.00</td>
+<td class="gt_row gt_right" headers="Y1">0.52</td>
+<td class="gt_row gt_right" headers="Y2">4.46</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="Amostras">57.00</td>
+<td class="gt_row gt_right" headers="Y1">0.56</td>
+<td class="gt_row gt_right" headers="Y2">4.50</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="Amostras">58.00</td>
+<td class="gt_row gt_right" headers="Y1">0.60</td>
+<td class="gt_row gt_right" headers="Y2">4.54</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="Amostras">59.00</td>
+<td class="gt_row gt_right" headers="Y1">0.64</td>
+<td class="gt_row gt_right" headers="Y2">4.58</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="Amostras">60.00</td>
+<td class="gt_row gt_right" headers="Y1">0.68</td>
+<td class="gt_row gt_right" headers="Y2">4.62</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="Amostras">61.00</td>
+<td class="gt_row gt_right" headers="Y1">0.72</td>
+<td class="gt_row gt_right" headers="Y2">4.66</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="Amostras">62.00</td>
+<td class="gt_row gt_right" headers="Y1">0.76</td>
+<td class="gt_row gt_right" headers="Y2">4.70</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="Amostras">63.00</td>
+<td class="gt_row gt_right" headers="Y1">0.80</td>
+<td class="gt_row gt_right" headers="Y2">4.74</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="Amostras">64.00</td>
+<td class="gt_row gt_right" headers="Y1">0.84</td>
+<td class="gt_row gt_right" headers="Y2">4.78</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="Amostras">65.00</td>
+<td class="gt_row gt_right" headers="Y1">0.88</td>
+<td class="gt_row gt_right" headers="Y2">4.82</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="Amostras">66.00</td>
+<td class="gt_row gt_right" headers="Y1">0.92</td>
+<td class="gt_row gt_right" headers="Y2">4.86</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="Amostras">67.00</td>
+<td class="gt_row gt_right" headers="Y1">0.96</td>
+<td class="gt_row gt_right" headers="Y2">4.90</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="Amostras">68.00</td>
+<td class="gt_row gt_right" headers="Y1">1.00</td>
+<td class="gt_row gt_right" headers="Y2">4.94</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="Amostras">69.00</td>
+<td class="gt_row gt_right" headers="Y1">1.04</td>
+<td class="gt_row gt_right" headers="Y2">4.98</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="Amostras">70.00</td>
+<td class="gt_row gt_right" headers="Y1">1.08</td>
+<td class="gt_row gt_right" headers="Y2">5.02</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="Amostras">71.00</td>
+<td class="gt_row gt_right" headers="Y1">1.12</td>
+<td class="gt_row gt_right" headers="Y2">5.06</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="Amostras">72.00</td>
+<td class="gt_row gt_right" headers="Y1">1.16</td>
+<td class="gt_row gt_right" headers="Y2">5.10</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="Amostras">73.00</td>
+<td class="gt_row gt_right" headers="Y1">1.20</td>
+<td class="gt_row gt_right" headers="Y2">5.14</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="Amostras">74.00</td>
+<td class="gt_row gt_right" headers="Y1">1.24</td>
+<td class="gt_row gt_right" headers="Y2">5.18</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="Amostras">75.00</td>
+<td class="gt_row gt_right" headers="Y1">1.28</td>
+<td class="gt_row gt_right" headers="Y2">5.22</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="Amostras">76.00</td>
+<td class="gt_row gt_right" headers="Y1">1.32</td>
+<td class="gt_row gt_right" headers="Y2">5.26</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="Amostras">77.00</td>
+<td class="gt_row gt_right" headers="Y1">1.36</td>
+<td class="gt_row gt_right" headers="Y2">5.30</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="Amostras">78.00</td>
+<td class="gt_row gt_right" headers="Y1">1.40</td>
+<td class="gt_row gt_right" headers="Y2">5.34</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="Amostras">79.00</td>
+<td class="gt_row gt_right" headers="Y1">1.44</td>
+<td class="gt_row gt_right" headers="Y2">5.38</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="Amostras">80.00</td>
+<td class="gt_row gt_right" headers="Y1">1.49</td>
+<td class="gt_row gt_right" headers="Y2">5.42</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="Amostras">81.00</td>
+<td class="gt_row gt_right" headers="Y1">1.53</td>
+<td class="gt_row gt_right" headers="Y2">5.46</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="Amostras">82.00</td>
+<td class="gt_row gt_right" headers="Y1">1.57</td>
+<td class="gt_row gt_right" headers="Y2">5.50</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="Amostras">83.00</td>
+<td class="gt_row gt_right" headers="Y1">1.61</td>
+<td class="gt_row gt_right" headers="Y2">5.54</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="Amostras">84.00</td>
+<td class="gt_row gt_right" headers="Y1">1.65</td>
+<td class="gt_row gt_right" headers="Y2">5.59</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="Amostras">85.00</td>
+<td class="gt_row gt_right" headers="Y1">1.69</td>
+<td class="gt_row gt_right" headers="Y2">5.63</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="Amostras">86.00</td>
+<td class="gt_row gt_right" headers="Y1">1.73</td>
+<td class="gt_row gt_right" headers="Y2">5.67</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="Amostras">87.00</td>
+<td class="gt_row gt_right" headers="Y1">1.77</td>
+<td class="gt_row gt_right" headers="Y2">5.71</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="Amostras">88.00</td>
+<td class="gt_row gt_right" headers="Y1">1.81</td>
+<td class="gt_row gt_right" headers="Y2">5.75</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="Amostras">89.00</td>
+<td class="gt_row gt_right" headers="Y1">1.85</td>
+<td class="gt_row gt_right" headers="Y2">5.79</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="Amostras">90.00</td>
+<td class="gt_row gt_right" headers="Y1">1.89</td>
+<td class="gt_row gt_right" headers="Y2">5.83</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="Amostras">91.00</td>
+<td class="gt_row gt_right" headers="Y1">1.93</td>
+<td class="gt_row gt_right" headers="Y2">5.87</td>
+</tr>
+<tr class="even">
 <td class="gt_row gt_right" headers="Amostras">92.00</td>
-<td class="gt_row gt_right" headers="Y1">0.93</td>
-<td class="gt_row gt_right" headers="Y2">4.05</td>
+<td class="gt_row gt_right" headers="Y1">1.97</td>
+<td class="gt_row gt_right" headers="Y2">5.91</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_right" headers="Amostras">93.00</td>
-<td class="gt_row gt_right" headers="Y1">0.96</td>
-<td class="gt_row gt_right" headers="Y2">4.07</td>
+<td class="gt_row gt_right" headers="Y1">2.01</td>
+<td class="gt_row gt_right" headers="Y2">5.95</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_right" headers="Amostras">94.00</td>
-<td class="gt_row gt_right" headers="Y1">0.98</td>
-<td class="gt_row gt_right" headers="Y2">4.10</td>
+<td class="gt_row gt_right" headers="Y1">2.05</td>
+<td class="gt_row gt_right" headers="Y2">5.99</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_right" headers="Amostras">95.00</td>
-<td class="gt_row gt_right" headers="Y1">1.01</td>
-<td class="gt_row gt_right" headers="Y2">4.12</td>
+<td class="gt_row gt_right" headers="Y1">2.09</td>
+<td class="gt_row gt_right" headers="Y2">6.03</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_right" headers="Amostras">96.00</td>
-<td class="gt_row gt_right" headers="Y1">1.03</td>
-<td class="gt_row gt_right" headers="Y2">4.15</td>
+<td class="gt_row gt_right" headers="Y1">2.13</td>
+<td class="gt_row gt_right" headers="Y2">6.07</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_right" headers="Amostras">97.00</td>
-<td class="gt_row gt_right" headers="Y1">1.06</td>
-<td class="gt_row gt_right" headers="Y2">4.17</td>
+<td class="gt_row gt_right" headers="Y1">2.17</td>
+<td class="gt_row gt_right" headers="Y2">6.11</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_right" headers="Amostras">98.00</td>
-<td class="gt_row gt_right" headers="Y1">1.08</td>
-<td class="gt_row gt_right" headers="Y2">4.20</td>
+<td class="gt_row gt_right" headers="Y1">2.21</td>
+<td class="gt_row gt_right" headers="Y2">6.15</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_right" headers="Amostras">99.00</td>
-<td class="gt_row gt_right" headers="Y1">1.11</td>
-<td class="gt_row gt_right" headers="Y2">4.22</td>
+<td class="gt_row gt_right" headers="Y1">2.25</td>
+<td class="gt_row gt_right" headers="Y2">6.19</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_right" headers="Amostras">100.00</td>
-<td class="gt_row gt_right" headers="Y1">1.13</td>
-<td class="gt_row gt_right" headers="Y2">4.25</td>
+<td class="gt_row gt_right" headers="Y1">2.29</td>
+<td class="gt_row gt_right" headers="Y2">6.23</td>
 </tr>
 </tbody>
 </table>
@@ -1560,11 +1560,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="va">n1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">ceiling</a></span><span class="op">(</span><span class="va">Y2</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Valor de n0:"</span>, <span class="va">n0</span>, <span class="st">"\n"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>#&gt; Valor de n0: 55</code></pre>
+<pre><code>#&gt; Valor de n0: 43</code></pre>
 </div>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Valor de n1:"</span>, <span class="va">n1</span>, <span class="st">"\n"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>#&gt; Valor de n1: 2</code></pre>
+<pre><code>#&gt; Valor de n1: 3</code></pre>
 </div>
 </div>
 </section><section id="equações-para-o-tamanho-médio-de-amostra" class="level2"><h2 class="anchored" data-anchor-id="equações-para-o-tamanho-médio-de-amostra">Equações para o Tamanho Médio de Amostra</h2>
@@ -1605,7 +1605,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co"># Tamanho médio de amostra</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fu">tma</span><span class="op">(</span><span class="fl">0.95</span><span class="op">)</span>,digits <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>#&gt; [1] 81</code></pre>
+<pre><code>#&gt; [1] 76</code></pre>
 </div>
 </div>
 </section><section id="tma-na-probabilidade-de-aceitação-de-010-beta" class="level2"><h2 class="anchored" data-anchor-id="tma-na-probabilidade-de-aceitação-de-010-beta">TMA na probabilidade de aceitação de 0,10 (beta)</h2>
@@ -1629,7 +1629,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co"># Tamanho médio de amostra</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fu">tma</span><span class="op">(</span><span class="fl">0.10</span><span class="op">)</span>,digits <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>#&gt; [1] 58</code></pre>
+<pre><code>#&gt; [1] 61</code></pre>
 </div>
 </div>
 </section><section id="tma-na-fração-não-conforme-p0" class="level2"><h2 class="anchored" data-anchor-id="tma-na-fração-não-conforme-p0">TMA na fração não conforme p=0</h2>
@@ -1637,7 +1637,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># TMA quando p=0</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">h1</span><span class="op">/</span><span class="va">s</span>,digits <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>#&gt; [1] 55</code></pre>
+<pre><code>#&gt; [1] 43</code></pre>
 </div>
 </div>
 </section><section id="tma-na-fração-não-conforme-p1" class="level2"><h2 class="anchored" data-anchor-id="tma-na-fração-não-conforme-p1">TMA na fração não conforme p=1</h2>
@@ -1653,7 +1653,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Valor de s</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Valor de s:"</span>, <span class="va">s</span>, <span class="st">"\n"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>#&gt; Valor de s: 0.02498542</code></pre>
+<pre><code>#&gt; Valor de s: 0.0401247</code></pre>
 </div>
 <div class="sourceCode" id="cb34"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># prob de Aceitaçaõ</span></span>
 <span><span class="va">p_s</span> <span class="op">&lt;-</span> <span class="va">h2</span><span class="op">/</span><span class="op">(</span><span class="va">h1</span><span class="op">+</span><span class="va">h2</span><span class="op">)</span></span>
@@ -1664,7 +1664,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb36"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># TMA quando p=s</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">h1</span><span class="op">*</span><span class="va">h2</span><span class="op">/</span><span class="op">(</span><span class="va">s</span><span class="op">*</span><span class="op">(</span><span class="fl">1</span><span class="op">-</span><span class="va">s</span><span class="op">)</span><span class="op">)</span>,digits <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>#&gt; [1] 98</code></pre>
+<pre><code>#&gt; [1] 99</code></pre>
 </div>
 </div>
 

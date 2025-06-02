@@ -796,7 +796,7 @@
     "href": "semanas/Aula11.html#definições",
     "title": "Plano Sequencial",
     "section": "Definições",
-    "text": "Definições\n\np1 &lt;- 0.01\np2 &lt;- 0.05\nalfa &lt;- 0.05\nbeta &lt;- 0.10",
+    "text": "Definições\n\np1 &lt;- 0.02\np2 &lt;- 0.07\nalfa &lt;- 0.05\nbeta &lt;- 0.10",
     "crumbs": [
       "Conteúdo Semanal",
       "Plano Sequencial"
@@ -807,7 +807,7 @@
     "href": "semanas/Aula11.html#plano-sequencial",
     "title": "Plano Sequencial",
     "section": "Plano Sequencial",
-    "text": "Plano Sequencial\n\n# Coeficientes da reta de aceitação\nh1 &lt;- log((1-alfa)/beta) / (log(p2/p1)+ log((1-p1)/(1-p2)))\nh2 &lt;- log((1-beta)/alfa) / (log(p2/p1)+ log((1-p1)/(1-p2)))\ns &lt;- log((1-p1)/(1-p2))/ (log(p2/p1)+ log((1-p1)/(1-p2)))\ncat(\"Valor de h1:\", h1, \"\\n\")\n\n#&gt; Valor de h1: 1.363856\n\ncat(\"Valor de h2:\", h2, \"\\n\")\n\n#&gt; Valor de h2: 1.751018\n\ncat(\"Valor de s:\", s, \"\\n\")\n\n#&gt; Valor de s: 0.02498542",
+    "text": "Plano Sequencial\n\n# Coeficientes da reta de aceitação\nh1 &lt;- log((1-alfa)/beta) / (log(p2/p1)+ log((1-p1)/(1-p2)))\nh2 &lt;- log((1-beta)/alfa) / (log(p2/p1)+ log((1-p1)/(1-p2)))\ns &lt;- log((1-p1)/(1-p2))/ (log(p2/p1)+ log((1-p1)/(1-p2)))\ncat(\"Valor de h1:\", h1, \"\\n\")\n\n#&gt; Valor de h1: 1.724955\n\ncat(\"Valor de h2:\", h2, \"\\n\")\n\n#&gt; Valor de h2: 2.214622\n\ncat(\"Valor de s:\", s, \"\\n\")\n\n#&gt; Valor de s: 0.0401247",
     "crumbs": [
       "Conteúdo Semanal",
       "Plano Sequencial"
@@ -829,7 +829,7 @@
     "href": "semanas/Aula11.html#tabela-de-resultados",
     "title": "Plano Sequencial",
     "section": "Tabela de Resultados",
-    "text": "Tabela de Resultados\n\nlibrary(gt)\nresults &lt;- data.frame(\n  Amostras = k,\n  Y1 = Y1,\n  Y2 = Y2\n)\ngt::gt(results) |&gt;\n  gt::tab_header(\n    title = \"Resultados do Plano Sequencial\"\n  ) |&gt;\n  gt::fmt_number(\n    columns = c(Amostras, Y1, Y2),\n    decimals = 2\n  ) |&gt;\n  gt::cols_label(\n    Amostras = \"Amostras (k)\",\n    Y1 = \"Y1 (Aceitação)\",\n    Y2 = \"Y2 (Rejeição)\"\n  )\n\n\n\n\n\n\nResultados do Plano Sequencial\n\n\nAmostras (k)\nY1 (Aceitação)\nY2 (Rejeição)\n\n\n\n\n1.00\n−1.34\n1.78\n\n\n2.00\n−1.31\n1.80\n\n\n3.00\n−1.29\n1.83\n\n\n4.00\n−1.26\n1.85\n\n\n5.00\n−1.24\n1.88\n\n\n6.00\n−1.21\n1.90\n\n\n7.00\n−1.19\n1.93\n\n\n8.00\n−1.16\n1.95\n\n\n9.00\n−1.14\n1.98\n\n\n10.00\n−1.11\n2.00\n\n\n11.00\n−1.09\n2.03\n\n\n12.00\n−1.06\n2.05\n\n\n13.00\n−1.04\n2.08\n\n\n14.00\n−1.01\n2.10\n\n\n15.00\n−0.99\n2.13\n\n\n16.00\n−0.96\n2.15\n\n\n17.00\n−0.94\n2.18\n\n\n18.00\n−0.91\n2.20\n\n\n19.00\n−0.89\n2.23\n\n\n20.00\n−0.86\n2.25\n\n\n21.00\n−0.84\n2.28\n\n\n22.00\n−0.81\n2.30\n\n\n23.00\n−0.79\n2.33\n\n\n24.00\n−0.76\n2.35\n\n\n25.00\n−0.74\n2.38\n\n\n26.00\n−0.71\n2.40\n\n\n27.00\n−0.69\n2.43\n\n\n28.00\n−0.66\n2.45\n\n\n29.00\n−0.64\n2.48\n\n\n30.00\n−0.61\n2.50\n\n\n31.00\n−0.59\n2.53\n\n\n32.00\n−0.56\n2.55\n\n\n33.00\n−0.54\n2.58\n\n\n34.00\n−0.51\n2.60\n\n\n35.00\n−0.49\n2.63\n\n\n36.00\n−0.46\n2.65\n\n\n37.00\n−0.44\n2.68\n\n\n38.00\n−0.41\n2.70\n\n\n39.00\n−0.39\n2.73\n\n\n40.00\n−0.36\n2.75\n\n\n41.00\n−0.34\n2.78\n\n\n42.00\n−0.31\n2.80\n\n\n43.00\n−0.29\n2.83\n\n\n44.00\n−0.26\n2.85\n\n\n45.00\n−0.24\n2.88\n\n\n46.00\n−0.21\n2.90\n\n\n47.00\n−0.19\n2.93\n\n\n48.00\n−0.16\n2.95\n\n\n49.00\n−0.14\n2.98\n\n\n50.00\n−0.11\n3.00\n\n\n51.00\n−0.09\n3.03\n\n\n52.00\n−0.06\n3.05\n\n\n53.00\n−0.04\n3.08\n\n\n54.00\n−0.01\n3.10\n\n\n55.00\n0.01\n3.13\n\n\n56.00\n0.04\n3.15\n\n\n57.00\n0.06\n3.18\n\n\n58.00\n0.09\n3.20\n\n\n59.00\n0.11\n3.23\n\n\n60.00\n0.14\n3.25\n\n\n61.00\n0.16\n3.28\n\n\n62.00\n0.19\n3.30\n\n\n63.00\n0.21\n3.33\n\n\n64.00\n0.24\n3.35\n\n\n65.00\n0.26\n3.38\n\n\n66.00\n0.29\n3.40\n\n\n67.00\n0.31\n3.43\n\n\n68.00\n0.34\n3.45\n\n\n69.00\n0.36\n3.48\n\n\n70.00\n0.39\n3.50\n\n\n71.00\n0.41\n3.52\n\n\n72.00\n0.44\n3.55\n\n\n73.00\n0.46\n3.57\n\n\n74.00\n0.49\n3.60\n\n\n75.00\n0.51\n3.62\n\n\n76.00\n0.54\n3.65\n\n\n77.00\n0.56\n3.67\n\n\n78.00\n0.59\n3.70\n\n\n79.00\n0.61\n3.72\n\n\n80.00\n0.63\n3.75\n\n\n81.00\n0.66\n3.77\n\n\n82.00\n0.68\n3.80\n\n\n83.00\n0.71\n3.82\n\n\n84.00\n0.73\n3.85\n\n\n85.00\n0.76\n3.87\n\n\n86.00\n0.78\n3.90\n\n\n87.00\n0.81\n3.92\n\n\n88.00\n0.83\n3.95\n\n\n89.00\n0.86\n3.97\n\n\n90.00\n0.88\n4.00\n\n\n91.00\n0.91\n4.02\n\n\n92.00\n0.93\n4.05\n\n\n93.00\n0.96\n4.07\n\n\n94.00\n0.98\n4.10\n\n\n95.00\n1.01\n4.12\n\n\n96.00\n1.03\n4.15\n\n\n97.00\n1.06\n4.17\n\n\n98.00\n1.08\n4.20\n\n\n99.00\n1.11\n4.22\n\n\n100.00\n1.13\n4.25",
+    "text": "Tabela de Resultados\n\nlibrary(gt)\nresults &lt;- data.frame(\n  Amostras = k,\n  Y1 = Y1,\n  Y2 = Y2\n)\ngt::gt(results) |&gt;\n  gt::tab_header(\n    title = \"Resultados do Plano Sequencial\"\n  ) |&gt;\n  gt::fmt_number(\n    columns = c(Amostras, Y1, Y2),\n    decimals = 2\n  ) |&gt;\n  gt::cols_label(\n    Amostras = \"Amostras (k)\",\n    Y1 = \"Y1 (Aceitação)\",\n    Y2 = \"Y2 (Rejeição)\"\n  )\n\n\n\n\n\n\nResultados do Plano Sequencial\n\n\nAmostras (k)\nY1 (Aceitação)\nY2 (Rejeição)\n\n\n\n\n1.00\n−1.68\n2.25\n\n\n2.00\n−1.64\n2.29\n\n\n3.00\n−1.60\n2.33\n\n\n4.00\n−1.56\n2.38\n\n\n5.00\n−1.52\n2.42\n\n\n6.00\n−1.48\n2.46\n\n\n7.00\n−1.44\n2.50\n\n\n8.00\n−1.40\n2.54\n\n\n9.00\n−1.36\n2.58\n\n\n10.00\n−1.32\n2.62\n\n\n11.00\n−1.28\n2.66\n\n\n12.00\n−1.24\n2.70\n\n\n13.00\n−1.20\n2.74\n\n\n14.00\n−1.16\n2.78\n\n\n15.00\n−1.12\n2.82\n\n\n16.00\n−1.08\n2.86\n\n\n17.00\n−1.04\n2.90\n\n\n18.00\n−1.00\n2.94\n\n\n19.00\n−0.96\n2.98\n\n\n20.00\n−0.92\n3.02\n\n\n21.00\n−0.88\n3.06\n\n\n22.00\n−0.84\n3.10\n\n\n23.00\n−0.80\n3.14\n\n\n24.00\n−0.76\n3.18\n\n\n25.00\n−0.72\n3.22\n\n\n26.00\n−0.68\n3.26\n\n\n27.00\n−0.64\n3.30\n\n\n28.00\n−0.60\n3.34\n\n\n29.00\n−0.56\n3.38\n\n\n30.00\n−0.52\n3.42\n\n\n31.00\n−0.48\n3.46\n\n\n32.00\n−0.44\n3.50\n\n\n33.00\n−0.40\n3.54\n\n\n34.00\n−0.36\n3.58\n\n\n35.00\n−0.32\n3.62\n\n\n36.00\n−0.28\n3.66\n\n\n37.00\n−0.24\n3.70\n\n\n38.00\n−0.20\n3.74\n\n\n39.00\n−0.16\n3.78\n\n\n40.00\n−0.12\n3.82\n\n\n41.00\n−0.08\n3.86\n\n\n42.00\n−0.04\n3.90\n\n\n43.00\n0.00\n3.94\n\n\n44.00\n0.04\n3.98\n\n\n45.00\n0.08\n4.02\n\n\n46.00\n0.12\n4.06\n\n\n47.00\n0.16\n4.10\n\n\n48.00\n0.20\n4.14\n\n\n49.00\n0.24\n4.18\n\n\n50.00\n0.28\n4.22\n\n\n51.00\n0.32\n4.26\n\n\n52.00\n0.36\n4.30\n\n\n53.00\n0.40\n4.34\n\n\n54.00\n0.44\n4.38\n\n\n55.00\n0.48\n4.42\n\n\n56.00\n0.52\n4.46\n\n\n57.00\n0.56\n4.50\n\n\n58.00\n0.60\n4.54\n\n\n59.00\n0.64\n4.58\n\n\n60.00\n0.68\n4.62\n\n\n61.00\n0.72\n4.66\n\n\n62.00\n0.76\n4.70\n\n\n63.00\n0.80\n4.74\n\n\n64.00\n0.84\n4.78\n\n\n65.00\n0.88\n4.82\n\n\n66.00\n0.92\n4.86\n\n\n67.00\n0.96\n4.90\n\n\n68.00\n1.00\n4.94\n\n\n69.00\n1.04\n4.98\n\n\n70.00\n1.08\n5.02\n\n\n71.00\n1.12\n5.06\n\n\n72.00\n1.16\n5.10\n\n\n73.00\n1.20\n5.14\n\n\n74.00\n1.24\n5.18\n\n\n75.00\n1.28\n5.22\n\n\n76.00\n1.32\n5.26\n\n\n77.00\n1.36\n5.30\n\n\n78.00\n1.40\n5.34\n\n\n79.00\n1.44\n5.38\n\n\n80.00\n1.49\n5.42\n\n\n81.00\n1.53\n5.46\n\n\n82.00\n1.57\n5.50\n\n\n83.00\n1.61\n5.54\n\n\n84.00\n1.65\n5.59\n\n\n85.00\n1.69\n5.63\n\n\n86.00\n1.73\n5.67\n\n\n87.00\n1.77\n5.71\n\n\n88.00\n1.81\n5.75\n\n\n89.00\n1.85\n5.79\n\n\n90.00\n1.89\n5.83\n\n\n91.00\n1.93\n5.87\n\n\n92.00\n1.97\n5.91\n\n\n93.00\n2.01\n5.95\n\n\n94.00\n2.05\n5.99\n\n\n95.00\n2.09\n6.03\n\n\n96.00\n2.13\n6.07\n\n\n97.00\n2.17\n6.11\n\n\n98.00\n2.21\n6.15\n\n\n99.00\n2.25\n6.19\n\n\n100.00\n2.29\n6.23",
     "crumbs": [
       "Conteúdo Semanal",
       "Plano Sequencial"
@@ -840,7 +840,7 @@
     "href": "semanas/Aula11.html#número-de-amostras",
     "title": "Plano Sequencial",
     "section": "Número de amostras",
-    "text": "Número de amostras\n\nantes da possibilidade de aceitação\npossibilitando a rejeição\n\n\n# Número de amostras antes da possibilidade de aceitação e rejeição\nacha_zero &lt;- function(x) {\n  return(s * x - h1)\n}\nresultado &lt;- uniroot(acha_zero, lower = -5, upper = 200) \nn0 &lt;- ceiling(resultado$root)\nn1 &lt;- ceiling(Y2[1])\ncat(\"Valor de n0:\", n0, \"\\n\")\n\n#&gt; Valor de n0: 55\n\ncat(\"Valor de n1:\", n1, \"\\n\")\n\n#&gt; Valor de n1: 2",
+    "text": "Número de amostras\n\nantes da possibilidade de aceitação\npossibilitando a rejeição\n\n\n# Número de amostras antes da possibilidade de aceitação e rejeição\nacha_zero &lt;- function(x) {\n  return(s * x - h1)\n}\nresultado &lt;- uniroot(acha_zero, lower = -5, upper = 200) \nn0 &lt;- ceiling(resultado$root)\nn1 &lt;- ceiling(Y2[1])\ncat(\"Valor de n0:\", n0, \"\\n\")\n\n#&gt; Valor de n0: 43\n\ncat(\"Valor de n1:\", n1, \"\\n\")\n\n#&gt; Valor de n1: 3",
     "crumbs": [
       "Conteúdo Semanal",
       "Plano Sequencial"
@@ -873,7 +873,7 @@
     "href": "semanas/Aula11.html#tma-na-probabilidade-de-aceitação-de-095-1-alfa",
     "title": "Plano Sequencial",
     "section": "TMA na probabilidade de aceitação de 0,95 (1-alfa)",
-    "text": "TMA na probabilidade de aceitação de 0,95 (1-alfa)\n\n# Definindo a probabilidade alvo de aceitação\nPa_alvo &lt;- 0.95  # Defina a probabilidade alvo de aceitação\n# Usando uniroot para encontrar x tal que Pa(x) = Pa_alvo\nresultado &lt;- uniroot(Pa_diff, lower = -5, upper = 20)  # ajuste os limites conforme necessário\n\ncat(\"Valor de x encontrado:\", resultado$root, \"\\n\")\n\n#&gt; Valor de x encontrado: 0.9999996\n\ncat(\"Verificação: Pa(x) =\", Pa(resultado$root), \"\\n\")\n\n#&gt; Verificação: Pa(x) = 0.9499999\n\n# Valor de Fração não conforme\np &lt;- valor_p(resultado$root)\n\n# Tamanho médio de amostra\nround(tma(0.95),digits = 0)\n\n#&gt; [1] 81",
+    "text": "TMA na probabilidade de aceitação de 0,95 (1-alfa)\n\n# Definindo a probabilidade alvo de aceitação\nPa_alvo &lt;- 0.95  # Defina a probabilidade alvo de aceitação\n# Usando uniroot para encontrar x tal que Pa(x) = Pa_alvo\nresultado &lt;- uniroot(Pa_diff, lower = -5, upper = 20)  # ajuste os limites conforme necessário\n\ncat(\"Valor de x encontrado:\", resultado$root, \"\\n\")\n\n#&gt; Valor de x encontrado: 0.9999996\n\ncat(\"Verificação: Pa(x) =\", Pa(resultado$root), \"\\n\")\n\n#&gt; Verificação: Pa(x) = 0.9499999\n\n# Valor de Fração não conforme\np &lt;- valor_p(resultado$root)\n\n# Tamanho médio de amostra\nround(tma(0.95),digits = 0)\n\n#&gt; [1] 76",
     "crumbs": [
       "Conteúdo Semanal",
       "Plano Sequencial"
@@ -884,7 +884,7 @@
     "href": "semanas/Aula11.html#tma-na-probabilidade-de-aceitação-de-010-beta",
     "title": "Plano Sequencial",
     "section": "TMA na probabilidade de aceitação de 0,10 (beta)",
-    "text": "TMA na probabilidade de aceitação de 0,10 (beta)\n\n# Definindo a probabilidade alvo de aceitação\nPa_alvo &lt;- 0.10  # Defina a probabilidade alvo de aceitação\n# Usando uniroot para encontrar x tal que Pa(x) = Pa_alvo\nresultado &lt;- uniroot(Pa_diff, lower = -5, upper = 20)  # ajuste os limites conforme necessário\n\ncat(\"Valor de x encontrado:\", resultado$root, \"\\n\")\n\n#&gt; Valor de x encontrado: -0.9999999\n\ncat(\"Verificação: Pa(x) =\", Pa(resultado$root), \"\\n\")\n\n#&gt; Verificação: Pa(x) = 0.1\n\n# Valor de Fração não conforme\np &lt;- valor_p(resultado$root)\n\n# Tamanho médio de amostra\nround(tma(0.10),digits = 0)\n\n#&gt; [1] 58",
+    "text": "TMA na probabilidade de aceitação de 0,10 (beta)\n\n# Definindo a probabilidade alvo de aceitação\nPa_alvo &lt;- 0.10  # Defina a probabilidade alvo de aceitação\n# Usando uniroot para encontrar x tal que Pa(x) = Pa_alvo\nresultado &lt;- uniroot(Pa_diff, lower = -5, upper = 20)  # ajuste os limites conforme necessário\n\ncat(\"Valor de x encontrado:\", resultado$root, \"\\n\")\n\n#&gt; Valor de x encontrado: -0.9999999\n\ncat(\"Verificação: Pa(x) =\", Pa(resultado$root), \"\\n\")\n\n#&gt; Verificação: Pa(x) = 0.1\n\n# Valor de Fração não conforme\np &lt;- valor_p(resultado$root)\n\n# Tamanho médio de amostra\nround(tma(0.10),digits = 0)\n\n#&gt; [1] 61",
     "crumbs": [
       "Conteúdo Semanal",
       "Plano Sequencial"
@@ -895,7 +895,7 @@
     "href": "semanas/Aula11.html#tma-na-fração-não-conforme-p0",
     "title": "Plano Sequencial",
     "section": "TMA na fração não conforme p=0",
-    "text": "TMA na fração não conforme p=0\n\n# TMA quando p=0\nround(h1/s,digits = 0)\n\n#&gt; [1] 55",
+    "text": "TMA na fração não conforme p=0\n\n# TMA quando p=0\nround(h1/s,digits = 0)\n\n#&gt; [1] 43",
     "crumbs": [
       "Conteúdo Semanal",
       "Plano Sequencial"
@@ -917,7 +917,7 @@
     "href": "semanas/Aula11.html#tma-na-fração-não-conforme-s",
     "title": "Plano Sequencial",
     "section": "TMA na fração não conforme s",
-    "text": "TMA na fração não conforme s\n\n# Valor de s\ncat(\"Valor de s:\", s, \"\\n\")\n\n#&gt; Valor de s: 0.02498542\n\n# prob de Aceitaçaõ\np_s &lt;- h2/(h1+h2)\ncat(\"Prob de aceitação de s:\", p_s, \"\\n\")\n\n#&gt; Prob de aceitação de s: 0.5621472\n\n# TMA quando p=s\nround(h1*h2/(s*(1-s)),digits = 0)\n\n#&gt; [1] 98",
+    "text": "TMA na fração não conforme s\n\n# Valor de s\ncat(\"Valor de s:\", s, \"\\n\")\n\n#&gt; Valor de s: 0.0401247\n\n# prob de Aceitaçaõ\np_s &lt;- h2/(h1+h2)\ncat(\"Prob de aceitação de s:\", p_s, \"\\n\")\n\n#&gt; Prob de aceitação de s: 0.5621472\n\n# TMA quando p=s\nround(h1*h2/(s*(1-s)),digits = 0)\n\n#&gt; [1] 99",
     "crumbs": [
       "Conteúdo Semanal",
       "Plano Sequencial"

@@ -53,8 +53,8 @@ Vamos utilizar as equações derivadas por Wald (1947) e pelo Statistical Resear
 ## Definições
 
 ```{r}
-p1 <- 0.01
-p2 <- 0.05
+p1 <- 0.02
+p2 <- 0.07
 alfa <- 0.05
 beta <- 0.10
 ```
@@ -134,7 +134,6 @@ n1 <- ceiling(Y2[1])
 cat("Valor de n0:", n0, "\n")
 cat("Valor de n1:", n1, "\n")
 ```
-
 
 ## Equações para o Tamanho Médio de Amostra
 
